@@ -629,6 +629,72 @@
 
 
 <!-- SYS- VVNfRElSRUNUX1BST0RVQ1RJT04= -->
+<style id="customMobileFix">
+  /* === Fix "WELCOME / We're glad to have you" caption overlapping image === */
+  /* Move caption below the image instead of overlapping it */
+  #dm .dmBody div.u_1558875708 .photoGalleryThumbs {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #dm .dmBody div.u_1558875708 .image-container {
+    position: relative !important;
+    flex: 1 !important;
+  }
+  #dm .dmBody div.u_1558875708 .caption-container {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    display: block !important;
+  }
+  #dm .dmBody div.u_1558875708 .caption-inner {
+    background-color: rgba(11, 71, 109, 0.9) !important;
+    padding: 12px 16px !important;
+  }
+  #dm .dmBody div.u_1558875708 .caption-inner {
+    align-items: center !important;
+  }
+  #dm .dmBody div.u_1558875708 .caption-container .caption-title,
+  #dm .dmBody div.u_1558875708 .caption-container .caption-text p {
+    color: rgba(255,255,255,1) !important;
+    text-align: center !important;
+  }
+  #dm .dmBody div.u_1558875708 .caption-button {
+    margin: 10px auto !important;
+  }
+
+  /* Also fix the left image (Watch Our Latest Service) caption */
+  #dm .dmBody div.u_1302602838 .caption-container {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    display: block !important;
+  }
+  #dm .dmBody div.u_1302602838 .caption-inner {
+    background-color: rgba(11, 71, 109, 0.9) !important;
+    padding: 12px 16px !important;
+    align-items: center !important;
+  }
+  #dm .dmBody div.u_1302602838 .caption-container .caption-title,
+  #dm .dmBody div.u_1302602838 .caption-container .caption-text p {
+    color: rgba(255,255,255,1) !important;
+    text-align: center !important;
+  }
+  #dm .dmBody div.u_1302602838 .caption-button {
+    margin: 10px auto !important;
+  }
+
+  /* === "Discover a Vibrant Church Community" section - mobile stack === */
+  @media (max-width: 767px) {
+    #1048768809 > div:nth-child(2),
+    #1048768809 > div:nth-child(3) {
+      flex-direction: column !important;
+    }
+  }
+</style>
 </head>
 
 
@@ -747,52 +813,44 @@
 </div> 
 </div> 
 </div> 
- <div class="u_1048768809 dmRespRow fullBleedChanged fullBleedMode" id="1048768809" data-page-element-type="section" data-page-element-id="1795766673"> <div class="dmRespColsWrapper" id="1430528345"> <div class="u_1354309434 dmRespCol small-12 large-6 medium-6" id="1354309434"> <div class="u_1263207274 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1263207274" background-image":""}"="" data-ai-tag="Kicker" style="transition: none; text-align: left; display: block;"> <h6><span style="display: unset;">Join Us Every Week</span></h6> 
-</div> 
- <div class="u_1809098214 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1809098214" style="text-align: left; transition: none 0s ease 0s; display: block;" data-ai-tag="Long section title"> <h2><span style="display: initial; color: rgb(255, 255, 255);">Discover a Vibrant Church Community</span></h2> 
-</div> 
- <div class="u_1302602838 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="1" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1302602838" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1" data-link-gallery="true"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
- <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-1" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1761450745" data-dm-force-device="mobile" class="u_1267420763 has-link" href="/services" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/IMG_6947-d3b7298b.jpeg" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/IMG_6947-d3b7298b-640w.jpeg');"><img id="1260070034" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/IMG_6947-d3b7298b-1920w.jpeg" alt="People shaking hands and smiling indoors." aria-labelledby="1761450745" onerror="handleImageLoadError(this)"/></a> 
-</div> 
- <div id="1911698997" class="caption-container u_1911698997" style="display:none"> <span class="caption-inner"> <h3 id="1761450745" class="caption-title u_1761450745">Watch our</h3> 
- <div id="1414952206" class="caption-text u_1414952206"><p class="rteBlock">Latest Service</p></div> 
- <a id="1662899195" class="caption-button dmWidget  clearfix u_1662899195" href="/services" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
-</span> 
- <span class="text">Learn More</span> 
-</a> 
-</span> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
- <div class="u_1147974677 dmRespCol small-12 large-6 medium-6" id="1147974677"> <div class="u_1014041282 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1014041282" style="text-align: left; transition: none; display: block;" data-ai-tag="Paragraph 2"><p class="m-text-align-left text-align-right" style="line-height: 1.5;"><span style="color:rgb(255, 255, 255);font-weight:400;display:unset;font-family:Muli;">Join a community rooted in faith and purpose, where we grow together in God's love, support one another, and fulfill His calling for our lives. Together, we strengthen our bonds, share in the joy of fellowship, and empower each other to live out our faith with passion and conviction.</span></p></div> 
- <div class="u_1825238803 dmRespRow fullBleedChanged fullBleedMode" id="1825238803"> <div class="dmRespColsWrapper" id="1325846107"> <div class="dmRespCol small-12 medium-12 large-12" id="1903033323"> <div class="u_1558875708 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="1" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1558875708" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
- <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-1" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1655136921" data-dm-force-device="mobile" class="u_1714965572" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/fellowship.jpg" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/fellowship-640w.jpg');"><img id="1281846534" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/fellowship-1920w.jpg" alt="People shaking hands and smiling indoors." aria-labelledby="1655136921" onerror="handleImageLoadError(this)"/></a> 
-</div> 
- <div id="1112384298" class="caption-container u_1112384298" style="display:none"> <span class="caption-inner"> <h3 id="1655136921" class="caption-title u_1655136921">Welcome</h3> 
- <div id="1317507664" class="caption-text u_1317507664"><p class="rteBlock">We're glad to have you</p></div> 
- <a id="1567634834" class="caption-button dmWidget  clearfix u_1567634834" href="/about" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
-</span> 
- <span class="text">Who We Are</span> 
-</a> 
-</span> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
+
+<!-- CUSTOM VIBRANT SECTION START -->
+<div id="1048768809" style="background-color:rgba(11,71,109,1);padding:50px 60px;box-sizing:border-box;">
+
+  <!-- Row 1: Heading centered across full width -->
+  <div style="text-align:center;margin-bottom:30px;">
+    <h6 style="color:#8dc63f;font-family:Muli;font-weight:700;text-transform:uppercase;margin:0 0 8px;">Join Us Every Week</h6>
+    <h2 style="color:#ffffff;font-family:Muli;font-weight:700;margin:0 0 16px;">Discover a Vibrant Church Community</h2>
+    <p style="color:#ffffff;font-family:Muli;font-weight:400;font-size:17px;max-width:750px;margin:0 auto;line-height:1.6;">Join a community rooted in faith and purpose, where we grow together in God's love, support one another, and fulfill His calling for our lives. Together, we strengthen our bonds, share in the joy of fellowship, and empower each other to live out our faith with passion and conviction.</p>
+  </div>
+
+  <!-- Row 2: Two images side by side -->
+  <div style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin-bottom:24px;">
+    <div style="flex:1;min-width:260px;max-width:500px;">
+      <img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/IMG_6947-d3b7298b-1920w.jpeg" alt="Pastor at pulpit" style="width:100%;height:420px;object-fit:cover;display:block;border-radius:4px;"/>
+    </div>
+    <div style="flex:1;min-width:260px;max-width:500px;">
+      <img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/fellowship-1920w.jpg" alt="People shaking hands and smiling indoors." style="width:100%;height:420px;object-fit:cover;display:block;border-radius:4px;"/>
+    </div>
+  </div>
+
+  <!-- Row 3: Two captions side by side, aligned under each image -->
+  <div style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;">
+    <div style="flex:1;min-width:260px;max-width:500px;text-align:center;">
+      <p style="color:#ffffff;font-family:Muli;font-weight:700;font-size:18px;margin:0 0 4px;text-transform:uppercase;">WATCH OUR</p>
+      <p style="color:#ffffff;font-family:Muli;font-weight:400;font-size:16px;margin:0 0 12px;">Latest Service</p>
+      <a href="/services" style="display:inline-block;background-color:#3a9ec2;color:#ffffff;font-family:Muli;font-weight:700;padding:12px 28px;border-radius:30px;text-decoration:none;font-size:15px;">Learn More</a>
+    </div>
+    <div style="flex:1;min-width:260px;max-width:500px;text-align:center;">
+      <p style="color:#ffffff;font-family:Muli;font-weight:700;font-size:18px;margin:0 0 4px;text-transform:uppercase;">WELCOME</p>
+      <p style="color:#ffffff;font-family:Muli;font-weight:400;font-size:16px;margin:0 0 12px;">We're glad to have you</p>
+      <a href="/about" style="display:inline-block;background-color:#3a9ec2;color:#ffffff;font-family:Muli;font-weight:700;padding:12px 28px;border-radius:30px;text-decoration:none;font-size:15px;">Who We Are</a>
+    </div>
+  </div>
+
+</div>
+<!-- CUSTOM VIBRANT SECTION END -->
+
  <div class="u_1008773907 dmRespRow fullBleedChanged fullBleedMode" id="1008773907" data-page-element-type="section" data-page-element-id="1795766673"> <div class="dmRespColsWrapper" id="1702935206"> <div class="u_1206329039 dmRespCol small-12 medium-12 large-12" id="1206329039"> <div class="dmRespRow u_1375547209 fullBleedChanged fullBleedMode" id="1375547209"> <div class="dmRespColsWrapper" id="1900181328"> <div class="dmRespCol small-12 medium-12 large-12" id="1410651963"> <div class="u_1460373990 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="2" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1460373990" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1" data-link-gallery="true" data-tablet-layout="square" data-tablet-columns="2"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
  <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-2" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1750986809" data-dm-force-device="mobile" class="u_1489031828 has-link" href="/giving" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/68.png" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/68-640w.png');"><img id="1252532975" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/68-1920w.png" alt="Hands clasped over an open book, possibly a Bible, with another book nearby." aria-labelledby="1750986809" onerror="handleImageLoadError(this)"/></a> 
 </div> 
