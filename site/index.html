@@ -1,0 +1,1576 @@
+<!doctype html >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      class="">
+<head>
+    <meta charset="utf-8">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    window._currentDevice = 'desktop';
+    window.Parameters = window.Parameters || {
+        HomeUrl: 'http://localhost:8080/',
+
+        AccountUUID: '3d875b9e5c88468a9855df44ab3479f3',
+
+        SystemID: 'US_DIRECT_PRODUCTION',
+        SiteAlias: 'a78c0b5c',
+        SiteType: atob('RFVEQU9ORQ=='),
+        PublicationDate: 'Mon Mar 23 18:11:58 UTC 2026',
+        ExternalUid: null,
+        IsSiteMultilingual: false,
+        InitialPostAlias: '',
+        InitialPostPageUuid: '',
+        InitialDynamicItem: '',
+        DynamicPageInfo: {
+            isDynamicPage: false,
+            base64JsonRowData: 'null',
+        },
+        InitialPageAlias: 'home',
+        InitialPageUuid: '94128629daad4be7ac1e4c353f1a2827',
+        InitialPageId: '1201648412',
+        InitialEncodedPageAlias: 'aG9tZQ==',
+        InitialHeaderUuid: '29c2de32ec9048cabe97a7565a397ba7',
+        CurrentPageUrl: '',
+        IsCurrentHomePage: true,
+        AllowAjax: false,
+        AfterAjaxCommand: null,
+        HomeLinkText: 'Back To Home',
+        UseGalleryModule: false,
+        CurrentThemeName: 'Layout Theme',
+        ThemeVersion: '500000',
+        DefaultPageAlias: '',
+        RemoveDID: true,
+        WidgetStyleID: null,
+        IsHeaderFixed: false,
+        IsHeaderSkinny: false,
+        IsBfs: true,
+        StorePageAlias: 'null',
+        StorePagesUrls: 'e30=',
+        IsNewStore: 'false',
+        StorePath: '',
+        StoreId: 'null',
+        StoreVersion: 0,
+        StoreBaseUrl: '',
+        StoreCleanUrl: true,
+        StoreDisableScrolling: true,
+        IsStoreSuspended: false,
+        HasCustomDomain: true,
+        SimpleSite: false,
+        showCookieNotification: false,
+        cookiesNotificationMarkup: 'null',
+        translatedPageUrl: '',
+        isFastMigrationSite: false,
+        sidebarPosition: 'NA',
+        currentLanguage: 'en',
+        currentLocale: 'en',
+        NavItems: '{}',
+        errors: {
+            general: 'There was an error connecting to the page.<br/> Make sure you are not offline.',
+            password: 'Incorrect name/password combination',
+            tryAgain: 'Try again'
+        },
+        NavigationAreaParams: {
+            ShowBackToHomeOnInnerPages: true,
+            NavbarSize: -1,
+            NavbarLiveHomePage: 'http://localhost:8080/',
+            BlockContainerSelector: '.dmBody',
+            NavbarSelector: '#dmNav:has(a)',
+            SubNavbarSelector: '#subnav_main'
+        },
+        hasCustomCode: true,
+        planID: '7',
+        customTemplateId: 'null',
+        siteTemplateId: 'null',
+        productId: 'DM_DIRECT',
+        disableTracking: false,
+        pageType: 'FROM_SCRATCH',
+        isRuntimeServer: true,
+        isInEditor: false,
+        hasNativeStore: false,
+        defaultLang: 'en',
+        hamburgerMigration: null,
+        isFlexSite: false
+    };
+
+    window.Parameters.LayoutID = {};
+    window.Parameters.LayoutID[window._currentDevice] = 6;
+    window.Parameters.LayoutVariationID = {};
+    window.Parameters.LayoutVariationID[window._currentDevice] = 5;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Injecting site-wide to the head -->
+
+
+
+
+<!-- End Injecting site-wide to the head -->
+
+<!-- Inject secured cdn script -->
+
+
+<!-- ========= Meta Tags ========= -->
+<!-- PWA settings -->
+<script>
+    function toHash(str) {
+        var hash = 5381, i = str.length;
+        while (i) {
+            hash = hash * 33 ^ str.charCodeAt(--i)
+        }
+        return hash >>> 0
+    }
+</script>
+<script>
+    (function (global) {
+    //const cacheKey = global.cacheKey;
+    const isOffline = 'onLine' in navigator && navigator.onLine === false;
+    const hasServiceWorkerSupport = 'serviceWorker' in navigator;
+    if (isOffline) {
+        console.log('offline mode');
+    }
+    if (!hasServiceWorkerSupport) {
+        console.log('service worker is not supported');
+    }
+    if (hasServiceWorkerSupport && !isOffline) {
+        window.addEventListener('load', function () {
+            const serviceWorkerPath = '/runtime-service-worker.js?v=3';
+            navigator.serviceWorker
+                .register(serviceWorkerPath, { scope: './' })
+                .then(
+                    function (registration) {
+                        // Registration was successful
+                        console.log(
+                            'ServiceWorker registration successful with scope: ',
+                            registration.scope
+                        );
+                    },
+                    function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    }
+                )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+
+        // helper function to refresh the page
+        var refreshPage = (function () {
+            var refreshing;
+            return function () {
+                if (refreshing) return;
+                // prevent multiple refreshes
+                var refreshkey = 'refreshed' + location.href;
+                var prevRefresh = localStorage.getItem(refreshkey);
+                if (prevRefresh) {
+                    localStorage.removeItem(refreshkey);
+                    if (Date.now() - prevRefresh < 30000) {
+                        return; // dont go into a refresh loop
+                    }
+                }
+                refreshing = true;
+                localStorage.setItem(refreshkey, Date.now());
+                console.log('refereshing page');
+                window.location.reload();
+            };
+        })();
+
+        function messageServiceWorker(data) {
+            return new Promise(function (resolve, reject) {
+                if (navigator.serviceWorker.controller) {
+                    var worker = navigator.serviceWorker.controller;
+                    var messageChannel = new MessageChannel();
+                    messageChannel.port1.onmessage = replyHandler;
+                    worker.postMessage(data, [messageChannel.port2]);
+                    function replyHandler(event) {
+                        resolve(event.data);
+                    }
+                } else {
+                    resolve();
+                }
+            });
+        }
+    }
+})(window);
+</script>
+<!-- Add manifest -->
+<!-- End PWA settings -->
+
+
+
+<link rel="canonical" href="http://localhost:8080/">
+
+<meta id="view" name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!--Add favorites icons-->
+
+<link rel="apple-touch-icon"
+      href="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/favicon.png"/>
+
+<link rel="icon" type="image/x-icon" href="https://irp.cdn-website.com/a78c0b5c/site_favicon_16_1768330558912.ico"/>
+
+<!-- End favorite icons -->
+<link rel="preconnect" href="https://lirp.cdn-website.com/"/>
+
+
+
+<!-- render the required CSS and JS in the head section -->
+<script id='d-js-dmapi'>
+    window.SystemID = 'US_DIRECT_PRODUCTION';
+
+    if (!window.dmAPI) {
+        window.dmAPI = {
+            registerExternalRuntimeComponent: function () {
+            },
+            getCurrentDeviceType: function () {
+                return window._currentDevice;
+            },
+            runOnReady: (ns, fn) => {
+                const safeFn = dmAPI.toSafeFn(fn);
+                ns = ns || 'global_' + Math.random().toString(36).slice(2, 11);
+                const eventName = 'afterAjax.' + ns;
+
+                if (document.readyState === 'complete') {
+                    $.DM.events.off(eventName).on(eventName, safeFn);
+                    setTimeout(function () {
+                        safeFn({
+                            isAjax: false,
+                        });
+                    }, 0);
+                } else {
+                    window?.waitForDeferred?.('dmAjax', () => {
+                        $.DM.events.off(eventName).on(eventName, safeFn);
+                        safeFn({
+                            isAjax: false,
+                        });
+                    });
+                }
+            },
+            toSafeFn: (fn) => {
+                if (fn?.safe) {
+                    return fn;
+                }
+                const safeFn = function (...args) {
+                    try {
+                        return fn?.apply(null, args);
+                    } catch (e) {
+                        console.log('function failed ' + e.message);
+                    }
+                };
+                safeFn.safe = true;
+                return safeFn;
+            }
+        };
+    }
+
+    if (!window.requestIdleCallback) {
+        window.requestIdleCallback = function (fn) {
+            setTimeout(fn, 0);
+        }
+    }
+</script>
+
+<!-- loadCSS function header.jsp-->
+
+
+
+
+
+
+<script id="d-js-load-css">
+/**
+ * There are a few <link> tags with CSS resource in them that are preloaded in the page
+ * in each of those there is a "onload" handler which invokes the loadCSS callback
+ * defined here.
+ * We are monitoring 3 main CSS files - the runtime, the global and the page.
+ * When each load we check to see if we can append them all in a batch. If threre
+ * is no page css (which may happen on inner pages) then we do not wait for it
+ */
+(function () {
+  let cssLinks = {};
+  function loadCssLink(link) {
+    link.onload = null;
+    link.rel = "stylesheet";
+    link.type = "text/css";
+  }
+  
+    function checkCss() {
+      const pageCssLink = document.querySelector("[id*='CssLink']");
+      const widgetCssLink = document.querySelector("[id*='widgetCSS']");
+
+        if (cssLinks && cssLinks.runtime && cssLinks.global && (!pageCssLink || cssLinks.page) && (!widgetCssLink || cssLinks.widget)) {
+            const storedRuntimeCssLink = cssLinks.runtime;
+            const storedPageCssLink = cssLinks.page;
+            const storedGlobalCssLink = cssLinks.global;
+            const storedWidgetCssLink = cssLinks.widget;
+
+            storedGlobalCssLink.disabled = true;
+            loadCssLink(storedGlobalCssLink);
+
+            if (storedPageCssLink) {
+                storedPageCssLink.disabled = true;
+                loadCssLink(storedPageCssLink);
+            }
+
+            if(storedWidgetCssLink) {
+                storedWidgetCssLink.disabled = true;
+                loadCssLink(storedWidgetCssLink);
+            }
+
+            storedRuntimeCssLink.disabled = true;
+            loadCssLink(storedRuntimeCssLink);
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    storedRuntimeCssLink.disabled = false;
+                    storedGlobalCssLink.disabled = false;
+                    if (storedPageCssLink) {
+                      storedPageCssLink.disabled = false;
+                    }
+                    if (storedWidgetCssLink) {
+                      storedWidgetCssLink.disabled = false;
+                    }
+                    // (SUP-4179) Clear the accumulated cssLinks only when we're
+                    // sure that the document has finished loading and the document 
+                    // has been parsed.
+                    if(document.readyState === 'interactive') {
+                      cssLinks = null;
+                    }
+                }, 0);
+            });
+        }
+    }
+  
+
+  function loadCSS(link) {
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var noCSS = !!urlParams.get("nocss");
+      var cssTimeout = urlParams.get("cssTimeout") || 0;
+
+      if (noCSS) {
+        return;
+      }
+      if (link.href && link.href.includes("d-css-runtime")) {
+        cssLinks.runtime = link;
+        checkCss();
+      } else if (link.id === "siteGlobalCss") {
+        cssLinks.global = link;
+        checkCss();
+      } 
+      
+      else if (link.id && link.id.includes("CssLink")) {
+        cssLinks.page = link;
+        checkCss();
+      } else if (link.id && link.id.includes("widgetCSS")) {
+        cssLinks.widget = link;
+        checkCss();
+      }
+      
+      else {
+        requestIdleCallback(function () {
+          window.setTimeout(function () {
+            loadCssLink(link);
+          }, parseInt(cssTimeout, 10));
+        });
+      }
+    } catch (e) {
+      throw e
+    }
+  }
+  window.loadCSS = window.loadCSS || loadCSS;
+})();
+</script>
+
+
+
+<script data-role="deferred-init" type="text/javascript">
+    /* usage: window.getDeferred(<deferred name>).resolve() or window.getDeferred(<deferred name>).promise.then(...)*/
+    function Def() {
+        this.promise = new Promise((function (a, b) {
+            this.resolve = a, this.reject = b
+        }).bind(this))
+    }
+
+    const defs = {};
+    window.getDeferred = function (a) {
+        return null == defs[a] && (defs[a] = new Def), defs[a]
+    }
+    window.waitForDeferred = function (b, a, c) {
+        let d = window?.getDeferred?.(b);
+        d
+            ? d.promise.then(a)
+            : c && ["complete", "interactive"].includes(document.readyState)
+                ? setTimeout(a, 1)
+                : c
+                    ? document.addEventListener("DOMContentLoaded", a)
+                    : console.error(`Deferred  does not exist`);
+    };
+</script>
+<style id="forceCssIncludes">
+    /* This file is auto-generated from a `scss` file with the same name */
+
+.videobgwrapper{overflow:hidden;position:absolute;z-index:0;width:100%;height:100%;top:0;left:0;pointer-events:none;border-radius:inherit}.videobgframe{position:absolute;width:101%;height:100%;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);object-fit:fill}#dm video.videobgframe{margin:0}@media (max-width:767px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:80vh}}@media (min-width:1025px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}@media (min-width:768px) and (max-width:1024px){.responsiveTablet .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}#dm [data-show-on-page-only]{display:none!important}#dmRoot div.stickyHeaderFix div.site_content{margin-top:0!important}#dmRoot div.stickyHeaderFix div.hamburger-header-container{position:relative}
+    
+
+</style>
+<style id="cssVariables" type="text/css">
+    
+</style>
+
+
+<style id="hideAnimFix">
+  .dmDesktopBody:not(.editGrid) [data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) [data-anim-extended] {
+    visibility: hidden;
+  }
+
+  .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-extended] {
+    visibility: hidden !important;
+  }
+
+  #dmRoot:not(.editGrid) .flex-element [data-anim-extended] {
+    visibility: hidden;
+  }
+
+</style>
+
+
+
+<style id="criticalCss">
+    @charset "UTF-8";.videobgframe,.videobgwrapper{position:absolute;height:100%}.display_None,.dmPopupMask{display:none}.clearfix:after,.dmDesktopBody:not(.editGrid) [data-anim-desktop]:not([data-anim-desktop=none]),.dmDesktopBody:not(.editGrid) [data-anim-extended]{visibility:hidden}.videobgwrapper{overflow:hidden;z-index:0;width:100%;top:0;left:0;border-radius:inherit}.videobgframe{width:101%;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);object-fit:fill}#dm video.videobgframe{margin:0}.dmInner{min-height:100vh!important;position:relative;min-width:768px!important}.dmPopup,.dmPopupMask{position:fixed;left:0}.dmDisplay_None{display:none!important}.clearfix:after{clear:both;line-height:0;height:0}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix{display:inline-block}#dm .dmWidget .icon{font-size:26px}body.dmRoot #dm .dmOuter .dmInner .dmWidget .icon.hasFontIcon{height:26px;margin-top:-13px;line-height:normal;text-align:center;background-image:none}#dm .dmBody div.u_1200190208,#dm .dmBody div.u_1597495448,.dmRoot .hasFontIcon{background-image:none!important}.dmPopupMask{margin:0;width:10px;z-index:1000000999;top:0}#dmRoot .dmPopup,.dmPopup,.dmPopupClose:before,[data-display-type=block]{display:block}.dmPopup{text-align:left;top:10px;width:93%;z-index:1000009999!important;box-sizing:border-box;background:#f5f5f5;overflow-y:auto;height:100%}.dmPopup .dmPopupTitle{text-align:left;font:700 19px Helvetica,Arial;margin:20px 20px 35px;color:#999}#dm .dmInner .dmWidget,.graphicWidget,.imageWidget a,.text-align-center{text-align:center}#dmPopup{opacity:0}.dmPopupClose,.dmPopupClose:before{position:absolute;visibility:visible}.dmPopupClose{border-radius:25px;width:27px;height:27px;z-index:1;background-color:rgba(255,255,255,.4);top:12px;right:12px}.dmPopupClose:before{font-size:20px;color:#000;top:3px;right:3px}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar{width:5px;height:5px}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar-track{background:rgba(0,0,0,.1)}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar-thumb{background:#c8c8c8;box-shadow:inset 0 1px 2px #454545;border-radius:45px}#dm .header-over-content #stickyHeaderSpacer{height:0!important}.youtubeExt{width:640px;height:360px}.innerYoutubeExt{width:100%;height:100%;position:relative;padding-top:30px;padding-bottom:56.25%;overflow:hidden}.youtube-padding-fix .innerYoutubeExt{padding-bottom:0}.innerYoutubeExt iframe{position:absolute;top:0;left:0}.dmRespRow.fullBleedMode>.dmRespColsWrapper{width:100%!important;max-width:100%!important}.dmRespRow.fullBleedMode{padding-left:0!important;padding-right:0!important}#dm .dmRespRow .dmRespColsWrapper{display:flex}#dm .dmBody .dmRespRow.relativePos,#dm .hasBackgroundOverlay:not(.dmPopupPage):not(.layout-drawer){position:relative!important}#dm .hasBackgroundOverlay>.bgExtraLayerOverlay{width:100%!important;height:100%!important;position:absolute;top:0;left:0}#dm .dmInner .dmWidget.align-center,.align-center{margin-left:auto;margin-right:auto}body.fix-mobile-scrolling{overflow:initial}#dmRoot{text-decoration-skip-ink:none}#dm .sticky-widgets-container-global [data-element-type]{position:fixed!important}.dmform-title{padding-right:15px;padding-left:15px}@media (min-width:1025px){#dmRoot.responsiveTablet #dm .dmInner .hide-for-large{display:none!important}.button_2,:root{--btn-text-font-size:18px}}@media (min-width:768px) and (max-width:1024px){#dmRoot.responsiveTablet #dm .dmInner .hide-for-medium,[data-hidden-on-tablet]{display:none!important}}@media (max-width:767px){#dmRoot.responsiveTablet #dm .dmInner .hide-for-small{display:none!important}}img,video{display:inline-block}.video-ssr .videobgframe{object-fit:cover}@media (min-width:1025px) and (max-width:1399px){[data-hidden-on-desktop]{display:none!important}}body{-webkit-overflow-scrolling:touch}nav{display:block}html{font-family:Source Sans Pro;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}strong{font-weight:700}hr{box-sizing:content-box;height:0}img{border:0;max-width:100%;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}button,input{font-family:inherit;font-size:100%;margin:0;line-height:normal}button{text-transform:none;-webkit-appearance:button}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}*,:after,:before{box-sizing:border-box}.dmRespRow.dmRespRowNoPadding{padding:0}.dmRespRow{padding-top:15px;padding-bottom:15px}.dmRespRow .dmRespRow:after,.dmRespRow .dmRespRow:before,.dmRespRow:after,.dmRespRow:before{content:" ";display:table}.dmRespRow .dmRespRow:after,.dmRespRow:after{clear:both}.dmRespRow,.dmRespRow .dmRespColsWrapper{max-width:960px;position:relative;margin:0 auto;width:100%}@media screen and (min-width:1200px){.rows-1200 .dmRespRow:not(.fullBleedMode) .dmRespColsWrapper{max-width:1200px}}.dmRespRow .dmRespCol{position:relative;width:100%;display:inline-block;vertical-align:top;float:left}.dmRespRow .dmRespCol>*{max-width:100%}.dmRespRow .dmRespRow{width:auto;margin-top:0;margin-bottom:0;max-width:none}.dmDesktopBody .dmRespRow .large-4{position:relative;width:33.33333%}.dmDesktopBody .dmRespRow .large-6{position:relative;width:50%}.dmDesktopBody .dmRespRow .large-8{position:relative;width:66.66667%}.dmDesktopBody .dmRespRow .large-12{position:relative;width:100%}[class*=" dm-common-icons-"]{speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:dm-common-icons!important}.dm-common-icons-close:before{content:"\e901"}#dm div.dmContent [class*=" icon-"],[class*=" icon-"]{font-family:FontAwesome!important;font-weight:400;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased}[class*=" icon-"]:before{text-decoration:none;display:inline-block;speak:none}a [class*=" icon-"]{display:inline}[class*=" icon-"]{display:inline;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0 0;background-repeat:repeat;margin-top:0}.icon-star:before{content:"\f005"}.icon-angle-right:before{content:"\f105"}.icon-angle-down:before{content:"\f107"}.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}#dm .dmRespRow .dmRespCol>.dmWidget{overflow:initial}@media (min-width:768px){#dm .dmRespRow .dmRespCol>.dmWidget{width:280px;max-width:100%}#dm .sticky-widgets-container-global .dmWidget{width:230px;max-width:100%}}@media (max-width:767px){#dm .dmInner .dmWidget{width:100%}}#dm .dmInner .dmWidget:not(.displayNone){display:inline-block}#dm .dmInner .dmWidget:not(.flexButton):not(.displayNone)[data-display-type=block]{display:block}#dm .dmInner .dmWidget.flexButton:not(.displayNone){display:flex}#dm .dmInner .dmWidget.flexButton{display:flex;align-items:center;justify-content:center;padding:10px 7px}#dm .dmInner .dmWidget.flexButton .text{padding:0!important;flex-grow:1;max-width:max-content}#dm .dmInner .dmWidget.flexButton:after{display:none}#dm .dmInner .dmWidget{text-decoration:none;margin:10px 0;clear:both;position:relative;line-height:22px;box-shadow:none;background-image:none;padding:0;height:auto;border-style:solid;white-space:nowrap}#dm .dmInner .dmWidget:after{content:"";display:inline-block;height:100%;vertical-align:middle;width:0;margin-right:-.25em}#dm .dmInner .dmWidget .iconBg{position:absolute;left:0;width:50px;top:50%;margin-top:-13px}#dm .dmWidget .text{display:inline-block;vertical-align:middle;font-size:1.125em;line-height:normal;white-space:normal;padding:10px 7px;max-width:98%}html:not(.ios-preview) #dm .hasStickyHeader .dmInner div.dmHeaderContainer{position:fixed!important;z-index:101;width:100%;min-width:768px}#dm .header-over-content .dmHeaderContainer{position:absolute;z-index:101;width:100%}[data-video-bg]{min-height:100px}#dm .sticky-widgets-container-global [data-element-type].sticky-desktop-position-bottom-right{top:initial!important;bottom:0!important;margin-bottom:40px;right:0!important;left:initial!important;margin-right:40px}.imageWidget{position:relative}.imageWidget a{font-style:italic}.imageWidget img[width][height]{height:auto}.graphicWidget{width:200px;height:200px;margin:10px auto}.graphicWidget svg.svg{width:100%;height:100%;color:#000;fill:#000}.graphicWidgetV2{width:60px;height:60px}.graphicWidgetV3{font-size:0}.dmNewParagraph[data-version] .text-align-left{text-align:left!important}.dmNewParagraph[data-version] .text-align-center{text-align:center!important}.dmNewParagraph[data-version] .text-align-right{text-align:right!important}.dmNewParagraph[data-version]{line-height:initial}.dmNewParagraph[data-version] [class*=size-]{width:auto!important;height:auto!important}.dmNewParagraph[data-version] h2,.dmNewParagraph[data-version] h3,.dmNewParagraph[data-version] h4,.dmNewParagraph[data-version] h5,.dmNewParagraph[data-version] h6,.dmNewParagraph[data-version] p{margin-top:0;margin-bottom:0}@media (max-width:767px){.dmRoot .dmNewParagraph[data-version] .m-text-align-left{text-align:left!important}}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner div,#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner h3,.dmHeader,.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner,.dmPhotoGalleryHolder{text-align:center}#dm div.dmInner .dmform[data-layout=layout-1] .dmforminput>:not(label):not(div):not(small):not(.frc-banner){background:0;border:2px solid #000;display:inline-block}#dm div.dmInner .dmform .dmforminput label[hide=true]{display:none}.dmform .dmforminput label{display:block;overflow:hidden;text-overflow:ellipsis}.dmPhotoGallery{margin:10px 0;width:100%;overflow:hidden;min-height:1px;clear:both}.dmPhotoGallery .image-container{position:relative}.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner h3{margin:0;line-height:normal;font-size:21px}.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-text,.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-title{max-width:100%}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs{list-style:none;position:relative}#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-bottom_left .photoGalleryThumbs .caption-container .caption-inner:not(:has(>.caption-link)){justify-content:flex-end;align-items:flex-start}#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-bottom_left .photoGalleryThumbs .caption-container .caption-inner:not(:has(>.caption-link)) div,#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-bottom_left .photoGalleryThumbs .caption-container .caption-inner:not(:has(>.caption-link)) h3{text-align:left}#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-bottom_left .photoGalleryThumbs .caption-container .caption-inner .caption-button{margin:10px 0}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner{align-items:center}#dm .dmPhotoGallery.newPhotoGallery .dmPhotoGalleryHolder{width:100%;padding:0;display:none}#dm .dmPhotoGallery.newPhotoGallery .photogallery-row{display:flex}#dm .dmPhotoGallery.newPhotoGallery .layout-container.square{display:flex;width:100%;flex-direction:column}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column{display:flex;flex-direction:column;padding:0;width:100%;margin:0}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column.column-3{width:33.333%}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs{position:relative;overflow:hidden}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs .image-container{width:100%;overflow:hidden;background:url(https://dd-cdn.multiscreensite.com/runtime-img/galleryLoader.gif) center no-repeat}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs .image-container.revealed{background:0}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs .image-container a{display:flex;flex-direction:column;background-size:cover;padding-top:100%}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs .image-container a img{display:none!important}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .thumbnailInnerWrapper{overflow:hidden;transform:translateZ(0)}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .image-container{overflow:hidden}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .image-container a{background-repeat:no-repeat;background-position:center}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner{display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;z-index:1;background-color:rgba(255,255,255,.9);color:#333;padding:15px;height:100%;box-sizing:border-box}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-button{margin:10px auto;max-width:100%}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-button .text{padding:10px 20px!important}#dm .dmRespRow.dmRespRowNoPadding,.dmContent,.dmInner ul:not(.defaultList),DIV.dmBody{padding:0}#dm .dmPhotoGallery.newPhotoGallery.text-layout-fixed .photoGalleryThumbs .caption-container{position:absolute;left:0;right:0;top:0;bottom:0;margin:auto}#dm .dmPhotoGallery.newPhotoGallery.text-layout-fixed .photoGalleryThumbs .caption-container .caption-inner{background-color:rgba(255,255,255,.5)}#dm .dmPhotoGallery.newPhotoGallery[data-image-hover-effect=zoomout] .photoGalleryThumbs .image-container{-webkit-mask-image:-webkit-radial-gradient(#fff,#000)}img[width][height]{height:auto}*{border:0 solid #333;scrollbar-arrow-color:#fff;scrollbar-track-color:#F2F2F2;scrollbar-face-color:silver;scrollbar-highlight-color:silver;scrollbar-3dlight-color:silver;scrollbar-shadow-color:silver;scrollbar-darkshadow-color:silver;scrollbar-width:12px}body{width:100%;overflow:hidden;-webkit-text-size-adjust:100%!important;-ms-text-size-adjust:100%!important}A IMG{border:none}h2,h3,h4,h5,h6,ul{margin-left:0;margin-right:0}#dm video{max-width:100%!important;display:block;margin:10px auto}.dmInner *{-webkit-font-smoothing:antialiased}.clearfix,a,iframe,img,li,ul{vertical-align:top}#iscrollBody,#site_content{position:relative}.dmOuter{word-wrap:break-word}.dmInner{font-size:16px;background:#fff;color:#666}.dmDesktopBody .dmInner{min-width:960px}.dmInner a{color:#463939}.dmHeader{background:#68ccd1;color:#666;position:relative;width:100%;max-width:100%}DIV.dmBody{clear:both}.dmContent{margin:0}#site_content ul:not(.defaultList){-webkit-padding-start:0;-moz-padding-start:0;list-style-position:inside}#innerBar{position:relative;height:36px;width:100%;font-size:20px;margin:0;z-index:80}.dmRespRowsWrapper{max-width:960px;margin:0 auto}.dmLargeBody .imageWidget:not(.displayNone){display:inline-block;max-width:100%}.imageWidget:not(.displayNone) img{width:100%}h3{font-weight:400;font-size:23px}#dm .dmRespColsWrapper{display:block}.dmNewParagraph{text-align:left;margin:8px 0;padding:2px 0}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol,.dmLargeBody .fHeader .dmRespRow .dmRespCol{padding-left:.75%;padding-right:.75%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:first-child,.dmLargeBody .fHeader .dmRespRow .dmRespCol:first-child{padding-left:0;padding-right:1.5%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:last-child,.dmLargeBody .fHeader .dmRespRow .dmRespCol:last-child{padding-right:0;padding-left:1.5%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:only-child{padding-left:0;padding-right:0}#innerBar.lineInnerBar{display:table;width:100%;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;font-size:20px;margin-top:30px;margin-bottom:30px;background-color:transparent;color:#666}#innerBar .titleLine{display:table-cell;vertical-align:middle;width:50%}.dmPageTitleRow:not(#innerBar){display:none}.titleLine hr{min-height:1px;background-color:rgba(102,102,102,.2)}.dmStandardDesktop{display:block}#dmFirstContainer .dmRespRowsWrapper:after,#dmFirstContainer .dmRespRowsWrapper:before{content:"";display:table}.dmInner a{outline:0;vertical-align:inherit}.dmLinksMenu>ul{display:block;margin:0;font-size:inherit}.standardHeaderLayout .dmHeader{float:none;display:block;height:auto}.dmStandardDesktop{margin:0 auto}#dm h3.dmwidget-title[hide=true]{display:none}#dm .dmwidget-title{margin:10px 0;font-size:23px;text-shadow:none;text-align:left;text-transform:capitalize;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-wrap:normal}.youtubeExt{margin-top:10px;margin-bottom:10px;max-width:100%}.dmPhotoGalleryHolder{font-size:medium!important;margin:0;list-style:none}#dm .dmPhotoGallery .dmPhotoGalleryHolder{width:100%;padding:0}body{background-color:#eee}.youtubeExt iframe{width:100%;height:100%}.main-navigation.unifiednav{display:flex;justify-content:flex-start;align-items:stretch;overflow:visible}.main-navigation.unifiednav ul{list-style:none;padding:0;margin:0;font-size:1rem}.main-navigation.unifiednav .unifiednav__container{display:flex;justify-content:flex-start;list-style:none}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap{display:flex;justify-content:flex-start;position:relative;font-weight:400}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap::before{content:'';-ms-grid-row-align:center;align-self:center;font-weight:700}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item{display:flex;justify-content:flex-start;align-items:center;flex-direction:row;color:inherit;text-decoration:none;position:relative;padding:12px 15px;margin:0;font-weight:inherit;letter-spacing:.03em}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item{padding:0 15px}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item .nav-item-text{white-space:nowrap}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{content:'';width:100%;height:0;border:0 solid transparent;border-top-color:currentColor;display:block;opacity:0}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::before{opacity:1}.main-navigation.unifiednav.effect-bottom2{padding:calc(12px - .2em - 2px) 15px}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{transform:scaleX(0);border-top-width:2px}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after{margin-top:.2em}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{margin-bottom:.2em;border-top-color:transparent}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::before{transform:scaleX(1)}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{transform-origin:left}.main-navigation.unifiednav .unifiednav__container .unifiednav__item:not(.unifiednav__item_has-sub-nav) .icon{display:none}.main-navigation.unifiednav .unifiednav__container[data-depth]{position:absolute;top:0;left:0;flex-direction:column;opacity:0;z-index:100;background-color:#faf9f9}.main-navigation.unifiednav .unifiednav__container[data-depth='0']{top:100%;transform:translateY(-10px)}.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container[data-depth='0']{left:15px}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap .unifiednav__container>.unifiednav__item-wrap{flex-direction:column}.main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap .unifiednav__item{padding:15px 30px 15px 15px;margin:0}.main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap:not(:last-child)::after{content:''!important;width:100%;height:0;color:#ececec;-ms-grid-row-align:center;align-self:center;border:0 solid currentColor}.main-navigation.unifiednav[layout-sub=submenu_horizontal_1] .unifiednav__container[data-depth]{color:#999}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item.unifiednav__item_has-sub-nav .icon{display:initial;padding-left:10px;margin-left:0}.main-navigation.unifiednav:not(.unifiednav_vertical)>.unifiednav__container{justify-content:inherit}#dm .p_hfcontainer nav.main-navigation.unifiednav{min-width:9em!important;text-align:initial!important}#dm .main-navigation.unifiednav .unifiednav__container[data-depth]{background-color:transparent}#dm .main-navigation.unifiednav[layout-sub=submenu_horizontal_1] .unifiednav__container[data-depth]{background-color:#faf9f9}#dm .main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap:not(:last-child)::after{color:#d1d1d1}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL])>.unifiednav__container{flex-wrap:wrap;justify-content:inherit}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL])>.unifiednav__container .nav-item-text::before{text-align:left}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before,#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL])[data-divider]:not([data-direction=RIGHT]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{content:''}#dm .main-navigation.unifiednav:not([data-nav-structure=SPLIT]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:last-child .unifiednav__container[data-depth='0']{left:auto;right:0}#dm .dmBody .dmRespRowsWrapper{max-width:none;background-color:transparent}.dmLargeBody .dmRespRow{width:100%;max-width:none;margin-left:0;margin-right:0;padding-left:40px;padding-right:40px}.dm-bfs.dm-layout-home div.dmInner{background-color:#fff}.dmStandardDesktop .dmHeader{background-color:#68ccd1;max-width:100%}#dm div.dmRespCol>*{line-height:1.5}#dm div.dmInner{line-height:initial}#dm div.dmInner h2,#dm div.dmInner h3,#dm div.dmInner h4{font-family:Montserrat,"Montserrat Fallback"}#dm div.dmInner h5,#dm div.dmInner h6{font-family:Roboto,"Roboto Fallback"}#dm DIV.dmInner{background-repeat:no-repeat;background-image:url(https://irt-cdn.multiscreensite.com/ce0bb35f932b47bb809d0e37905542ba/dms3rep/multi/site_background_education-2087x1173.jpg);background-size:cover;background-position:50% 0}#dm div.dmOuter div.dmInner{background-position:center center;background-repeat:repeat;background-size:auto}.dmLargeBody .dmBody .dmRespRowsWrapper{background-color:transparent}#dm .dmRespCol div.dmNewParagraph,#dm .dmform .dmforminput label,#dm div.dmInner,#dm div.dmInner .dmRespCol,.dmPhotoGallery .caption-text.caption-text{font-family:Muli;color:rgba(0,0,0,1);font-weight:400}#dm div.dmContent h2,#dm div.dmContent h3,#dm div.dmContent h4,#dm div.dmContent h5{color:#259dd2}#dm div.dmContent h2,#dm div.dmContent h3,#dm div.dmContent h4,#dm div.dmContent h5,#dm div.dmContent h6{font-family:Georgia,"Georgia Fallback";font-weight:700;text-transform:uppercase;letter-spacing:initial;direction:ltr;font-style:normal}#dm div.dmContent h2{text-decoration:none}#dm div.dmContent .dmNewParagraph[data-version] h2{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h2 *,#dm div.dmContent h3{text-decoration:none}#dm div.dmContent .dmNewParagraph[data-version] h3{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h3 *,#dm div.dmContent h4{text-decoration:none}#dm div.dmContent .dmNewParagraph[data-version] h4{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h4 *,#dm div.dmContent h5{text-decoration:none}#dm div.dmContent .dmNewParagraph[data-version] h5{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h5 *,#dm div.dmContent h6{text-decoration:none}#dm div.dmContent h6{color:#87b800}#dm div.dmContent .dmNewParagraph[data-version] h6{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h6 *{text-decoration:none}#dm div.dmNewParagraph p{color:rgba(0,0,0,1);direction:ltr;font-family:Muli;font-weight:400;font-style:normal;text-decoration:none;line-height:1.5}#dm div.dmContent h2,#dm div.dmContent h2 *,#dm div.dmContent h3,#dm div.dmContent h3 *,#dm div.dmContent h4,#dm div.dmContent h4 *,#dm div.dmContent h5,#dm div.dmContent h5 *,#dm div.dmContent h6,#dm div.dmContent h6 *{line-height:initial}#dm DIV.dmOuter DIV.dmInner{background-image:none;background-color:rgba(255,255,255,1)}#dm .dmform .dmforminput label,#dm div.dmInner,#dm div.dmInner .dmRespCol{font-size:16px}#dm .dmRespCol div.dmNewParagraph,#dm .dmform .dmforminput label,#dm div.dmContent h4,#dm div.dmInner,#dm div.dmInner .dmRespCol,.dmPhotoGallery .caption-text.caption-text{font-size:18px}#dm div.dmContent h5{font-size:24px;line-height:.8}#dm div.dmContent h2{font-size:36px}#dm div.dmContent h3{font-size:48px;line-height:.8}#dm .dmContent .dmRespRow{margin:0;padding:15px 40px}#dm div.dmContent h6,#dm div.dmNewParagraph p{font-size:18px}#dm div.dmContent h4{font-size:36px;line-height:.8}#dm div.dmContent h6{line-height:normal}#dm div.dmContent h2{line-height:.8}#dm .dmContent .dmRespRow .dmRespCol{margin:0;padding:0}@media all{:root{--btn-border-l-color:rgb(255, 255, 255);--btn-border-r-color:rgb(255, 255, 255);--btn-border-b-width:0px;--btn-text-direction:ltr;--btn-border-radius:50px;--btn-border-t-width:0px;--btn-border-tl-radius:var(--btn-border-radius);--btn-border-br-radius:var(--btn-border-radius);--btn-border-bl-radius:var(--btn-border-radius);--btn-bg-color:rgba(37,157,210,1);--btn-box-shadow:none;--btn-border-r-width:0px;--btn-border-tr-radius:var(--btn-border-radius);--btn-bg-image:none;--btn-border-b-color:rgb(255, 255, 255);--btn-border-l-width:0px;--border-style:solid;--btn-border-t-color:rgb(255, 255, 255);--btn-text-align:center;--btn-text-color:rgba(255, 255, 255, 1);--btn-text-decoration:none;--btn-text-font-weight:bold;--btn-text-font-family:Muli;--btn-icon-color:rgb(247, 247, 247);--btn-icon-fill:rgb(247, 247, 247);--btn-icon-wrpr-display:none;--btn-hover-border-b-color:var(--btn-hover-border-color);--btn-hover-bg:rgba(135,184,0,1);--btn-hover-border-t-color:var(--btn-hover-border-color);--btn-hover-border-r-color:var(--btn-hover-border-color);--btn-hover-border-l-color:var(--btn-hover-border-color);--btn-hover-border-color:rgba(255,255,255,1);--btn-hover-text-color:rgba(255,255,255,1);--btn-hover-text-font-weight:bold;--btn-hover-text-decoration:none;--btn-hover-text-font-style:var(--btn-text-font-style)}.button_2{--btn-border-l-color:rgb(0, 0, 0);--btn-border-r-color:rgb(0, 0, 0);--btn-border-b-width:0px;--btn-text-direction:ltr;--btn-border-radius:50px;--btn-border-t-width:0px;--btn-border-tl-radius:var(--btn-border-radius);--btn-border-br-radius:var(--btn-border-radius);--btn-border-bl-radius:var(--btn-border-radius);--btn-bg-color:rgba(255,255,255,1);--btn-border-r-width:0px;--btn-border-tr-radius:var(--btn-border-radius);--btn-bg-image:none;--btn-border-b-color:rgb(0, 0, 0);--btn-border-l-width:0px;--border-style:solid;--btn-border-t-color:rgb(0, 0, 0);--btn-text-align:center;--btn-text-color:rgba(0,0,0,1);--btn-text-decoration:none;--btn-text-font-weight:bold;--btn-text-font-family:Muli;--btn-icon-color:rgba(0,0,0,1);--btn-icon-fill:rgb(247, 247, 247);--btn-icon-wrpr-display:none;--btn-hover-border-b-color:var(--btn-hover-border-color);--btn-hover-bg:rgba(135,184,0,1);--btn-hover-border-t-color:var(--btn-hover-border-color);--btn-hover-border-r-color:var(--btn-hover-border-color);--btn-hover-border-l-color:var(--btn-hover-border-color);--btn-hover-border-color:rgba(255,255,255,1);--btn-hover-text-color:rgba(255,255,255,1);--btn-hover-text-font-weight:bold;--btn-hover-text-decoration:none;--btn-hover-text-font-style:var(--btn-text-font-style)}}@media (min-width:0px) and (max-width:767px){:root{--btn-text-font-size:16px}.button_2{--btn-text-font-size:18px}}#dm .dmWidget.button_2:not([data-buttonstyle]),#dm .dmWidget:not([data-buttonstyle]){border-radius:50px}#dm .dmWidget.button_2:not([data-buttonstyle]) .text,#dm .dmWidget.button_2:not([data-buttonstyle]).flexButton,#dm .dmWidget:not([data-buttonstyle]) .text,#dm .dmWidget:not([data-buttonstyle]).flexButton{padding:10px 0}#dm .dmWidget.button_2:not([data-buttonstyle]) .iconBg,#dm .dmWidget:not([data-buttonstyle]) .iconBg{display:none}#dm div.dmInner #site_content .dmWidget{background-color:var(--btn-bg-color);background-image:var(--btn-bg-image);border-color:var(--btn-border-color);border-bottom-color:var(--btn-border-b-color);border-left-color:var(--btn-border-l-color);border-right-color:var(--btn-border-r-color);border-top-color:var(--btn-border-t-color);border-radius:var(--btn-border-radius);border-bottom-left-radius:var(--btn-border-bl-radius);border-bottom-right-radius:var(--btn-border-br-radius);border-top-left-radius:var(--btn-border-tl-radius);border-top-right-radius:var(--btn-border-tr-radius);border-width:var(--btn-border-width);border-bottom-width:var(--btn-border-b-width);border-left-width:var(--btn-border-l-width);border-right-width:var(--btn-border-r-width);border-top-width:var(--btn-border-t-width);box-shadow:var(--btn-box-shadow);direction:var(--btn-text-direction);text-align:var(--btn-text-align)}#dm div.dmInner #site_content .dmWidget span.text{color:var(--btn-text-color);font-family:var(--btn-text-font-family);font-size:var(--btn-text-font-size);font-weight:var(--btn-text-font-weight);text-decoration:var(--btn-text-decoration)}#dm div.dmInner #site_content .dmWidget span.icon{color:var(--btn-icon-color);fill:var(--btn-icon-fill)}#dm div.dmInner #site_content .dmWidget:not([data-buttonstyle]) .iconBg{display:var(--btn-icon-wrpr-display)}#dm .p_hfcontainer .main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .p_hfcontainer .main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{font-size:14px!important}div#dm .header-over-content .dmInner .dmHeader:not(.scroll-responder_set){background-color:rgba(0,0,0,0)!important}#dm .dmInner div.dmHeader,#dm .dmInner div.dmHeader.u_hcontainer,#dm .dmInner div.u_hcontainer{background-color:rgba(255,255,255,1)!important;box-shadow:none!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important}#dm .p_hfcontainer div.u_1457549626 img{border-radius:0!important;-moz-border-radius:0!important;-webkit-border-radius:0!important}#dm .p_hfcontainer .u_1457549626{width:100%!important}#dm .p_hfcontainer nav.u_1628820197.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item{text-transform:uppercase!important;color:rgba(255,255,255,1)!important;font-weight:700!important}#dm .dmInner div.u_hcontainer{float:none!important;top:0!important;left:0!important;width:100%!important;position:relative!important;height:auto!important;max-width:100%!important;min-width:0!important;text-align:center!important;padding:25px 0 20px!important;margin:0 auto!important}#dm .dmInner div.dmHeader.u_hcontainer{padding-bottom:20px!important;padding-top:25px!important}.stickyHeaderSpacer{height:114.25px!important}#dm .dmInner div.fHeader.dmHeaderContainer #hcontainer.dmHeader[freeheader=true]{margin:0!important;padding:0!important}#dm .dmInner div.fHeader .dmHeader[freeheader=true]{padding:0!important}.fHeader #hcontainer.dmHeader[freeheader=true]{padding-top:initial!important;padding-bottom:initial!important}#dm .p_hfcontainer div.u_1418466502{background-color:rgba(0,0,0,0)!important;float:none!important;top:0!important;left:0!important;width:auto!important;position:relative!important;height:auto!important;max-width:100%!important;min-width:0!important;text-align:center!important;min-height:auto!important;padding:16.5px 30px!important;margin:0!important}a.u_1968442188{width:200px!important;height:50px!important;margin:0 40px 40px 0!important}#dm .p_hfcontainer nav.u_1628820197{float:none!important;top:0!important;left:0!important;width:997.89px!important;position:relative!important;height:auto!important;min-height:auto!important;max-width:100%!important;justify-content:flex-start!important;align-items:stretch!important;min-width:0!important;text-align:left!important;padding:6.4px 15px!important;margin:62px auto 0 0!important}#dm .p_hfcontainer div.u_1333869819{padding:0!important}#dm .p_hfcontainer div.u_1286967174{margin:0!important;padding:10px 0 10px 20px!important}#dm .p_hfcontainer div.u_1457549626{float:none!important;top:0!important;left:0!important;width:calc(100% - 256px)!important;position:relative!important;max-width:194.68px!important;min-width:25px!important;text-align:center!important;display:block!important;height:auto!important;min-height:auto!important;padding:0!important;margin:0 auto!important}@media (min-width:768px) and (max-width:1024px){.button_2,:root{--btn-text-font-size:18px}.responsiveTablet .stickyHeaderSpacer{height:133.74px!important}}@media (min-width:1025px){.responsiveTablet .stickyHeaderSpacer{height:225.73px!important}}#dm .dmBody div.u_1200190208{background-color:rgba(0,0,0,0)!important;background-repeat:no-repeat!important;background-size:cover!important}#dm .dmBody .u_1485184104{justify-content:center!important;text-align:center!important}#dm .dmBody div.u_1362769984 .dmforminput label{color:rgba(255,255,255,1)!important}#dm .dmBody div.u_1362769984 .dmforminput input{color:rgba(0,0,0,1)!important;font-weight:700!important}#dm .dmBody div.dmform-error,#dm .dmBody div.u_1362769984 .dmform-success{color:rgba(242,243,246,1)!important}#dm .dmBody div.dmform-error{font-style:normal!important}#dm .dmBody div.u_1362769984 input:not([type=submit]){background-color:rgba(255,255,255,1)!important;border-style:solid!important;border-width:0!important;border-radius:4px!important}#dm .dmBody .u_1597495448:before,#dm .dmBody .u_1597495448>.bgExtraLayerOverlay{opacity:.5!important;background-color:#000!important}#dm .dmBody div.u_1597495448:before,#dm .dmBody div.u_1597495448>.bgExtraLayerOverlay{background-color:rgba(0,0,0,1)!important;opacity:.5!important}#dm .dmBody div.u_1253507260{border-radius:15px!important;-webkit-box-shadow:rgba(0,0,0,.25) 0 0 11px 0!important;box-shadow:rgba(0,0,0,.25) 0 0 11px 0!important;-moz-box-shadow:rgba(0,0,0,.25) 0 0 11px 0!important;margin:0!important;padding:0!important}#dm .dmBody .u_1236205022 .caption-button{text-align:LEFT!important}#dm .dmBody div.u_1236205022 .photoGalleryThumbs .image-container{border-radius:10px!important}#dm .dmBody div.u_1236205022 .caption-container .caption-text{color:rgba(255,255,255,1)!important;font-weight:700!important}#dm .dmBody a.u_1826862354 span.text{font-weight:700!important}#dm .dmBody .u_1472418839:before{opacity:.5!important;background-color:#000!important}#dm .dmBody div.u_1472418839:before{background-color:rgba(0,0,0,1)!important;opacity:.2!important}#dm .dmBody div.u_1048768809,#dm .dmBody div.u_1472418839{background-color:rgba(11,71,109,1)!important;background-image:none!important}#dm .dmBody div.u_1047045516 .svg{color:rgba(37,157,210,1)!important;fill:rgba(37,157,210,1)!important}#dm .dmBody div.u_1472418839{border-radius:20px!important;-webkit-box-shadow:none!important;box-shadow:none!important;-moz-box-shadow:none!important}#dm .dmBody .u_1251563225{display:block!important}#dm .dmBody .u_1914324797{display:none!important}#dm .dmBody .u_1972066086{display:block!important}#dm .dmBody .u_1427288283{display:none!important}#dm .dmBody .u_1479965775{display:block!important}#dm .dmBody .u_1548175989{display:none!important}#dm .dmBody div.u_1236205022 .caption-inner{background-image:linear-gradient(0deg,rgba(28,50,8,.84) 0,rgba(255,255,255,0) 100%)!important}#dm .dmBody div.u_1236205022 .caption-button span.text{text-decoration:none!important;font-weight:700!important;color:rgba(255,255,255,1)!important}#dm .dmBody div.u_1023060377{background-color:rgba(0,0,0,0)!important}#dm .dmBody .u_1048768809:before{opacity:.5!important;background-color:#fff!important}#dm .dmBody div.u_1048768809:before{opacity:.2!important;background-color:rgba(0,0,0,1)!important}#dm .d-page-1716942098 DIV.dmInner{background-repeat:no-repeat!important;background-size:cover!important;background-attachment:fixed!important;background-position:50% 50%!important}#dm .dmBody div.u_1362769984 .dmwidget-title{font-size:36px!important}#dm .dmBody div.dmform-error,#dm .dmBody div.u_1362769984 .dmform-success{font-size:16px!important}#dm .dmBody .u_1236205022 .photoGalleryThumbs .image-container a{padding-top:440px!important}#dm .dmBody .u_1236205022 .layout-container,#dm .dmBody .u_1236205022 .photoGalleryThumbs{padding:10px!important}#dm .dmBody .u_1236205022 .caption-inner{-webkit-border-top-right-radius:10px!important;-webkit-border-bottom-right-radius:10px!important;-webkit-border-bottom-left-radius:10px!important;-webkit-border-top-left-radius:10px!important;border-radius:10px!important;-moz-border-radius:10px!important;-webkit-border-radius:10px!important;padding-left:28px!important;padding-right:28px!important}#dm .dmBody div.u_1236205022 .caption-container .caption-text{font-size:24px!important}#dm .dmBody div.u_1236205022 .caption-button{border-style:solid!important;border-width:0!important;height:45px!important;width:182px!important}#dm .dmBody a.u_1826862354{height:55px!important;width:220px!important;float:none!important;top:0!important;left:0!important;position:relative!important;max-width:100%!important;min-width:0!important;text-align:center!important;display:block!important;min-height:auto!important;margin:20px 0 0!important;padding:0!important}#dm .dmBody div.u_1555427301,#dm .dmBody div.u_1621287121{float:none!important;top:0!important;left:0!important;min-width:25px!important;height:auto!important}#dm .dmBody div.u_1621287121{width:calc(100% - 0px)!important;position:relative!important;max-width:753.5px!important;min-height:auto!important;padding:2px 0!important;margin:0!important}#dm .dmBody div.u_1047045516,#dm .dmBody div.u_1617973321{min-width:0!important;min-height:auto!important;text-align:center!important}#dm .dmBody div.u_1047045516{display:block!important;float:none!important;top:0!important;left:0!important;width:60px!important;position:relative!important;height:60px!important;max-width:100%!important;padding:0!important;margin:10px auto 10px 0!important}#dm .dmBody div.u_1555427301{width:calc(100% - 0px)!important;position:relative!important;min-height:auto!important;max-width:920px!important;padding:2px 0!important;margin:0 80px 0 0!important}#dm .dmBody div.u_1487925644,#dm .dmBody div.u_1617973321,#dm .dmBody div.u_1838423551{float:none!important;top:0!important;position:relative!important;max-width:100%!important;left:0!important}#dm .dmBody div.u_1617973321{width:auto!important;height:auto!important;padding:0!important;margin:0!important}#dm .dmBody div.u_1105541366,#dm .dmBody div.u_1236205022,#dm .dmBody div.u_1487925644,#dm .dmBody div.u_1838423551{width:calc(100% - 0px)!important;min-width:25px!important}#dm .dmBody div.u_1955859671{margin:0!important;padding:0 20px!important}#dm .dmBody div.u_1487925644{height:236.97px!important;min-height:auto!important;text-align:center!important;padding:0!important;margin:10.01px 0 10px!important}#dm .dmBody div.u_1838423551{height:235.97px!important;min-height:auto!important;text-align:center!important;padding:0!important;margin:10px auto!important}#dm .dmBody a.u_1485184104,#dm .dmBody div.u_1964836846{max-width:100%!important;min-width:0!important;padding:0!important;float:none!important;position:relative!important;height:auto!important;top:0!important}#dm .dmBody div.u_1964836846{left:0!important;width:1244.47px!important;display:block!important;min-height:auto!important;margin:0 auto!important}#dm .dmBody a.u_1485184104{width:220px!important;min-height:50px!important;left:0!important;text-align:center!important;margin:20px auto 0!important}#dm .dmBody div.u_1105541366{float:none!important;top:0!important;left:0!important;position:relative!important;height:auto!important;max-width:1126px!important;display:block!important;min-height:auto!important;padding:2px 0!important;margin:36px 19px 0 0!important}#dm .dmBody div.u_1236205022,#dm .dmBody div.u_1597495448{float:none!important;left:0!important;position:relative!important;height:auto!important;max-width:100%!important;min-height:auto!important}#dm .dmBody div.u_1236205022{top:0!important;text-align:center!important;padding:0!important;margin:0!important}#dm .dmBody div.u_1472418839{background-position:0 0!important;background-repeat:repeat!important;background-size:auto!important;background-attachment:fixed!important;margin:0!important;padding:60px!important}#dm .dmBody div.u_1236205022 .caption-container .caption-title{color:rgba(255,255,255,1)!important;font-weight:700!important;font-size:24px!important}#dm .dmBody div.u_1023060377{width:auto!important;padding:0 80px 80px!important;margin:0!important}#dm .dmBody div.u_1200190208{margin:0!important;padding:0!important}#dm .dmBody div.u_1597495448 .videobgframe{object-position:100% 100%!important;object-fit:cover!important}#dm .dmBody div.u_1597495448{width:auto!important;top:0!important;min-width:0!important;text-align:start!important;background-repeat:no-repeat!important;background-size:cover!important;background-attachment:initial!important;background-position:50% 50%!important;margin:0!important;padding:368px 0!important}#dm .dmBody div.u_1294144586,#dm .dmBody div.u_1809098214{padding:0!important;float:none!important;top:0!important;left:0!important;position:relative!important;max-width:100%!important;display:block!important;height:auto!important}#dm .dmBody div.u_1294144586{width:calc(100% - 0px)!important;min-width:25px!important;min-height:auto!important;margin:-8px auto 0!important}#dm .dmBody div.u_1809098214{width:548px!important;min-width:0!important;margin:0!important}#dm .dmBody div.u_1014041282{display:block!important;float:none!important;top:0!important;left:0!important;width:calc(100% - 0px)!important;position:relative!important;height:auto!important;max-width:100%!important;min-width:25px!important;min-height:auto!important;padding:2px 0!important;margin:29px auto 20px!important}#dm .dmBody div.u_1048768809{width:auto!important;background-repeat:repeat!important;background-size:auto!important;background-position:50% 50%!important;float:none!important;top:0!important;left:0!important;position:relative!important;height:auto!important;min-height:auto!important;max-width:100%!important;min-width:0!important;text-align:start!important;padding:0 80px!important;margin:0!important}#dm .dmBody div.u_1081797482,#dm .dmBody div.u_1263207274{float:none!important;top:0!important;left:0!important;width:calc(100% - 0px)!important;position:relative!important;min-height:auto!important;min-width:25px!important}#dm .dmBody div.u_1354309434{margin:0!important;padding:16px 0 0 15px!important}#dm .dmBody div.u_1147974677{padding:16px 0 0 16px!important;margin:0!important}#dm .dmBody div.u_1263207274{display:block!important;height:auto!important;max-width:548px!important;padding:2px 0!important;margin:15px 0 0!important}#dm .dmBody div.u_1081797482{height:235px!important;max-width:100%!important;text-align:center!important;max-height:100%!important;padding:0!important;margin:10px auto!important}[data-version] .font-size-100,[data-version] .size-100{font-size:100px!important}.font-size-24,.size-24{font-size:24px!important}.dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-desktop]:not([data-anim-desktop=none]),.dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-extended]{visibility:hidden!important} #dm .dmPhotoGallery.newPhotoGallery .dmPhotoGalleryHolder:not(.photo-gallery-done) {display: none;} @media (max-width:767px){ [data-hidden-on-mobile] {display:none!important}}
+    .dmDesktopBody [data-anim-desktop]:not([data-anim-desktop='none']) {
+      visibility: hidden;
+    }
+
+    
+</style>
+
+
+
+<style id="fontFallbacks">
+    @font-face {
+  font-family: "Roboto Fallback";
+  src: local('Arial');
+  ascent-override: 92.6709%;
+  descent-override: 24.3871%;
+  size-adjust: 100.1106%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Nunito Fallback";
+  src: local('Arial');
+  ascent-override: 99.3901%;
+  descent-override: 34.703%;
+  size-adjust: 101.7204%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Montserrat Fallback";
+  src: local('Arial');
+  ascent-override: 84.9466%;
+  descent-override: 22.0264%;
+  size-adjust: 113.954%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Amiko Fallback";
+  src: local('Arial');
+  ascent-override: 82.254%;
+  descent-override: 35.9861%;
+  size-adjust: 112.8212%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Libre Baskerville Fallback";
+  src: local('Arial');
+  ascent-override: 83.6258%;
+  descent-override: 23.2773%;
+  size-adjust: 115.9929%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Arial Fallback";
+  src: local('Arial');
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Georgia Fallback";
+  src: local('Arial');
+  ascent-override: 92.2092%;
+  descent-override: 22.0458%;
+  size-adjust: 99.4469%;
+  line-gap-override: 0%;
+ }
+</style>
+
+
+<!-- End render the required css and JS in the head section -->
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:8080/">
+<script type="application/ld+json">
+    {
+        "@context" : "https://schema.org",
+        "@type" : "WebSite",
+        "name" : "Lifeway Family Worship Center",
+        "url" : "http://localhost:8080/"
+    }
+</script>
+
+  <meta property="og:image" content="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png"/>
+
+  <title>
+
+    Church | Lifeway Family Worship Center
+
+  </title>
+
+  <meta name="description" content="Experience the reality of God through worship and fellowship. Join Lifeway Family Worship Center in Tariffville, CT, to discover your true identity."/>
+
+
+
+  <meta name="keywords" content="Church, Church Tariffville, CT"/>
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+  <meta name="twitter:title" content="Church | Lifeway Family Worship Center"/>
+
+  <meta name="twitter:description" content="Experience the reality of God through worship and fellowship. Join Lifeway Family Worship Center in Tariffville, CT, to discover your true identity."/>
+
+  <meta property="og:description" content="Experience the reality of God through worship and fellowship. Join Lifeway Family Worship Center in Tariffville, CT, to discover your true identity."/>
+
+  <meta property="og:title" content="Church | Lifeway Family Worship Center"/>
+
+<script type="application/ld+json">
+{
+  "@context" : {
+    "@vocab" : "http://schema.org/"
+  },
+  "@type" : "LocalBusiness",
+  "name" : "Lifeway Family Worship Center",
+  "address" : {
+    "@type" : "PostalAddress",
+    "streetAddress" : "2 Tunxis Road",
+    "addressLocality" : "Tariffville",
+    "addressRegion" : "Connecticut",
+    "postalCode" : "06081",
+    "addressCountry" : "US"
+  },
+  "geo" : {
+    "@type" : "GeoCoordinates",
+    "latitude" : "41.90903",
+    "longitude" : "-72.761168"
+  },
+  "url" : "http://localhost:8080",
+  "telephone" : "860-816-3595",
+  "email" : "victoriavalle0313@gmail.com",
+  "logo" : "https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png",
+  "sameAs" : [ "https://youtube.com/@ApostleMehranPayandeh", "https://yelp.com/biz/x", "https://twitter.com/x", "https://instagram.com/x", "https://facebook.com/lifewayfamily.worshipcenter" ],
+  "@id" : "http://localhost:8080"
+}
+</script>
+
+
+
+<!-- SYS- VVNfRElSRUNUX1BST0RVQ1RJT04= -->
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body id="dmRoot" data-page-alias="home"  class="dmRoot dmDesktopBody fix-mobile-scrolling addCanvasBorder dmResellerSite dmLargeBody responsiveTablet "
+      style="padding:0;margin:0;"
+      
+    >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========= Site Content ========= -->
+<div id="dm" class='dmwr'>
+    
+    <div class="dm_wrapper standard-var5 widgetStyle-3 standard">
+         <div dmwrapped="true" id="1901957768" class="dm-home-page" themewaschanged="true" desktop-global-classes="header-over-content" tablet-global-classes="header-over-content"> <div dmtemplateid="StandardLayoutMultiD" class="standardHeaderLayout dm-bfs dm-layout-home hasAnimations rows-1200 inMiniHeaderMode hasStickyHeader hamburger-reverse header-over-content dmPageBody d-page-1716942098 inputs-css-clean dmFreeHeader" id="dm-outer-wrapper" data-page-class="1716942098" data-soch="true" data-background-parallax-selector=".dmHomeSection1, .dmSectionParallex"> <div id="dmStyle_outerContainer" class="dmOuter"> <div id="dmStyle_innerContainer" class="dmInner"> <div class="dmLayoutWrapper standard-var dmStandardDesktop"> <div> <div id="iscrollBody"> <div id="site_content"> <div class="dmHeaderContainer fHeader d-header-wrapper"> <div id="hcontainer" class="u_hcontainer dmHeader p_hfcontainer" freeheader="true" headerlayout="b58ba5b5703b4cd7b5f5f7951565dc87===horizontal-layout-5" layout="29bf4fa55d88450885fbcefc03615aa2===header" mini-header-show-only-navigation-row="true" data-scrollable-target="body" data-scrollable-target-threshold="1" data-scroll-responder-id="1" logo-size-target="34%"> <div dm:templateorder="85" class="dmHeaderResp dmHeaderStack noSwitch" id="1709005236"> <div class="u_1418466502 dmRespRow dmDefaultListContentRow fullBleedChanged fullBleedMode" style="text-align:center" id="1418466502"> <div class="dmRespColsWrapper" id="1976024890"> <div class="u_1333869819 small-12 dmRespCol large-4 medium-4" id="1333869819"> <div class="u_1457549626 imageWidget align-center" data-widget-type="image" id="1457549626" data-element-type="image"> <a href="/" id="1256330920" file="false"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png" id="1007356049" class="" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png" width="303" height="300" alt="Lifeway Family Worship Center logo" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+</div> 
+ <div class="u_1286967174 dmRespCol small-12 large-8 medium-8" id="1286967174"> <nav class="u_1628820197 effect-bottom2 main-navigation unifiednav dmLinksMenu" role="navigation" layout-main="horizontal_nav_layout_1" layout-sub="submenu_horizontal_1" data-show-vertical-sub-items="HOVER" id="1628820197" dmle_extension="onelinksmenu" data-element-type="onelinksmenu" data-logo-src="" alt="" data-nav-structure="HORIZONTAL" wr="true" icon="true" surround="true" adwords="" navigation-id="unifiedNav"> <ul role="menubar" class="unifiednav__container  " data-auto="navigation-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/" class="unifiednav__item  dmNavItemSelected    " target="" data-target-page-alias="home" aria-current="page" data-auto="selected-page"> <span class="nav-item-text " data-link-text="
+         Home
+        " data-auto="page-text-style">Home<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/about" class="unifiednav__item    " target="" data-target-page-alias="about"> <span class="nav-item-text " data-link-text="About" data-auto="page-text-style">About<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/ministries" class="unifiednav__item    " target="" data-target-page-alias="ministries"> <span class="nav-item-text " data-link-text="Ministries" data-auto="page-text-style">Ministries<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/services" class="unifiednav__item    " target="" data-target-page-alias="sermon"> <span class="nav-item-text " data-link-text="Services" data-auto="page-text-style">Services<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/giving" class="unifiednav__item    " target="" data-target-page-alias="giving"> <span class="nav-item-text " data-link-text="Giving" data-auto="page-text-style">Giving<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" aria-haspopup="true" data-sub-nav-menu="true" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="#" class="unifiednav__item    unifiednav__item_has-sub-nav" target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="MORE" data-auto="page-text-style">MORE<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+ <ul role="menu" aria-expanded="false" class="unifiednav__container unifiednav__container_sub-nav" data-depth="0" data-auto="sub-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/plan-your-visit" class="unifiednav__item    " target="" data-target-page-alias="plan-your-visit"> <span class="nav-item-text " data-link-text="Plan Your Visit" data-auto="page-text-style">Plan Your Visit<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/#Contact" class="unifiednav__item    " target="" data-target-page-alias="home#Contact"> <span class="nav-item-text " data-link-text="Contact" data-auto="page-text-style">Contact<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/faq" class="unifiednav__item    " target="" popup_target="faq" link_type="popup" data-target-page-alias="faq"> <span class="nav-item-text " data-link-text="FAQ" data-auto="page-text-style">FAQ<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+</ul> 
+</li> 
+</ul> 
+</nav> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="stickyHeaderSpacer" id="stickyHeaderSpacer" data-new="true"></div> 
+ <div class="dmRespRow dmRespRowStable dmRespRowNoPadding dmPageTitleRow "> <div class="dmRespColsWrapper"> <div class="large-12 dmRespCol"> <div id="innerBar" class="innerBar lineInnerBar dmDisplay_None"> <div class="titleLine display_None"><hr/></div> 
+<!-- Page title is hidden in css for new responsive sites. It is left here only so we don't break old sites. Don't copy it to new layouts --> <div id="pageTitleText"></div> 
+ <div class="titleLine display_None"><hr/></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div dmwrapped="true" id="dmFirstContainer" class="dmBody u_dmStyle_template_home dm-home-page" themewaschanged="true" desktop-global-classes="header-over-content" tablet-global-classes="header-over-content"> <div id="allWrapper" class="allWrapper"><!-- navigation placeholders --> <div id="dm_content" class="dmContent" role="main"> <div dm:templateorder="170" class="dmHomeRespTmpl mainBorder dmRespRowsWrapper dmFullRowRespTmpl" id="1716942098"> <div class="u_1597495448 dmRespRow dmSectionNoParallax hasBackgroundOverlay fullBleedChanged fullBleedMode hasExtraLayerOverlay relativePos" id="1597495448" data-gallery-bg="eyJzbGlkZXMiOlsiaHR0cHM6Ly9saXJwLmNkbi13ZWJzaXRlLmNvbS9hNzhjMGI1Yy9kbXMzcmVwL211bHRpL29wdC9BZ2FwZStCaWJsZStGZWxsb3dzaGlwK0NodXJjaCslMjg5JTI5LTE5MjB3LnBuZyJdLCJ0cmFuc2l0aW9uIjoiZmFkZSIsInNwZWVkIjoiNSJ9" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJlbnRyYW5jZSJ9fQ==" data-anim-desktop="none" data-video-bg="eyJzcmMiOiJodHRwczovL3ZpZC5jZG4td2Vic2l0ZS5jb20vYTc4YzBiNWMvdmlkZW9zL0hPVEJVQWVGVENPYng2bUFYU2xhX0xpZmV3YXkrRmFtaWx5K1dvcnNoaXArQ2VudGVyXzItdi5tcDQiLCJpZCI6Imh0dHBzOi8vdmlkLmNkbi13ZWJzaXRlLmNvbS9hNzhjMGI1Yy92aWRlb3MvSE9UQlVBZUZUQ09ieDZtQVhTbGFfTGlmZXdheStGYW1pbHkrV29yc2hpcCtDZW50ZXJfMi12Lm1wNCIsInByb3ZpZGVyIjoiY2RuIiwiZW1iZWQiOiJodHRwczovL3ZpZC5jZG4td2Vic2l0ZS5jb20vYTc4YzBiNWMvdmlkZW9zL0hPVEJVQWVGVENPYng2bUFYU2xhX0xpZmV3YXkrRmFtaWx5K1dvcnNoaXArQ2VudGVyXzItdi5tcDQiLCJyYXRpbyI6MC41NjI1LCJ0aHVtYm5haWwiOiJodHRwczovL2lycC5jZG4td2Vic2l0ZS5jb20vYTc4YzBiNWMvZG1zM3JlcC9tdWx0aS9IT1RCVUFlRlRDT2J4Nm1BWFNsYV9MaWZld2F5K0ZhbWlseStXb3JzaGlwK0NlbnRlcl8yLnYyLjAwMDAwMDAuanBnIiwic3VwcG9ydEJnT25Nb2JpbGUiOnRydWUsInN1cHBvcnRCZ0xvb3AiOnRydWUsInBvc3RlciI6Imh0dHBzOi8vaXJwLmNkbi13ZWJzaXRlLmNvbS9hNzhjMGI1Yy9kbXMzcmVwL211bHRpL0hPVEJVQWVGVENPYng2bUFYU2xhX0xpZmV3YXkrRmFtaWx5K1dvcnNoaXArQ2VudGVyXzIudjIuMDAwMDAwMC5qcGcifQ==" data-video-bg-mobile="true" data-video-init="true"> <div class="videobgwrapper video-ssr" data-ratio="0.5625"> <video autoplay="autoplay" playsinline="playsinline" muted="muted" loop="loop" class="videobgframe" poster="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/HOTBUAeFTCObx6mAXSla_Lifeway+Family+Worship+Center_2.v2.0000000-1920w.jpg" src="https://vid.cdn-website.com/a78c0b5c/videos/HOTBUAeFTCObx6mAXSla_Lifeway+Family+Worship+Center_2-v.mp4" style="object-position: 50% 50%" id="videobgframe-1597495448"></video> 
+</div> 
+ <div class="bgExtraLayerOverlay"></div> 
+ <div class="dmRespColsWrapper" id="1157265576"> <div class="dmRespCol large-12 medium-12 small-12 u_1200190208" id="1200190208"> <div class="u_1294144586 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1294144586" data-ai-tag="Short title" style="text-align: left; display: block;" data-anim-desktop="fadeInCombo" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJlbnRyYW5jZSIsImFuaW1hdGlvbiI6ImZhZGVJbkNvbWJvIiwiZHVyYXRpb24iOjEsImRlbGF5IjowLCJpbnRlbnNpdHkiOjAuNSwicmV2ZXJzZSI6ZmFsc2UsImRpciI6InVwIn19"> <h3 class="text-align-center size-100 m-size-36" style="letter-spacing: normal; line-height: initial;"><span class="font-size-100 m-font-size-36" style="text-transform: uppercase; color: rgb(255, 255, 255); display: initial;" m-font-size-set="true">Eternal Truth</span><span style="display: initial;"><br/></span></h3> 
+</div> 
+ <div class="u_1964836846 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1964836846" data-ai-tag="Short description" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJlbnRyYW5jZSIsImFuaW1hdGlvbiI6ImZhZGVJbiIsInJldmVyc2UiOmZhbHNlfX0=" data-anim-desktop="fadeIn" data-styletopreserve="{" background-image":""}"="" style="text-align: left;"> <h4 class="text-align-center size-24 m-size-24"><strong class="m-font-size-24 font-size-24" m-font-size-set="true" style="color:rgb(255, 255, 255);font-weight:bold;display:inline;font-family:Muli;">Church in Greater Hartford, CT</strong><span style="display: initial;"><br/></span></h4> 
+</div> 
+ <a data-display-type="block" class="u_1485184104 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient flexButton button_2" file="false" href="/get-in-touch" data-element-type="dButtonLinkId" id="1485184104" link_type="popup" popup_target="get-in-touch"> <span class="iconBg" aria-hidden="true" id="1044289297"> <span class="icon hasFontIcon icon-star" id="1877107379"></span> 
+</span> 
+ <span class="text" id="1808631010">Get Started</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1048768809 dmRespRow fullBleedChanged fullBleedMode" id="1048768809" data-page-element-type="section" data-page-element-id="1795766673"> <div class="dmRespColsWrapper" id="1430528345"> <div class="u_1354309434 dmRespCol small-12 large-6 medium-6" id="1354309434"> <div class="u_1263207274 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1263207274" background-image":""}"="" data-ai-tag="Kicker" style="transition: none; text-align: left; display: block;"> <h6><span style="display: unset;">Join Us Every Week</span></h6> 
+</div> 
+ <div class="u_1809098214 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1809098214" style="text-align: left; transition: none 0s ease 0s; display: block;" data-ai-tag="Long section title"> <h2><span style="display: initial; color: rgb(255, 255, 255);">Discover a Vibrant Church Community</span></h2> 
+</div> 
+ <div class="u_1302602838 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="1" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1302602838" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1" data-link-gallery="true"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
+ <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-1" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1761450745" data-dm-force-device="mobile" class="u_1267420763 has-link" href="/services" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/IMG_6947-d3b7298b.jpeg" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/IMG_6947-d3b7298b-640w.jpeg');"><img id="1260070034" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/IMG_6947-d3b7298b-1920w.jpeg" alt="People shaking hands and smiling indoors." aria-labelledby="1761450745" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1911698997" class="caption-container u_1911698997" style="display:none"> <span class="caption-inner"> <h3 id="1761450745" class="caption-title u_1761450745">Watch our</h3> 
+ <div id="1414952206" class="caption-text u_1414952206"><p class="rteBlock">Latest Service</p></div> 
+ <a id="1662899195" class="caption-button dmWidget  clearfix u_1662899195" href="/services" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Learn More</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1147974677 dmRespCol small-12 large-6 medium-6" id="1147974677"> <div class="u_1014041282 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1014041282" style="text-align: left; transition: none; display: block;" data-ai-tag="Paragraph 2"><p class="m-text-align-left text-align-right" style="line-height: 1.5;"><span style="color:rgb(255, 255, 255);font-weight:400;display:unset;font-family:Muli;">Join a community rooted in faith and purpose, where we grow together in God's love, support one another, and fulfill His calling for our lives. Together, we strengthen our bonds, share in the joy of fellowship, and empower each other to live out our faith with passion and conviction.</span></p></div> 
+ <div class="u_1825238803 dmRespRow fullBleedChanged fullBleedMode" id="1825238803"> <div class="dmRespColsWrapper" id="1325846107"> <div class="dmRespCol small-12 medium-12 large-12" id="1903033323"> <div class="u_1558875708 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="1" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1558875708" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
+ <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-1" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1655136921" data-dm-force-device="mobile" class="u_1714965572" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/fellowship.jpg" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/fellowship-640w.jpg');"><img id="1281846534" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/fellowship-1920w.jpg" alt="People shaking hands and smiling indoors." aria-labelledby="1655136921" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1112384298" class="caption-container u_1112384298" style="display:none"> <span class="caption-inner"> <h3 id="1655136921" class="caption-title u_1655136921">Welcome</h3> 
+ <div id="1317507664" class="caption-text u_1317507664"><p class="rteBlock">We're glad to have you</p></div> 
+ <a id="1567634834" class="caption-button dmWidget  clearfix u_1567634834" href="/about" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Who We Are</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1008773907 dmRespRow fullBleedChanged fullBleedMode" id="1008773907" data-page-element-type="section" data-page-element-id="1795766673"> <div class="dmRespColsWrapper" id="1702935206"> <div class="u_1206329039 dmRespCol small-12 medium-12 large-12" id="1206329039"> <div class="dmRespRow u_1375547209 fullBleedChanged fullBleedMode" id="1375547209"> <div class="dmRespColsWrapper" id="1900181328"> <div class="dmRespCol small-12 medium-12 large-12" id="1410651963"> <div class="u_1460373990 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="2" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1460373990" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="none" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1" data-link-gallery="true" data-tablet-layout="square" data-tablet-columns="2"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
+ <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-2" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1750986809" data-dm-force-device="mobile" class="u_1489031828 has-link" href="/giving" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/68.png" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/68-640w.png');"><img id="1252532975" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/68-1920w.png" alt="Hands clasped over an open book, possibly a Bible, with another book nearby." aria-labelledby="1750986809" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1419329030" class="caption-container u_1419329030" style="display:none"> <span class="caption-inner"> <h3 id="1750986809" class="caption-title u_1750986809">Give</h3> 
+ <div id="1171973598" class="caption-text u_1171973598"><p class="rteBlock">Support the Community</p></div> 
+ <a id="1701594373" class="caption-button dmWidget  clearfix u_1701594373" href="/giving" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Give Now</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-2" data-index="1"> <div index="1" class="photoGalleryThumbs animated  " data-index="1"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1943210555" data-dm-force-device="mobile" class="u_1042070261" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/R1.jpg" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/R1-640w.jpg');"><img id="1641753692" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/R1-1920w.jpg" alt="Two men seated at a table, conversing in a bright, modern office setting." aria-labelledby="1943210555" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1984007924" class="caption-container u_1984007924" style="display:none"> <span class="caption-inner"> <h3 id="1943210555" class="caption-title u_1943210555">Get Connected</h3> 
+ <div id="1474625889" class="caption-text u_1474625889"><p class="rteBlock">Upcoming Events</p></div> 
+ <a id="1184039471" class="caption-button dmWidget  clearfix u_1184039471" href="" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">See Events</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1060147808 fullBleedChanged fullBleedMode" id="1060147808" data-page-element-type="section" data-page-element-id="1229896795"> <div class="dmRespColsWrapper" id="1988782035"> <div class="dmRespCol large-12 medium-12 small-12 u_1604527284" id="1604527284"> <div class="dmRespRow u_1132887377" id="1132887377"> <div class="dmRespColsWrapper" id="1660982585"> <div class="u_1974701815 dmRespCol small-12 large-4 medium-4" id="1974701815"> <div class="u_1027133214 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1027133214"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/eternal-sonship-academy-1920w.png" alt="iphone mobile app" id="1113799466" class="" width="229" height="503" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/eternal-sonship-academy.png" onerror="handleImageLoadError(this)"/></div> 
+</div> 
+ <div class="u_1201920197 dmRespCol small-12 large-8 medium-8" id="1201920197"> <div class="u_1925195038 dmNewParagraph" data-element-type="paragraph" id="1925195038" data-version="5" data-styletopreserve="{" background-image":""}"=""> <h6 class="m-text-align-center"><span style="display: initial;">Download Our Mobile App</span></h6> 
+</div> <div class="u_1571492894 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1571492894" style="transition: opacity 1s ease-in-out;"> <h4 class="m-text-align-center"><span style="display: unset;">Eternal Sonship Academy</span></h4> 
+</div> 
+ <div class="u_1733941672 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1733941672" style="transition: none; text-align: left; display: block;" data-ai-tag="Slogan"><p class="m-text-align-center"><span style="display: initial;">We offer courses, workshops, and resources based on biblical truth to deepen spiritual understanding, strengthen faith, and build leadership skills. Our mission is to train God's Sons in their Heavenly Identity, equipping them to use the Father's spiritual tools to fulfill their earthly purpose.</span></p></div> 
+ <a data-display-type="block" class="u_1284092109 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="https://apps.apple.com/us/app/eternal-sonship-academy/id6746934635" data-element-type="dButtonLinkId" id="1284092109" target="_blank"> <span class="iconBg" aria-hidden="true" id="1780257293"> <span class="icon hasFontIcon icon-star" id="1860148211"></span> 
+</span> 
+ <span class="text" id="1660785154" data-ai-tag="Short button text">Download on Apple Store</span> 
+</a> 
+ <a data-display-type="block" class="u_1237158541 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="https://play.google.com/store/search?q=Eternal%20Sonship%20Academy&c=apps" data-element-type="dButtonLinkId" id="1237158541" target="_blank"> <span class="iconBg" aria-hidden="true" id="1850364155"> <span class="icon hasFontIcon icon-star" id="1627057045"></span> 
+</span> 
+ <span class="text" id="1281167620" data-ai-tag="Short button text">Download on Google Play</span> 
+</a> 
+ <div class="u_1061093446 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1061093446" style="transition: none; text-align: left; display: block;"> <h4 class="m-text-align-center"><span style="display: unset;">Lifeway 365</span></h4> 
+</div> 
+ <div class="u_1419559574 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1419559574" style="transition: none; text-align: left; display: block;" data-ai-tag="Slogan"><p class="m-text-align-center"><span style="display: initial;">Lifeway 365 is designed to provide a structured daily scripture reading framework that will help guide you to deeper spiritual understanding and enlightenment. Whether you&rsquo;re building daily habits, reflecting on your journey, or staying connected throughout the year, Lifeway 365 provides simple, meaningful tools to support your walk of faith.<br/></span></p></div> 
+ <a data-display-type="block" class="u_1741155305 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="https://apps.apple.com/us/app/lifeway-365/id6757131560" data-element-type="dButtonLinkId" id="1741155305" target="_blank"> <span class="iconBg" aria-hidden="true" id="1908251214"> <span class="icon hasFontIcon icon-star" id="1480619760"></span> 
+</span> 
+ <span class="text" id="1616642819" data-ai-tag="Short button text">Download on Apple Store</span> 
+</a> 
+ <a data-display-type="block" class="u_1119107721 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="https://play.google.com/store/apps/details?id=com.lifewaygh.lifeway365&hl=en_US" data-element-type="dButtonLinkId" id="1119107721" target="_blank"> <span class="iconBg" aria-hidden="true" id="1484939919"> <span class="icon hasFontIcon icon-star" id="1330524502"></span> 
+</span> 
+ <span class="text" id="1869703746" data-ai-tag="Short button text">Download on Google Play</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1722979944 fullBleedChanged fullBleedMode" id="1722979944" data-page-element-type="section" data-page-element-id="1229896795"> <div class="dmRespColsWrapper" id="1347262336"> <div class="dmRespCol small-12 u_1129355953 medium-12 large-12 content-removed" id="1129355953"> <div class="dmRespRow u_1475921084 fullBleedChanged fullBleedMode" id="1475921084"> <div class="dmRespColsWrapper" id="1942330144"> <div class="u_1339559777 dmRespCol small-12 large-7 medium-7" id="1339559777"> <div class="u_1321014608 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1321014608" background-image":""}"="" data-ai-tag="Kicker" data-styletopreserve="{"> <h6><span style="display: unset;">Discover a Message</span></h6> 
+</div> 
+ <div class="u_1303273208 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1303273208" style="text-align: left; transition: none; display: block;" data-ai-tag="Heading"> <h2 class="text-align-left m-size-24 size-48"><span class="font-size-48 m-font-size-24" m-font-size-set="true" style="display: unset; color: rgb(255, 255, 255);">Watch Our Latest MESSAGE</span></h2> 
+</div> 
+</div> 
+ <div class="u_1975209160 dmRespCol small-12 large-5 medium-5" id="1975209160"> <a data-display-type="block" class="u_1913363811 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient button_2" file="false" href="/services" data-element-type="dButtonLinkId" id="1913363811"> <span class="iconBg" aria-hidden="true" id="1553572889"> <span class="icon hasFontIcon icon-star" id="1572138549"></span> 
+</span> 
+ <span class="text" id="1397046536" data-ai-tag="Short button text">Watch Service</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1062704167 dmRespRow fullBleedChanged fullBleedMode" id="1062704167" mode="2"> <div class="dmRespColsWrapper" id="1682044670"> <div class="u_1058996805 dmRespCol small-12 large-6 medium-6" id="1058996805"> <div data-element-type="dYouTubeId" class="u_1042901521 youtubeExt dmNoMark youtube-padding-fix hasFullWidth" id="1042901521"> <div class="innerYoutubeExt" id="1622123845"> <iframe id="1247794581" src="https://www.youtube.com/embed/RjgmTwFLPcU" frameborder="0" allowfullscreen=""></iframe> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1432837265 dmRespCol small-12 large-6 medium-6" id="1432837265"> <div class="u_1787793668 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1787793668" style="text-align: left; display: block; transition: none;" data-ai-tag="Slogan"> <h5><span style="display: unset; color: rgb(255, 255, 255);">The Ways of the Lord are in His Spirit</span></h5> 
+</div> 
+ <div class="u_1435287927 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1435287927" style="transition: none; text-align: left; display: block;" data-ai-tag="Slogan"><p class="text-align-left"><span style="color: rgb(255, 255, 255); display: initial;">But when he, the Spirit of truth, comes, he will guide you into all the truth. He will not speak on his own; he will speak only what he hears, and he will tell you what is yet to come.</span></p><p class="text-align-left" style="line-height: 1;"><span style="display: initial;"><br/></span></p><p class="text-align-left"><span style="font-style: italic; color: rgb(255, 255, 255); display: initial;">John 16:13 (NIV)</span></p></div> 
+</div> 
+</div> 
+</div> 
+ <div data-element-type="html" class="dmCustomHtml u_1721884781" id="1721884781"><!-- Elfsight YouTube Gallery | Lifeway Family Worship Center --> <script src="https://elfsightcdn.com/platform.js" async="">
+
+
+                                             
+
+                </script> 
+ <div class="elfsight-app-409bf652-7def-4790-b007-4b73744b4314" data-elfsight-app-lazy=""></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1419415671 dmRespRow fullBleedChanged fullBleedMode mobile-columns-reversed" style="text-align: center;" id="1419415671" data-page-element-type="section" data-page-element-id="1987549914"> <div class="dmRespColsWrapper" id="1223527762"> <div class="u_1066149973 dmRespCol small-12 large-6 medium-6" id="1066149973"> <div data-element-type="spacer" class="u_1967935258 dmSpacer" id="1967935258"></div> 
+</div> 
+ <div class="u_1270050004 dmRespCol small-12 large-6 medium-6" id="1270050004"> <span id="1198895949"></span> 
+ <div class="u_1445935400 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1445935400" background-image":""}"="" data-ai-tag="Kicker" data-styletopreserve="{"background-image":""}" style=""> <h6><span style="display: unset;">Mentorship</span></h6> 
+</div> 
+ <div class="u_1365697313 dmNewParagraph" data-element-type="paragraph" id="1365697313" style="transition: none; display: block; text-align: left;" data-version="5"> <h4><span style="display: initial;">Guiding Faithful Leaders</span></h4> 
+</div> <div class="u_1131569467 dmNewParagraph" data-element-type="paragraph" id="1131569467" style="transition: none; display: block; text-align: left;" data-version="5"><p><span style="display: initial;">Our mentorship program builds personalized relationships that emphasize guidance, accountability, and spiritual development tailored for leaders at various stages of their journey. By addressing individual needs while promoting spiritual growth, our mentors provide the insight and support necessary for overcoming challenges and realizing true potential. This vibrant network offers encouragement and acts as a catalyst for nurturing, equipping, and raising the next generation of transformational spiritual leaders.</span></p></div> <a data-display-type="block" class="u_1826746919 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="/get-in-touch" data-element-type="dButtonLinkId" id="1826746919" link_type="popup" popup_target="get-in-touch"> <span class="iconBg" aria-hidden="true" id="1706951176"> <span class="icon hasFontIcon icon-star" id="1017760986"></span> 
+</span> 
+ <span class="text" id="1604366523" data-ai-tag="Short button text">Find Out More</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1762351822 dmRespRow fullBleedChanged fullBleedMode hasBackgroundOverlay mobile-columns-reversed dmSectionNoParallax" style="text-align: center;" id="1762351822" data-page-element-type="section" data-page-element-id="1245999688"> <div class="dmRespColsWrapper" id="1364507413"> <div class="u_1975202960 dmRespCol small-12 large-6 medium-6" id="1975202960" data-anim-desktop="none" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJlbnRyYW5jZSJ9fQ=="> <div class="u_1413436172 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1413436172" background-image":""}"="" data-ai-tag="Kicker" data-styletopreserve="{"background-image":""}" style=""> <h6><span style="display: unset;">Deepen Your Understanding of the Bible</span></h6> 
+</div> 
+ <div class="u_1614596332 dmNewParagraph" data-element-type="paragraph" id="1614596332" style="transition: none; text-align: left; display: block;" data-version="5"> <h4><span style="display: initial;">Transformative Training for Spiritual Growth</span></h4> 
+</div> <div class="u_1874526792 dmNewParagraph" id="1874526792" style="transition: none; display: block; text-align: center;" data-version="5"><p class="text-align-left"><span style="display: initial;">Our training programs are designed to fortify your understanding of the Bible and enhance your spiritual insight. Through engaging courses, immersive workshops, and readily available resources, we strive to deepen your biblical understanding and spiritual leadership.</span></p><p class="text-align-left" style="line-height: 1;"><span style="display: initial;"><span class="ql-cursor">﻿</span></span></p><p class="text-align-left"><span style="display: initial;">Offering a comprehensive approach to spiritual growth, our training division is dedicated to guiding you on the path to fulfilling your God-given potential. Being part of this experience assures you'll be well-equipped to tackle spiritual challenges and to inspire others along the way.</span></p></div> <a data-display-type="block" class="u_1147149456 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="/faq" data-element-type="dButtonLinkId" id="1147149456" link_type="popup" popup_target="faq"> <span class="iconBg" id="1979509907"> <span class="icon hasFontIcon icon-star" id="1996645558"></span> 
+</span> 
+ <span class="text" id="1433763627">Check Our FAQs</span> 
+</a> 
+</div> 
+ <div class="u_1424178506 dmRespCol small-12 large-6 medium-6" id="1424178506"> <div data-element-type="spacer" class="u_1485862633 dmSpacer" id="1485862633"></div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1030084300 fullBleedChanged fullBleedMode" id="1030084300"> <div class="dmRespColsWrapper" id="1595052479"> <div class="dmRespCol large-12 medium-12 small-12" id="1668751860"> <div class="u_1392814456 dmNewParagraph" data-element-type="paragraph" id="1392814456" style="transition: none; text-align: left; display: block;" data-version="5"> <h4 class="text-align-center"><span style="display: initial;">How Can We Serve You?</span></h4> 
+</div> <div class="u_1508624293 dmPhotoGallery newPhotoGallery dmPhotoGalleryResp photo-gallery-done text-layout-fixed captionAlignment-bottom_left photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="3" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1508624293" data-placeholder="false" data-rows-to-show="100" data-desktop-caption-alignment="bottom_left" data-image-hover-effect="zoomout" data-tablet-text-layout="fixed" data-tablet-caption-alignment="bottom_left" data-mobile-text-layout="fixed" data-mobile-caption-alignment="bottom_left" data-mobile-columns="1"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
+ <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-3" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1337753267" data-dm-force-device="mobile" class="u_1549862919" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/2-fff9ef86.png" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/2-fff9ef86-640w.png');"><img id="1979709781" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/2-fff9ef86-1920w.png" alt="Man in suit speaking to a large audience in a conference hall, gesturing with hand." aria-labelledby="1337753267" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1290180057" class="caption-container u_1290180057" style="display:none"> <span class="caption-inner"> <h3 id="1337753267" class="caption-title u_1337753267">Watch Teachings &amp; Services</h3> 
+ <div id="1714481636" class="caption-text u_1714481636"><p class="rteBlock">Hear God&rsquo;s Word delivered by Pastor through the Holy Spirit.</p></div> 
+ <a id="1496145645" class="caption-button dmWidget  clearfix u_1496145645" href="/services" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Watch Service</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-3" data-index="1"> <div index="1" class="photoGalleryThumbs animated  " data-index="1"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1253429437" data-dm-force-device="mobile" class="u_1347329306" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/1-f9329f42.png" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/1-f9329f42-640w.png');"><img id="1301094828" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/1-f9329f42-1920w.png" alt="Three people studying a book together. One points to the open book, two others listen." aria-labelledby="1253429437" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1901225012" class="caption-container u_1901225012" style="display:none"> <span class="caption-inner"> <h3 id="1253429437" class="caption-title u_1253429437">Looking For A Bible Study?</h3> 
+ <div id="1906662694" class="caption-text u_1906662694"><p class="rteBlock">This is the most important question that will impact your eternity.</p></div> 
+ <a id="1622957270" class="caption-button dmWidget  clearfix u_1622957270" link_type="popup" popup_target="get-in-touch" href="/get-in-touch" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Bible Study</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-3" data-index="2"> <div index="2" class="photoGalleryThumbs animated  " data-index="2"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-labelledby="1362341801" data-dm-force-device="mobile" class="u_1486854231" data-image-url="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/3-de34e1c2.png" style="background-image: url('https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/3-de34e1c2-640w.png');"><img id="1197134657" data-src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/3-de34e1c2-1920w.png" alt="Hands clasped in prayer, lit by sunlight." aria-labelledby="1362341801" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1553708827" class="caption-container u_1553708827" style="display:none"> <span class="caption-inner"> <h3 id="1362341801" class="caption-title u_1362341801">Submit a Prayer ﻿Request</h3> 
+ <div id="1690903220" class="caption-text u_1690903220"><p class="rteBlock">Need prayer? Please submit your prayer request to our pastor.</p></div> 
+ <a id="1864523710" class="caption-button dmWidget  clearfix u_1864523710" link_type="popup" popup_target="get-in-touch" href="/get-in-touch" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Submit</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_Contact dmRespRow hasBackgroundOverlay dmSectionParallaxNew" style="text-align: center;" id="Contact" mode="1" data-page-element-type="section" data-page-element-id="1076593625" data-anchor="Contact"> <div class="dmRespColsWrapper" id="1924970208"> <div class="dmRespCol u_1527049822 small-12 medium-12 large-12" id="1527049822"> <div class="u_1353924675 dmNewParagraph" id="1353924675" data-element-type="paragraph" style="transition: none 0s ease 0s; display: block; line-height: initial; text-align: center;" data-version="5"> <h4><strong style="color:rgb(255, 255, 255);font-weight:bold;display:initial;font-family:Georgia, 'Georgia Fallback';font-style:normal;">Get in Touch with us lifeway</strong></h4> 
+</div> <div class="u_1183866533 dmNewParagraph text-align-center" data-element-type="paragraph" id="1183866533" style="line-height: initial; transition: opacity 1s ease-in-out 0s; text-align: center;" data-version="5"><p><span style="display: initial; color: rgb(255, 255, 255);">Please fill out the simple contact form on the right, and a member of our staff will reach back out to you shortly.</span></p></div> <div class="u_1362769984 dmform default native-inputs" id="1362769984" data-layout="layout-1" data-element-type="dContactUsRespId" data-require-captcha="true" data-captcha-position="bottomleft" captcha="true" data-binding="W3siYmluZGluZ05hbWUiOiJlbWFpbCIsInZhbHVlIjoiY29udGVudF9saWJyYXJ5Lmdsb2JhbC5lbWFpbC5lbWFpbCBhZGRyZXNzIn1d"> <h3 class="dmform-title dmwidget-title" id="1736064472" hide="true">Sign up to our newsletter</h3> 
+ <div class="dmform-wrapper" id="1982672274" captcha-lang="en"> <form method="post" class="dmRespDesignRow" locale="ENGLISH" id="1338328304"> <div class="dmforminput  small-12 dmRespDesignCol required medium-12 large-12" id="1293829997"> <label for="1926932162" id="1657676801" class="" hide="true" data-dm-for="dmform-0">Name</label> 
+<input type="text" class="" name="dmform-0" id="1926932162" placeholder="Full Name" data-placeholder-original="Full Name"/><input type="hidden" name="label-dmform-0" id="1815294971" class="" value="Name"/></div> 
+ <div class="dmforminput small-12 dmRespDesignCol medium-6 large-6 required" id="1345341039"> <label for="1555013213" id="1288734225" class="" hide="true" data-dm-for="dmform-3">Email</label> 
+<input type="email" name="dmform-3" placeholder="Email Address" id="1555013213" class="" data-placeholder-original="Email Address"/><input type="hidden" name="label-dmform-3" id="1936782423" class="" value="Email"/></div> 
+ <div class="dmforminput small-12 dmRespDesignCol required medium-6 large-6" id="1671200471"> <label for="1162786274" id="1417801470" class="" hide="true" data-dm-for="dmform-4">Phone</label> 
+<input type="tel" name="dmform-4" placeholder="Phone Number" id="1162786274" class="" data-placeholder-original="Phone Number"/><input type="hidden" name="label-dmform-4" id="1469819073" class="" value="Phone"/></div> 
+ <div class="dmforminput small-12 dmRespDesignCol medium-12 large-12 required" id="1530328778"> <label for="1070690399" id="1984794565" class="" hide="true" data-dm-for="dmform-5">Message</label> 
+ <textarea name="dmform-5" id="1070690399" class="" placeholder="Message" data-placeholder-original="Message"></textarea> 
+<input type="hidden" name="label-dmform-5" id="1879514867" class="" value="Message"/></div> 
+ <span id="1493989136" class="dmWidgetClear"></span> 
+ <span id="1839398927" class="dmWidgetClear"></span> 
+ <div class="dmformsubmit dmWidget R" id="1635143877"><input class="" name="submit" type="submit" value="Send Message" id="1982068376"/></div> 
+<input name="dmformsendto" type="hidden" value="O0wrseIfFLsMAFXWtEAgmANGdy/4nl9mQqW77kQDcKruGM1wP5EQVv2rMwRyZxskFIP4IK7E0myVgsyPiccSeQ==" id="1716863981" data-dec="true"/><input class="dmActionInput" type="hidden" name="action" value="/_dm/s/rt/widgets/dmform.submit.jsp" id="1832676215"/><input name="dmformsubject" type="hidden" value="Form Message" id="1522782534"/><input name="dmformsubmitparams" type="hidden" value="8mpKnCSiNQXK/d9M7IDrS3VbfgBPO/1kKQP4vY8OmgenKwT9cJng6tATcD5R8efpk2NqQee9wfLjf9hZD7ODcIqwYFepN8hH58jniTVdRcTPnwELC8c66uufRWgRmY7ca6LK1MbXM+gJV6PCLzRsaj4xLdhgrB/+1uvwB2D+Ay6cK8aBAlFRDWEUrC/X5h2SAxCQkpazLwRAelC0FNDkP7i3L1G6bAFA" data-dec="true"/><input type="hidden" name="page_uuid" value="94128629daad4be7ac1e4c353f1a2827"/></form> 
+</div> 
+ <div class="dmform-success" style="display:none" id="1388705917">Thank you for contacting us.<br id="1269570126"/>We will get back to you as soon as possible</div> 
+ <div class="dmform-error" style="display:none" id="1247160337">Oops, there was an error sending your message.<br id="1793699309"/>Please try again later</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1344358715 dmRespRow" id="1344358715"> <div class="dmRespColsWrapper" id="1248371324"> <div class="dmRespCol empty-column large-12 medium-12 small-12 u_1820661656" id="1820661656"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="sticky-widgets-container-global" id="1088277068"> <a data-display-type="block" class="u_1968442188 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient sticky-mobile-position-bottom-right sticky-desktop-position-bottom-right hide-for-small" file="false" href="/get-in-touch" data-element-type="dButtonLinkId" id="1968442188" link_type="popup" popup_target="get-in-touch"> <span class="iconBg" id="1032948038"> <span class="icon hasFontIcon icon-star" id="1014409527"></span> 
+</span> 
+ <span class="text" id="1072342477">Request Prayer</span> 
+</a> 
+</div> 
+ <div class="dmFooterContainer"> <div id="fcontainer" class="u_fcontainer f_hcontainer dmFooter p_hfcontainer"> <div dm:templateorder="250" class="dmFooterResp generalFooter" id="1943048428"> <div class="u_1573977774 dmRespRow fullBleedChanged fullBleedMode" style="text-align: center;" id="1573977774"> <div class="dmRespColsWrapper" id="1891668987"> <div class="dmRespCol small-12 u_1455111728 medium-4 large-4" id="1455111728"> <div class="u_1938420985 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1938420985"> <a href="/" id="1100762188" file="false"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png" alt="Lifeway Family Worship Center logo" id="1614319946" class="" width="303" height="300" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="align-center text-align-center u_1283207372 dmSocialHub gapSpacing" id="1283207372" dmle_extension="social_hub" data-element-type="social_hub" wr="true" networks="" icon="true" surround="true" adwords=""> <div class="socialHubWrapper"> <div class="socialHubInnerDiv "> <a href="https://facebook.com/lifewayfamily.worshipcenter" target="_blank" dm_dont_rewrite_url="true" aria-label="facebook" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Facebook&apos;)"> <span class="dmSocialFacebook dm-social-icons-facebook oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="https://youtube.com/@ApostleMehranPayandeh" target="_blank" dm_dont_rewrite_url="true" aria-label="youtube" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Youtube&apos;)"> <span class="dmSocialYoutube dm-social-icons-youtube oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="mailto:connect@lifewayfwc.com" dm_dont_rewrite_url="true" aria-label="email" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Email&apos;)"> <span class="dmSocialEmail dm-social-icons-email oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="tel:860-205-8432" target="_blank" dm_dont_rewrite_url="true" aria-label="phone" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Phone&apos;)"> <span class="dmSocialPhone icon-phone oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1726799784 dmRespCol small-12 medium-4 large-4" id="1726799784"> <div class="u_1220099583 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1220099583" background-image":""}"="" style="transition: none; text-align: left; display: block;"> <h4 class="text-align-center size-28 m-size-22"><span style="display: initial;" class="font-size-28 m-font-size-22">Contact Info</span></h4> 
+</div> 
+ <div class="u_1605284678 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1605284678" style="transition: none; text-align: left; display: block;" data-diy-text=""><p class="text-align-center m-size-16 size-16"><strong class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial; font-weight: bold;">PHONE:</strong></p><p class="m-size-16 text-align-center size-16"><a href="tel:860-205-8432" target="_blank" type="call" class="m-font-size-16 font-size-16" m-font-size-set="true" style="display: initial;">&nbsp;860-205-8432</a></p><p class="text-align-center" style="line-height: 0.8;"><span class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial;"><br/></span></p><p class="text-align-center m-size-16 size-16"><strong class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial; font-weight: bold;">EMAIL:</strong><span class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial;"><br/></span></p><p class="text-align-center"><a href="mailto:connect@lifewayfwc.com" runtime_url="mailto:connect@lifewayfwc.com" type="email" style="display: initial;">connect@lifewayfwc.com</a><span style="display: initial;"><span class="ql-cursor">﻿</span></span></p></div> 
+ <div class="graphicWidget graphicWidgetV2 graphicWidgetV3 u_1818821248" data-element-type="graphic" data-widget-type="graphic" id="1818821248"> <a href="/newsletter" id="1293431973" link_type="popup" file="false" popup_target="newsletter"> <svg width="100%" height="100%" version="1.1" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" id="1899757385" class="svg u_1899757385" data-icon-custom="true"> <path d="m15.707 90.012h68.586c4.0273 0 7.2891-3.2656 7.2891-7.293v-41.051c0.003907-2.2852-1.0664-4.4336-2.8828-5.8125l-9.5312-7.2109c-0.082031-0.0625-0.17188-0.10938-0.27344-0.13281v-12.273c0-3.4492-2.7969-6.25-6.25-6.25h-45.25c-3.4492 0-6.25 2.8008-6.25 6.25v12.23c-0.039062 0.015625-0.078125 0.035156-0.11328 0.0625l-9.7305 7.3633c-1.8047 1.3711-2.8711 3.5039-2.8828 5.7734v41.051c0 4.0273 3.2617 7.293 7.2891 7.293zm0-2.082v-0.003907c-0.74609-0.003906-1.4883-0.17188-2.1641-0.48828l33.719-24.105c1.6367-1.1758 3.8398-1.1758 5.4766 0l33.719 24.105c-0.67578 0.31641-1.418 0.48438-2.1641 0.48828zm73.793-5.207v-0.003906c-0.007812 1.2734-0.48047 2.5-1.332 3.4492-0.054688-0.082031-0.12109-0.15234-0.19922-0.21094l-30.438-21.758 31.949-22.844v0.35547zm-2.082-45.168v-0.003907c0.59766 0.45312 1.0859 1.0352 1.4375 1.6992h-0.10547l-9.918 7.082v-15.289zm-60.023-25.48h45.211c1.1055 0 2.1641 0.4375 2.9453 1.2188s1.2188 1.8398 1.2188 2.9453v31.68l-21.031 15-1.7812-1.2812c-2.3672-1.6875-5.5469-1.6875-7.9141 0l-1.832 1.3125h-0.003907c-0.058593-0.082031-0.12891-0.15625-0.20703-0.21875l-20.77-14.812v-31.68c0-2.3008 1.8633-4.1641 4.1641-4.1641zm-14.832 25.477 8.582-6.5078v15.344l-10.012-7.1562h0.003907c0.34766-0.65625 0.83594-1.2266 1.4258-1.6797zm-2.082 4.168v-0.35547l31.988 22.836-30.438 21.758c-0.078125 0.058594-0.14453 0.12891-0.19922 0.21094-0.85156-0.94922-1.3242-2.1758-1.332-3.4492zm30.469-3.8555v10.918c0 0.57422 0.46484 1.043 1.0391 1.043 0.57812 0 1.043-0.46875 1.043-1.043v-10.906h2.6562l15.375 5c0.33594 0.10938 0.6875 0.17188 1.043 0.17578 0.92969 0.019531 1.8242-0.33984 2.4883-0.99219s1.0352-1.5469 1.0312-2.4766v-17.289c0-1.1055-0.52734-2.1406-1.418-2.7891-0.89453-0.65234-2.043-0.83203-3.0938-0.49219l-15.375 5h-4.375c-3.7461 0.007812-6.8086 2.9961-6.9102 6.7422-0.097656 3.75 2.8047 6.8945 6.5469 7.1016zm20.781-16.863c0.41016-0.14453 0.86719-0.074219 1.2188 0.1875 0.36719 0.25 0.58594 0.66016 0.59375 1.1055v17.289c-0.003907 0.4375-0.21484 0.84375-0.56641 1.0977-0.35156 0.25391-0.80078 0.32812-1.2148 0.19531l-14.887-4.8008v-10.262zm-20.398 5.0938h3.4609v9.6992h-3.4609c-2.5898-0.12109-4.6289-2.2578-4.6289-4.8516s2.0391-4.7266 4.6289-4.8477zm5.8867 15.949v11.945c0 0.57812-0.46484 1.043-1.043 1.043-0.57422 0-1.0391-0.46484-1.0391-1.043v-11.945c0-0.57812 0.46484-1.043 1.0391-1.043 0.57812 0 1.043 0.46484 1.043 1.043z"></path> 
+</svg> 
+</a> 
+</div> 
+</div> 
+ <div class="dmRespCol small-12 u_1203900226 medium-4 large-4" id="1203900226"> <div class="u_1094631523 default align-center flexButton inlineMap" data-type="inlineMap" data-lat="41.90903" data-lng="-72.761168" data-address="2 Tunxis Road, Tariffville, Connecticut 06081, United States" data-height="" data-msid="" data-mapurl="" data-lang="en" data-color-scheme="" data-zoom="13" data-layout="layout1" data-popup-display="" data-popup-show="false" data-popup-title="" data-popup-title-visible="false" data-popup-description="" data-popup-description-visible="false" id="1094631523" dmle_extension="mapextension" data-element-type="mapextension" modedesktop="map" modemobile="button" addresstodisplay="2 Tunxis Road, Tariffville, Connecticut 06081, United States" geocompleteaddress="2 Tunxis Road, Tariffville, Connecticut 06081, United States" data-popup-display-desktop="" data-popup-display-mobile="" data-display-type="block" layout="layout1" dmmapsource="dm" modetablet="map" wr="true" icon="true" surround="true" description="LOCATION" adwords="" icon-name="icon-map-marker" street="" city="" country="US" country_full="United States" state="" zip="" business="Lifeway Family Worship Center" provider="mapbox" lon="-72.761168" lat="41.90903" zoom="13"> <div class="mapContainer" style="height: 100%; width: 100%; overflow: hidden; z-index: 0;"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1217856785 dmRespRow" id="1217856785"> <div class="dmRespColsWrapper" id="1240084526"> <div class="dmRespCol large-12 medium-12 small-12" id="1474444085"> <div class="u_1659072225 widget-1f5975 dmCustomWidget" data-lazy-load="" data-title="" id="1659072225" dmle_extension="custom_extension" data-element-type="custom_extension" icon="false" surround="false" data-widget-id="1f5975986930429f819d4cd2154b5c4a" data-widget-version="25" data-widget-config="eyJyZXZlcnNlRmxhZyI6bnVsbCwiY29weXJpZ2h0VGV4dCI6IjxwIGNsYXNzPVwicnRlQmxvY2tcIj5BbGwgUmlnaHRzIFJlc2VydmVkIHwgTGlmZXdheSBGYW1pbHkgV29yc2hpcCBDZW50ZXI8L3A+In0="> <div class="copyright"> <div>&copy; 2026&nbsp;</div> 
+ <div><p class="rteBlock">All Rights Reserved | Lifeway Family Worship Center</p></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div id="1236746004" dmle_extension="powered_by" data-element-type="powered_by" icon="true" surround="false"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+    </div>
+</div>
+<!--  Add full CSS and Javascript before the close tag of the body if needed -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Google Fonts Include -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- loadCSS function fonts.jsp-->
+
+
+
+<link rel="preload" href="https://irp.cdn-website.com/fonts/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Amiko:ital,wght@0,400;0,600;0,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&amp;subset=latin-ext&amp;display=swap"  as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<style>
+@font-face {
+  font-family: "Brightwall Personal Use Only";
+  src: url("https://irp.cdn-website.com/a78c0b5c/fonts/Brightwall+Personal+Use+Only-dac8_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+<style>
+@font-face {
+  font-family: "Baskerville Classico Regular";
+  src: url("https://irp.cdn-website.com/a78c0b5c/fonts/Baskerville+Classico+Regular-2750_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+
+
+
+
+<!-- RT CSS Include d-css-runtime-desktop-one-package-structured-global-->
+<link rel="preload" as="style" fetchpriority="low" onload="loadCSS(this)" href="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/css/d-css-runtime-desktop-one-package-structured-global.min.css" />
+
+<!-- End of RT CSS Include -->
+
+<link rel="preload" href="https://irp.cdn-website.com/WIDGET_CSS/47d2a7bef731d57fc758f2bc74ff56a3.css" id="widgetCSS" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<!-- Support `img` size attributes -->
+<style>img[width][height] {
+  height: auto;
+}</style>
+
+<!-- Support showing sticky element on page only -->
+<style>
+  body[data-page-alias="home"] #dm [data-show-on-page-only="home"] {
+    display: block !important;
+  }
+</style>
+
+<!-- This is populated in Ajax navigation -->
+<style id="pageAdditionalWidgetsCss" type="text/css">
+</style>
+
+
+
+
+<!-- Site CSS -->
+<link rel="preload" href="https://irp.cdn-website.com/a78c0b5c/files/a78c0b5c_withFlex_1.min.css?v=892" id="siteGlobalCss" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+
+
+<style id="customWidgetStyle" type="text/css">
+    
+</style>
+<style id="innerPagesStyle" type="text/css">
+    
+</style>
+
+
+<style
+        id="additionalGlobalCss" type="text/css"
+>
+</style>
+
+<!-- Page CSS -->
+<link rel="preload" href="https://irp.cdn-website.com/a78c0b5c/files/a78c0b5c_home_withFlex_1.min.css?v=892" id="homeCssLink" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<style id="pagestyle" type="text/css">
+    
+</style>
+
+<style id="pagestyleDevice" type="text/css">
+    
+</style>
+
+<!-- Flex Sections CSS -->
+
+
+
+
+
+<style id="globalFontSizeStyle" type="text/css">
+    [data-version] .size-100, [data-version] .font-size-100 {font-size: 100px !important;}.font-size-24, .size-24, .size-24 > font { font-size: 24px !important; }.font-size-48, .size-48, .size-48 > font { font-size: 48px !important; }.font-size-28, .size-28, .size-28 > font { font-size: 28px !important; }.font-size-16, .size-16, .size-16 > font { font-size: 16px !important; }
+</style>
+<style id="pageFontSizeStyle" type="text/css">
+</style>
+
+<!-- ========= JS Section ========= -->
+<script>
+    var isWLR = true;
+
+    window.customWidgetsFunctions = {};
+    window.customWidgetsStrings = {};
+    window.collections = {};
+    window.currentLanguage = "ENGLISH"
+    window.isSitePreview = false;
+</script>
+<script>
+    window.customWidgetsFunctions["1f5975986930429f819d4cd2154b5c4a~25"] = function (element, data, api) {
+        null
+    };
+</script>
+<script type="text/javascript">
+
+    var d_version = "production_6300";
+    var build = "2026-03-23T13_48_19";
+    window['v' + 'ersion'] = d_version;
+
+    function buildEditorParent() {
+        window.isMultiScreen = true;
+        window.editorParent = {};
+        window.previewParent = {};
+        window.assetsCacheQueryParam = "?version=2026-03-23T13_48_19";
+        try {
+            var _p = window.parent;
+            if (_p && _p.document && _p.$ && _p.$.dmfw) {
+                window.editorParent = _p;
+            } else if (_p.isSitePreview) {
+                window.previewParent = _p;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    buildEditorParent();
+</script>
+
+<!-- Load jQuery -->
+<script type="text/javascript" id='d-js-jquery'
+        src="https://static.cdn-website.com/libs/jquery/jquery-3.7.0.min.js"></script>
+<!-- End Load jQuery -->
+<!-- Injecting site-wide before scripts -->
+<!-- End Injecting site-wide to the head -->
+
+
+<script>
+    var _jquery = window.$;
+
+    var jqueryAliases = ['$', 'jquery', 'jQuery'];
+
+    jqueryAliases.forEach((alias) => {
+        Object.defineProperty(window, alias, {
+            get() {
+                return _jquery;
+            },
+            set() {
+                console.warn("Trying to over-write the global jquery object!");
+            }
+        });
+    });
+    window.jQuery.migrateMute = true;
+</script>
+<script type="text/javascript">
+    window.popups =
+    [{"title":"FAQ","url":"/faq","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"1223.1850610351562","overlayColor":"rgba(0, 0, 0, 0.5)","height":"785.0810244140625","animation":"fadeIn"},"name":"faq"},{"title":"Tuesday Event","url":"/4b8ea1db943b4a86932609563bfecdf3","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"457.19996337890615","overlayColor":"rgba(195, 195, 195,0.5)","height":"548.6","animation":"fadeIn"},"name":"4b8ea1db943b4a86932609563bfecdf3"},{"title":"Get In Touch","url":"/get-in-touch","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"782.0152499999998","overlayColor":"rgba(195, 195, 195,0.5)","height":"672.906","animation":"fadeIn"},"name":"get-in-touch"},{"title":"NEWSLETTER","url":"/newsletter","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"661.60009765625","overlayColor":"rgba(0, 0, 0, 0.5)","height":"505.5185732421875","animation":"fadeIn"},"name":"newsletter"},{"title":"Sunday Event","url":"/2d58b60f857646dd90d45429fdf95ce5","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"465.2000000000001","overlayColor":"rgba(195, 195, 195,0.5)","height":"601.6","animation":"fadeIn"},"name":"2d58b60f857646dd90d45429fdf95ce5"}]</script>
+<script>
+    window.cookiesNotificationMarkupPreview = 'null';
+</script>
+
+<!-- HEAD RT JS Include -->
+<script id='d-js-params'>
+    window.INSITE = window.INSITE || {};
+    window.INSITE.device = "desktop";
+
+    window.rtCommonProps = {};
+    rtCommonProps["rt.ajax.ajaxScriptsFix"] =true;
+    rtCommonProps["rt.pushnotifs.sslframe.encoded"] = 'aHR0cHM6Ly97c3ViZG9tYWlufS5wdXNoLW5vdGlmcy5jb20=';
+    rtCommonProps["runtimecollector.url"] = 'https://rtc.multiscreensite.com';
+    rtCommonProps["performance.tabletPreview.removeScroll"] = 'false';
+    rtCommonProps["inlineEditGrid.snap"] =true;
+    rtCommonProps["popup.insite.cookie.ttl"] = '0.5';
+    rtCommonProps["rt.pushnotifs.force.button"] =true;
+    rtCommonProps["common.mapbox.token"] = 'pk.eyJ1IjoiZGFubnliMTIzIiwiYSI6ImNqMGljZ256dzAwMDAycXBkdWxwbDgzeXYifQ.Ck5P-0NKPVKAZ6SH98gxxw';
+    rtCommonProps["common.mapbox.js.override"] =false;
+    rtCommonProps["common.here.appId"] = 'iYvDjIQ2quyEu0rg0hLo';
+    rtCommonProps["common.here.appCode"] = '1hcIxLJcbybmtBYTD9Z1UA';
+    rtCommonProps["isCoverage.test"] =false;
+    rtCommonProps["ecommerce.ecwid.script"] = 'https://app.multiscreenstore.com/script.js';
+    rtCommonProps["common.resources.dist.cdn"] =true;
+    rtCommonProps["common.build.dist.folder"] = 'production/6300';
+    rtCommonProps["common.resources.cdn.host"] = 'https://static.cdn-website.com';
+    rtCommonProps["common.resources.folder"] = 'https://static.cdn-website.com/mnlt/production/6300';
+    rtCommonProps["feature.flag.runtime.backgroundSlider.preload.slowly"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.jitAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.sites.google.analytics.gtag"] =true;
+    rtCommonProps["feature.flag.runOnReadyNewTask"] =true;
+    rtCommonProps["isAutomation.test"] =false;
+    rtCommonProps["booking.cal.api.domain"] = 'api.cal.com';
+
+    
+    rtCommonProps['common.mapsProvider'] = 'mapbox';
+    
+    rtCommonProps['common.mapsProvider.version'] = '0.52.0';
+    rtCommonProps['common.geocodeProvider'] = 'mapbox';
+    rtCommonProps['server.for.resources'] = '';
+    rtCommonProps['feature.flag.lazy.widgets'] = true;
+    rtCommonProps['feature.flag.single.wow'] = false;
+    rtCommonProps['feature.flag.disallowPopupsInEditor'] = true;
+    rtCommonProps['feature.flag.mark.anchors'] = true;
+    rtCommonProps['captcha.public.key'] = '6LffcBsUAAAAAMU-MYacU-6QHY4iDtUEYv_Ppwlz';
+    rtCommonProps['captcha.invisible.public.key'] = '6LeiWB8UAAAAAHYnVJM7_-7ap6bXCUNGiv7bBPME';
+    rtCommonProps["images.sizes.small"] =160;
+    rtCommonProps["images.sizes.mobile"] =640;
+    rtCommonProps["images.sizes.tablet"] =1280;
+    rtCommonProps["images.sizes.desktop"] =1920;
+    rtCommonProps["modules.resources.cdn"] =true;
+    rtCommonProps["import.images.storage.imageCDN"] = 'https://lirp.cdn-website.com/';
+    rtCommonProps["feature.flag.runtime.inp.threshold"] =150;
+    rtCommonProps["feature.flag.performance.logs"] =false;
+    rtCommonProps["site.widget.form.captcha.type"] = 'g_recaptcha';
+    rtCommonProps["friendly.captcha.site.key"] = 'FCMGSQG9GVNMFS8K';
+    rtCommonProps["cookiebot.mapbox.consent.category"] = 'marketing';
+    // feature flags that's used out of runtime module (in  legacy files)
+    rtCommonProps["platform.monolith.personalization.dateTimeCondition.popupMsgAction.moveToclient.enabled"] =true;
+
+    window.rtFlags = {};
+    rtFlags["unsuspendEcwidStoreOnRuntime.enabled"] =true;
+    rtFlags["scripts.widgetCount.enabled"] =true;
+    rtFlags["fnb.animations.tracking.enabled"] =true;
+    rtFlags["ecom.ecwidNewUrlStructure.enabled"] = false;
+    rtFlags["ecom.ecwid.accountPage.emptyBaseUrl.enabled"] = true;
+    rtFlags["ecom.ecwid.pages.links.disable.listeners"] = true;
+    rtFlags["ecom.ecwid.storefrontV3.enabled"] = false;
+    rtFlags["ecom.ecwid.old.store.fix.facebook.share"] = true;
+    rtFlags["feature.flag.photo.gallery.exact.size"] =true;
+    rtFlags["geocode.search.localize"] =false;
+    rtFlags["feature.flag.runtime.newAnimation.asyncInit.setTimeout.enabled"] =false;
+    rtFlags["twitter.heightLimit.enabled"] = true;
+    rtFlags["runtime.lottieOverflow"] =false;
+    rtFlags["runtime.monitoring.sentry.ignoreErrors"] = "";
+    rtFlags["streamline.monolith.personalization.supportMultipleConditions.enabled"] =false;
+    rtFlags["flex.animation.design.panel.layout"] =true;
+    rtFlags["runtime.cwv.report.cls.enabled"] =false;
+    rtFlags["runtime.cwv.report.lcp.enabled"] =false;
+    rtFlags["contact.form.useActiveForm"] =true;
+    rtFlags["contact.form.custom.errors.enabled"] =false;
+    rtFlags["runtime.ssr.productStore.internal.observer"] =true;
+    rtFlags["runtime.ssr.productCustomizations"] =true;
+    rtFlags["runtime.ssr.runtime.filter-sort.newFilterSortWidgetWithOptions.enabled"] =true;
+    rtFlags["runtime.ssr.ssrSlider.jumpThreshold.enabled"] =true;
+</script>
+<script src="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/scripts/d-js-one-runtime-unified-desktop.min.js"  id="d-js-core"></script>
+<!-- End of HEAD RT JS Include -->
+<script src="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/scripts/d-js-jquery-migrate.min.js" ></script>
+<script>
+    
+    $(window).bind("orientationchange", function (e) {
+        $.layoutManager.initLayout();
+        
+    });
+    $(document).resize(function () {
+        
+    });
+</script>
+<script src="/_dm/s/rt/smart/popup.js?r&#x3D;1" type="text/javascript"></script><script src="/_dm/s/rt/smart/helpers.js" type="text/javascript"></script><script src="/_dm/s/rt/smart/userVisitsConditionService.js?v&#x3D;1" type="text/javascript"></script><script src="/_dm/s/rt/smart/timeRangeConditionService.js" type="text/javascript"></script><script src="https://static.cdn-website.com/libs/rrule/2.8.1/rrule.min.js" type="text/javascript"></script><script>(function(global){
+global.insiteScripts.popup({useNew: true, ruleId : '5544471', ruleType : 'bfs', settings : 'eyJzdGFydF90aW1lIjoiMjAyNi0wMy0xOVQwMDowMCIsInJydWxlIjpudWxsLCJkZWxheSI6IiIsInBvcHVwTmFtZSI6IjRiOGVhMWRiOTQzYjRhODY5MzI2MDk1NjNiZmVjZGYzIiwiY29uZGl0aW9uc19udW1iZXIiOiIxIiwidGltZXpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIiwiZW5kX3RpbWUiOiIyMDI2LTAzLTE5VDAwOjAwIiwiYWxsX2RheV9lbmFibGVkIjoidHJ1ZSJ9', duration : null, isForced : false });
+})(this);</script><script src="/_dm/s/rt/smart/popup.js?r&#x3D;1" type="text/javascript"></script><script src="/_dm/s/rt/smart/helpers.js" type="text/javascript"></script><script src="/_dm/s/rt/smart/userVisitsConditionService.js?v&#x3D;1" type="text/javascript"></script><script src="/_dm/s/rt/smart/timeRangeConditionService.js" type="text/javascript"></script><script src="https://static.cdn-website.com/libs/rrule/2.8.1/rrule.min.js" type="text/javascript"></script><script>(function(global){
+global.insiteScripts.popup({useNew: true, ruleId : '5544476', ruleType : 'bfs', settings : 'eyJzdGFydF90aW1lIjoiMjAyNi0wMy0xOVQwMDowMCIsInJydWxlIjpudWxsLCJkZWxheSI6IiIsInBvcHVwTmFtZSI6IjJkNThiNjBmODU3NjQ2ZGQ5MGQ0NTQyOWZkZjk1Y2U1IiwiY29uZGl0aW9uc19udW1iZXIiOiIxIiwidGltZXpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIiwiZW5kX3RpbWUiOiIyMDI2LTAzLTE5VDAwOjAwIiwiYWxsX2RheV9lbmFibGVkIjoidHJ1ZSJ9', duration : null, isForced : false });
+})(this);</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="d_track_campaign">
+(function() {
+    if (!window.location.search) {
+        return;
+    }
+	const cleanParams = window.location.search.substring(1); // Strip ?
+	const queryParams = cleanParams.split('&');
+
+	const expires = 'expires=' + new Date().getTime() + 24 * 60 * 60 * 1000;
+	const domain = 'domain=' + window.location.hostname;
+	const path = "path=/";
+
+	queryParams.forEach((param) => {
+		const [key, value = ''] = param.split('=');
+		if (key.startsWith('utm_')) {
+			const cookieName = "_dm_rt_" + key.substring(4);
+			const cookie = cookieName + "=" + value;
+			const joined = [cookie, expires, domain, path].join(";");
+			document.cookie = joined;
+		}
+	});
+}());
+</script>
+<script type="text/javascript" >
+  var _dm_gaq = {};
+  var _gaq = _gaq || [];
+  var _dm_insite = [{ruleId: 5544471, actionName:'popup', ruleType: 'bfs'},{ruleId: 5544476, actionName:'popup', ruleType: 'bfs'}];
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="d_track_sp">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
+window.dmsnowplow  = window.snowplow;
+
+dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
+  appId: 'a78c0b5c'
+});
+
+// snowplow queries element styles so we wait until CSS calculations are done.
+requestAnimationFrame(() => {
+	dmsnowplow('trackPageView');
+	_dm_insite.forEach((rule) => {
+		// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
+		// the tracking is in popup.js
+		if (rule.actionName !== "popup") {
+			dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
+		}
+		window?.waitForDeferred?.('dmAjax', () => {
+			$.DM.events.trigger('event-ruleTriggered', {value: rule});
+		});
+	});
+});
+</script>
+   
+
+
+<div style="display:none;" id="P6iryBW0Wu"></div>
+
+<!-- photoswipe markup -->
+
+
+
+
+
+
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="fb-root"
+        data-locale="en"></div>
+<!-- Alias: a78c0b5c -->
+<div class="dmPopupMask" id="dmPopupMask"></div>
+<div id="dmPopup" class="dmPopup">
+	<div class="dmPopupCloseWrapper"> <div class="dmPopupClose dm-common-icons-close oneIcon" onclick="dmHidePopup(event);"></div> </div>
+ 	<div class="dmPopupTitle"> <span></span> Share by:</div> 
+	<div class="data"></div>
+</div><script id="d_track_personalization">
+	window?.waitForDeferred?.('dmAjax', () => {
+		// Collects client data and updates cookies used by smart sites
+		window.expireDays = 365;
+		window.visitLength = 30 * 60000;
+		$.setCookie("dm_timezone_offset", (new Date()).getTimezoneOffset(), window.expireDays);
+			setSmartSiteCookiesInternal("dm_this_page_view","dm_last_page_view","dm_total_visits","dm_last_visit");
+	});
+</script>
+<script type="text/javascript">
+    
+    Parameters.NavigationAreaParams.MoreButtonText = 'MORE';
+    
+    Parameters.NavigationAreaParams.LessButtonText = 'LESS';
+    Parameters.HomeLinkText = 'Home';
+    </script>
+<!--  End Script tags -->
+<!--  Site Wide Html Markup -->
+<div id="swh-953b001c64af48118bbe85253af94ab5"><div data-wrapper-source="appstore" > <script type="text/javascript" src="https://cdn.userway.org/widget.js?account=9xIEuuFoFw&platfAppInstalledSiteId=3956282"></script> </div></div><!--  Site Wide Html Markup -->
+
+<script>
+// Force all internal nav links to do normal browser navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Intercept all clicks on nav links
+    document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            a.addEventListener('click', function(e) {
+                e.stopImmediatePropagation();
+                window.location.href = href;
+            }, true);
+        }
+    });
+});
+// Also override pushState navigation used by the platform
+window.addEventListener('load', function() {
+    document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            a.onclick = function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                window.location.href = href;
+                return false;
+            };
+        }
+    });
+});
+</script>
+
+</body>
+</html>

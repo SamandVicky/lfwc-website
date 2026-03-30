@@ -1,0 +1,1420 @@
+<!doctype html >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      class="">
+<head>
+    <meta charset="utf-8">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    window._currentDevice = 'desktop';
+    window.Parameters = window.Parameters || {
+        HomeUrl: 'http://localhost:8080/',
+
+        AccountUUID: '3d875b9e5c88468a9855df44ab3479f3',
+
+        SystemID: 'US_DIRECT_PRODUCTION',
+        SiteAlias: 'a78c0b5c',
+        SiteType: atob('RFVEQU9ORQ=='),
+        PublicationDate: 'Mon Mar 23 18:11:58 UTC 2026',
+        ExternalUid: null,
+        IsSiteMultilingual: false,
+        InitialPostAlias: '',
+        InitialPostPageUuid: '',
+        InitialDynamicItem: '',
+        DynamicPageInfo: {
+            isDynamicPage: false,
+            base64JsonRowData: 'null',
+        },
+        InitialPageAlias: 'get-in-touch',
+        InitialPageUuid: '4e243ec2946b47c39401b33adb2a9d5f',
+        InitialPageId: '1200895964',
+        InitialEncodedPageAlias: 'Z2V0LWluLXRvdWNo',
+        InitialHeaderUuid: '29c2de32ec9048cabe97a7565a397ba7',
+        CurrentPageUrl: '',
+        IsCurrentHomePage: false,
+        AllowAjax: false,
+        AfterAjaxCommand: null,
+        HomeLinkText: 'Back To Home',
+        UseGalleryModule: false,
+        CurrentThemeName: 'Layout Theme',
+        ThemeVersion: '500000',
+        DefaultPageAlias: '',
+        RemoveDID: true,
+        WidgetStyleID: null,
+        IsHeaderFixed: false,
+        IsHeaderSkinny: false,
+        IsBfs: true,
+        StorePageAlias: 'null',
+        StorePagesUrls: 'e30=',
+        IsNewStore: 'false',
+        StorePath: '',
+        StoreId: 'null',
+        StoreVersion: 0,
+        StoreBaseUrl: '',
+        StoreCleanUrl: true,
+        StoreDisableScrolling: true,
+        IsStoreSuspended: false,
+        HasCustomDomain: true,
+        SimpleSite: false,
+        showCookieNotification: false,
+        cookiesNotificationMarkup: 'null',
+        translatedPageUrl: '',
+        isFastMigrationSite: false,
+        sidebarPosition: 'NA',
+        currentLanguage: 'en',
+        currentLocale: 'en',
+        NavItems: '{}',
+        errors: {
+            general: 'There was an error connecting to the page.<br/> Make sure you are not offline.',
+            password: 'Incorrect name/password combination',
+            tryAgain: 'Try again'
+        },
+        NavigationAreaParams: {
+            ShowBackToHomeOnInnerPages: true,
+            NavbarSize: -1,
+            NavbarLiveHomePage: 'http://localhost:8080/',
+            BlockContainerSelector: '.dmBody',
+            NavbarSelector: '#dmNav:has(a)',
+            SubNavbarSelector: '#subnav_main'
+        },
+        hasCustomCode: true,
+        planID: '7',
+        customTemplateId: 'null',
+        siteTemplateId: 'null',
+        productId: 'DM_DIRECT',
+        disableTracking: false,
+        pageType: 'POPUP',
+        isRuntimeServer: true,
+        isInEditor: false,
+        hasNativeStore: false,
+        defaultLang: 'en',
+        hamburgerMigration: null,
+        isFlexSite: false
+    };
+
+    window.Parameters.LayoutID = {};
+    window.Parameters.LayoutID[window._currentDevice] = 6;
+    window.Parameters.LayoutVariationID = {};
+    window.Parameters.LayoutVariationID[window._currentDevice] = 5;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Injecting site-wide to the head -->
+
+
+
+
+<!-- End Injecting site-wide to the head -->
+
+<!-- Inject secured cdn script -->
+
+
+<!-- ========= Meta Tags ========= -->
+<!-- PWA settings -->
+<script>
+    function toHash(str) {
+        var hash = 5381, i = str.length;
+        while (i) {
+            hash = hash * 33 ^ str.charCodeAt(--i)
+        }
+        return hash >>> 0
+    }
+</script>
+<script>
+    (function (global) {
+    //const cacheKey = global.cacheKey;
+    const isOffline = 'onLine' in navigator && navigator.onLine === false;
+    const hasServiceWorkerSupport = 'serviceWorker' in navigator;
+    if (isOffline) {
+        console.log('offline mode');
+    }
+    if (!hasServiceWorkerSupport) {
+        console.log('service worker is not supported');
+    }
+    if (hasServiceWorkerSupport && !isOffline) {
+        window.addEventListener('load', function () {
+            const serviceWorkerPath = '/runtime-service-worker.js?v=3';
+            navigator.serviceWorker
+                .register(serviceWorkerPath, { scope: './' })
+                .then(
+                    function (registration) {
+                        // Registration was successful
+                        console.log(
+                            'ServiceWorker registration successful with scope: ',
+                            registration.scope
+                        );
+                    },
+                    function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    }
+                )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+
+        // helper function to refresh the page
+        var refreshPage = (function () {
+            var refreshing;
+            return function () {
+                if (refreshing) return;
+                // prevent multiple refreshes
+                var refreshkey = 'refreshed' + location.href;
+                var prevRefresh = localStorage.getItem(refreshkey);
+                if (prevRefresh) {
+                    localStorage.removeItem(refreshkey);
+                    if (Date.now() - prevRefresh < 30000) {
+                        return; // dont go into a refresh loop
+                    }
+                }
+                refreshing = true;
+                localStorage.setItem(refreshkey, Date.now());
+                console.log('refereshing page');
+                window.location.reload();
+            };
+        })();
+
+        function messageServiceWorker(data) {
+            return new Promise(function (resolve, reject) {
+                if (navigator.serviceWorker.controller) {
+                    var worker = navigator.serviceWorker.controller;
+                    var messageChannel = new MessageChannel();
+                    messageChannel.port1.onmessage = replyHandler;
+                    worker.postMessage(data, [messageChannel.port2]);
+                    function replyHandler(event) {
+                        resolve(event.data);
+                    }
+                } else {
+                    resolve();
+                }
+            });
+        }
+    }
+})(window);
+</script>
+<!-- Add manifest -->
+<!-- End PWA settings -->
+
+
+
+<link rel="canonical" href="http://localhost:8080/get-in-touch">
+
+<meta id="view" name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!--Add favorites icons-->
+
+<link rel="apple-touch-icon"
+      href="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/favicon.png"/>
+
+<link rel="icon" type="image/x-icon" href="https://irp.cdn-website.com/a78c0b5c/site_favicon_16_1768330558912.ico"/>
+
+<!-- End favorite icons -->
+<link rel="preconnect" href="https://lirp.cdn-website.com/"/>
+
+
+
+<!-- render the required CSS and JS in the head section -->
+<script id='d-js-dmapi'>
+    window.SystemID = 'US_DIRECT_PRODUCTION';
+
+    if (!window.dmAPI) {
+        window.dmAPI = {
+            registerExternalRuntimeComponent: function () {
+            },
+            getCurrentDeviceType: function () {
+                return window._currentDevice;
+            },
+            runOnReady: (ns, fn) => {
+                const safeFn = dmAPI.toSafeFn(fn);
+                ns = ns || 'global_' + Math.random().toString(36).slice(2, 11);
+                const eventName = 'afterAjax.' + ns;
+
+                if (document.readyState === 'complete') {
+                    $.DM.events.off(eventName).on(eventName, safeFn);
+                    setTimeout(function () {
+                        safeFn({
+                            isAjax: false,
+                        });
+                    }, 0);
+                } else {
+                    window?.waitForDeferred?.('dmAjax', () => {
+                        $.DM.events.off(eventName).on(eventName, safeFn);
+                        safeFn({
+                            isAjax: false,
+                        });
+                    });
+                }
+            },
+            toSafeFn: (fn) => {
+                if (fn?.safe) {
+                    return fn;
+                }
+                const safeFn = function (...args) {
+                    try {
+                        return fn?.apply(null, args);
+                    } catch (e) {
+                        console.log('function failed ' + e.message);
+                    }
+                };
+                safeFn.safe = true;
+                return safeFn;
+            }
+        };
+    }
+
+    if (!window.requestIdleCallback) {
+        window.requestIdleCallback = function (fn) {
+            setTimeout(fn, 0);
+        }
+    }
+</script>
+
+<!-- loadCSS function header.jsp-->
+
+
+
+
+
+
+<script id="d-js-load-css">
+/**
+ * There are a few <link> tags with CSS resource in them that are preloaded in the page
+ * in each of those there is a "onload" handler which invokes the loadCSS callback
+ * defined here.
+ * We are monitoring 3 main CSS files - the runtime, the global and the page.
+ * When each load we check to see if we can append them all in a batch. If threre
+ * is no page css (which may happen on inner pages) then we do not wait for it
+ */
+(function () {
+  let cssLinks = {};
+  function loadCssLink(link) {
+    link.onload = null;
+    link.rel = "stylesheet";
+    link.type = "text/css";
+  }
+  
+    function checkCss() {
+      const pageCssLink = document.querySelector("[id*='CssLink']");
+      const widgetCssLink = document.querySelector("[id*='widgetCSS']");
+
+        if (cssLinks && cssLinks.runtime && cssLinks.global && (!pageCssLink || cssLinks.page) && (!widgetCssLink || cssLinks.widget)) {
+            const storedRuntimeCssLink = cssLinks.runtime;
+            const storedPageCssLink = cssLinks.page;
+            const storedGlobalCssLink = cssLinks.global;
+            const storedWidgetCssLink = cssLinks.widget;
+
+            storedGlobalCssLink.disabled = true;
+            loadCssLink(storedGlobalCssLink);
+
+            if (storedPageCssLink) {
+                storedPageCssLink.disabled = true;
+                loadCssLink(storedPageCssLink);
+            }
+
+            if(storedWidgetCssLink) {
+                storedWidgetCssLink.disabled = true;
+                loadCssLink(storedWidgetCssLink);
+            }
+
+            storedRuntimeCssLink.disabled = true;
+            loadCssLink(storedRuntimeCssLink);
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    storedRuntimeCssLink.disabled = false;
+                    storedGlobalCssLink.disabled = false;
+                    if (storedPageCssLink) {
+                      storedPageCssLink.disabled = false;
+                    }
+                    if (storedWidgetCssLink) {
+                      storedWidgetCssLink.disabled = false;
+                    }
+                    // (SUP-4179) Clear the accumulated cssLinks only when we're
+                    // sure that the document has finished loading and the document 
+                    // has been parsed.
+                    if(document.readyState === 'interactive') {
+                      cssLinks = null;
+                    }
+                }, 0);
+            });
+        }
+    }
+  
+
+  function loadCSS(link) {
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var noCSS = !!urlParams.get("nocss");
+      var cssTimeout = urlParams.get("cssTimeout") || 0;
+
+      if (noCSS) {
+        return;
+      }
+      if (link.href && link.href.includes("d-css-runtime")) {
+        cssLinks.runtime = link;
+        checkCss();
+      } else if (link.id === "siteGlobalCss") {
+        cssLinks.global = link;
+        checkCss();
+      } 
+      
+      else if (link.id && link.id.includes("CssLink")) {
+        cssLinks.page = link;
+        checkCss();
+      } else if (link.id && link.id.includes("widgetCSS")) {
+        cssLinks.widget = link;
+        checkCss();
+      }
+      
+      else {
+        requestIdleCallback(function () {
+          window.setTimeout(function () {
+            loadCssLink(link);
+          }, parseInt(cssTimeout, 10));
+        });
+      }
+    } catch (e) {
+      throw e
+    }
+  }
+  window.loadCSS = window.loadCSS || loadCSS;
+})();
+</script>
+
+
+
+<script data-role="deferred-init" type="text/javascript">
+    /* usage: window.getDeferred(<deferred name>).resolve() or window.getDeferred(<deferred name>).promise.then(...)*/
+    function Def() {
+        this.promise = new Promise((function (a, b) {
+            this.resolve = a, this.reject = b
+        }).bind(this))
+    }
+
+    const defs = {};
+    window.getDeferred = function (a) {
+        return null == defs[a] && (defs[a] = new Def), defs[a]
+    }
+    window.waitForDeferred = function (b, a, c) {
+        let d = window?.getDeferred?.(b);
+        d
+            ? d.promise.then(a)
+            : c && ["complete", "interactive"].includes(document.readyState)
+                ? setTimeout(a, 1)
+                : c
+                    ? document.addEventListener("DOMContentLoaded", a)
+                    : console.error(`Deferred  does not exist`);
+    };
+</script>
+<style id="forceCssIncludes">
+    /* This file is auto-generated from a `scss` file with the same name */
+
+.videobgwrapper{overflow:hidden;position:absolute;z-index:0;width:100%;height:100%;top:0;left:0;pointer-events:none;border-radius:inherit}.videobgframe{position:absolute;width:101%;height:100%;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);object-fit:fill}#dm video.videobgframe{margin:0}@media (max-width:767px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:80vh}}@media (min-width:1025px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}@media (min-width:768px) and (max-width:1024px){.responsiveTablet .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}#dm [data-show-on-page-only]{display:none!important}#dmRoot div.stickyHeaderFix div.site_content{margin-top:0!important}#dmRoot div.stickyHeaderFix div.hamburger-header-container{position:relative}
+    
+
+</style>
+<style id="cssVariables" type="text/css">
+    
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Google Fonts Include -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- loadCSS function fonts.jsp-->
+
+
+
+<link type="text/css" rel="stylesheet" href="https://irp.cdn-website.com/fonts/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Amiko:ital,wght@0,400;0,600;0,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&amp;subset=latin-ext&amp;display=swap"  />
+
+<style>
+@font-face {
+  font-family: "Brightwall Personal Use Only";
+  src: url("https://irp.cdn-website.com/a78c0b5c/fonts/Brightwall+Personal+Use+Only-dac8_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+<style>
+@font-face {
+  font-family: "Baskerville Classico Regular";
+  src: url("https://irp.cdn-website.com/a78c0b5c/fonts/Baskerville+Classico+Regular-2750_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+
+
+
+
+<!-- RT CSS Include d-css-runtime-desktop-one-package-structured-global-->
+<link rel="stylesheet" type="text/css" href="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/css/d-css-runtime-desktop-one-package-structured-global.min.css" />
+
+<!-- End of RT CSS Include -->
+
+<link type="text/css" rel="stylesheet" href="https://irp.cdn-website.com/WIDGET_CSS/f1bcf615b1383fb1a99e010bc07da7ba.css" id="widgetCSS" />
+
+<!-- Support `img` size attributes -->
+<style>img[width][height] {
+  height: auto;
+}</style>
+
+<!-- Support showing sticky element on page only -->
+<style>
+  body[data-page-alias="get-in-touch"] #dm [data-show-on-page-only="get-in-touch"] {
+    display: block !important;
+  }
+</style>
+
+<!-- This is populated in Ajax navigation -->
+<style id="pageAdditionalWidgetsCss" type="text/css">
+</style>
+
+
+
+
+<!-- Site CSS -->
+<link type="text/css" rel="stylesheet" href="https://irp.cdn-website.com/a78c0b5c/files/a78c0b5c_1.min.css?v=892" id="siteGlobalCss" />
+
+
+
+<style id="customWidgetStyle" type="text/css">
+    
+</style>
+<style id="innerPagesStyle" type="text/css">
+    
+</style>
+
+
+<style
+        id="additionalGlobalCss" type="text/css"
+>
+</style>
+
+<style id="pagestyle" type="text/css">
+    *#dm *.dmBody a.span.textonly
+{
+	color:rgb(255,255,255) !important;
+}
+*#dm *.dmBody div.u_1694205906
+{
+	background-color:rgba(0,0,0,0) !important;
+}
+*#dm *.dmBody div.dmPopupInner
+{
+	background-color:rgb(255,255,255) !important;
+	border-style:solid !important;
+	border-width:0 !important;
+	-webkit-box-shadow:0 0 10px rgba(0,0,0,0.30) !important;
+	box-shadow:0 0 10px rgba(0,0,0,0.30) !important;
+	-moz-box-shadow:0 0 10px rgba(0,0,0,0.30) !important;
+	border-radius:10px !important;
+	-moz-border-radius:10px !important;
+	-webkit-border-radius:10px !important;
+	background-image:none !important;
+	background-repeat:no-repeat !important;
+	background-size:cover !important;
+	background-position:top right !important;
+}
+*#dm *.dmBody div.u_dm_content
+{
+	background-image:none !important;
+}
+*#dm *.dmBody nav.u_1494404016
+{
+	color:white !important;
+}
+*#dm *.dmBody *.u_1930901944
+{
+	width:100% !important;
+}
+*#dm *.dmBody *.allWrapper .dmPopupInner
+{
+	background-color:rgba(255, 255, 255, 1) !important;
+}
+
+</style>
+
+<style id="pagestyleDevice" type="text/css">
+    *#dm *.dmBody div.u_dm_content
+{
+	padding-top:20px !important;
+	padding-bottom:20px !important;
+	padding-left:20px !important;
+	padding-right:20px !important;
+}
+*#dm *.dmBody div.u_1694205906
+{
+	padding-top:0 !important;
+	padding-left:0 !important;
+	padding-bottom:0 !important;
+	float:none !important;
+	margin-right:auto !important;
+	margin-left:auto !important;
+	top:auto !important;
+	max-width:none !important;
+	left:0 !important;
+	width:100% !important;
+	margin-top:0 !important;
+	position:relative !important;
+	margin-bottom:0 !important;
+	padding-right:0 !important;
+	min-width:0 !important;
+	text-align:center !important;
+	height:auto !important;
+}
+*#dm *.dmBody div.allWrapper .dmPopupInner
+{
+	margin-left:0px !important;
+	padding-top:20px !important;
+	padding-left:20px !important;
+	padding-bottom:20px !important;
+	margin-top:0px !important;
+	margin-bottom:0px !important;
+	margin-right:0px !important;
+	padding-right:20px !important;
+}
+*#dm *.dmBody div.u_1930901944
+{
+	float:none !important;
+	top:0px !important;
+	left:0 !important;
+	width:calc(100% - 0px) !important;
+	position:relative !important;
+	padding-top:0px !important;
+	padding-left:0px !important;
+	padding-bottom:0px !important;
+	margin-right:auto !important;
+	margin-left:auto !important;
+	max-width:175.969px !important;
+	margin-top:20px !important;
+	margin-bottom:0px !important;
+	padding-right:0px !important;
+	min-width:25px !important;
+	text-align:center !important;
+	min-height:auto !important;
+	height:auto !important;
+}
+*#dm *.dmBody div.u_1309880305
+{
+	float:none !important;
+	top:0px !important;
+	left:0 !important;
+	width:calc(100% - 19px) !important;
+	position:relative !important;
+	height:472.674px !important;
+	padding-top:0px !important;
+	padding-left:0px !important;
+	padding-bottom:0px !important;
+	min-height:auto !important;
+	margin-right:auto !important;
+	margin-left:auto !important;
+	max-width:698.229px !important;
+	margin-top:10px !important;
+	margin-bottom:10px !important;
+	padding-right:0px !important;
+	min-width:25px !important;
+	text-align:center !important;
+}
+
+</style>
+
+<!-- Flex Sections CSS -->
+
+
+
+
+
+
+
+<style id="globalFontSizeStyle" type="text/css">
+    .font-size-28, .size-28, .size-28 > font { font-size: 28px !important; }.font-size-16, .size-16, .size-16 > font { font-size: 16px !important; }
+</style>
+<style id="pageFontSizeStyle" type="text/css">
+</style>
+
+
+
+
+<style id="hideAnimFix">
+  .dmDesktopBody:not(.editGrid) [data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) [data-anim-extended] {
+    visibility: hidden;
+  }
+
+  .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-extended] {
+    visibility: hidden !important;
+  }
+
+  #dmRoot:not(.editGrid) .flex-element [data-anim-extended] {
+    visibility: hidden;
+  }
+
+</style>
+
+
+
+
+<style id="fontFallbacks">
+    @font-face {
+  font-family: "Roboto Fallback";
+  src: local('Arial');
+  ascent-override: 92.6709%;
+  descent-override: 24.3871%;
+  size-adjust: 100.1106%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Nunito Fallback";
+  src: local('Arial');
+  ascent-override: 99.3901%;
+  descent-override: 34.703%;
+  size-adjust: 101.7204%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Montserrat Fallback";
+  src: local('Arial');
+  ascent-override: 84.9466%;
+  descent-override: 22.0264%;
+  size-adjust: 113.954%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Amiko Fallback";
+  src: local('Arial');
+  ascent-override: 82.254%;
+  descent-override: 35.9861%;
+  size-adjust: 112.8212%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Libre Baskerville Fallback";
+  src: local('Arial');
+  ascent-override: 83.6258%;
+  descent-override: 23.2773%;
+  size-adjust: 115.9929%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Arial Fallback";
+  src: local('Arial');
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Georgia Fallback";
+  src: local('Arial');
+  ascent-override: 92.2092%;
+  descent-override: 22.0458%;
+  size-adjust: 99.4469%;
+  line-gap-override: 0%;
+ }
+</style>
+
+
+<!-- End render the required css and JS in the head section -->
+
+
+
+
+
+
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://localhost:8080/get-in-touch">
+
+
+  <title>
+
+    Church | Tariffville, CT | Lifeway Family Worship Center
+
+  </title>
+
+  <meta name="keywords" content="Church, Church Tariffville, CT"/>
+
+  <meta name="description" content="Discover Lifeway Global Harvest: Empowering the church with training, mentorship, and support to strengthen faith and unity through the Holy Spirit."/>
+
+
+
+  <meta name="twitter:card" content="summary"/>
+
+  <meta name="twitter:title" content="Church | Tariffville, CT | Lifeway Family Worship Center"/>
+
+  <meta name="twitter:description" content="Discover Lifeway Global Harvest: Empowering the church with training, mentorship, and support to strengthen faith and unity through the Holy Spirit."/>
+
+  <meta name="twitter:image" content="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/graph-1920w.png"/>
+
+  <meta property="og:description" content="Discover Lifeway Global Harvest: Empowering the church with training, mentorship, and support to strengthen faith and unity through the Holy Spirit."/>
+
+  <meta property="og:title" content="Church | Tariffville, CT | Lifeway Family Worship Center"/>
+
+  <meta property="og:image" content="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/graph-1920w.png"/>
+
+
+
+
+
+<!-- SYS- VVNfRElSRUNUX1BST0RVQ1RJT04= -->
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body id="dmRoot" data-page-alias="get-in-touch"  class="dmRoot dmDesktopBody fix-mobile-scrolling addCanvasBorder dmResellerSite dmLargeBody responsiveTablet "
+      style="padding:0;margin:0;"
+      
+    >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========= Site Content ========= -->
+<div id="dm" class='dmwr'>
+    
+    <div class="dm_wrapper standard-var5 widgetStyle-3 standard">
+         <div dmwrapped="true" id="1726423081"> <div dmtemplateid="StandardLayoutMultiD" class="standardHeaderLayout dm-bfs dm-layout-sec hasAnimations rows-1200 inMiniHeaderMode hasStickyHeader hamburger-reverse dmPageBody d-page-1589268678 inputs-css-clean dmFreeHeader" id="dm-outer-wrapper" data-page-class="1589268678" data-soch="true" data-background-parallax-selector=".dmHomeSection1, .dmSectionParallex"> <div id="dmStyle_outerContainer" class="dmOuter"> <div id="dmStyle_innerContainer" class="dmInner"> <div class="dmLayoutWrapper standard-var dmStandardDesktop"> <div> <div id="iscrollBody"> <div id="site_content"> <div class="dmHeaderContainer fHeader d-header-wrapper"> <div id="hcontainer" class="u_hcontainer dmHeader p_hfcontainer" freeheader="true" headerlayout="b58ba5b5703b4cd7b5f5f7951565dc87===horizontal-layout-5" layout="29bf4fa55d88450885fbcefc03615aa2===header" mini-header-show-only-navigation-row="true" data-scrollable-target="body" data-scrollable-target-threshold="1" data-scroll-responder-id="1" logo-size-target="34%"> <div dm:templateorder="85" class="dmHeaderResp dmHeaderStack noSwitch" id="1709005236"> <div class="u_1418466502 dmRespRow dmDefaultListContentRow fullBleedChanged fullBleedMode" style="text-align:center" id="1418466502"> <div class="dmRespColsWrapper" id="1976024890"> <div class="u_1333869819 small-12 dmRespCol large-4 medium-4" id="1333869819"> <div class="u_1457549626 imageWidget align-center" data-widget-type="image" id="1457549626" data-element-type="image"> <a href="/" id="1256330920" file="false"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png" id="1007356049" class="" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png" width="303" height="300" alt="Lifeway Family Worship Center logo" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+</div> 
+ <div class="u_1286967174 dmRespCol small-12 large-8 medium-8" id="1286967174"> <nav class="u_1628820197 effect-bottom2 main-navigation unifiednav dmLinksMenu" role="navigation" layout-main="horizontal_nav_layout_1" layout-sub="submenu_horizontal_1" data-show-vertical-sub-items="HOVER" id="1628820197" dmle_extension="onelinksmenu" data-element-type="onelinksmenu" data-logo-src="" alt="" data-nav-structure="HORIZONTAL" wr="true" icon="true" surround="true" adwords="" navigation-id="unifiedNav"> <ul role="menubar" class="unifiednav__container  " data-auto="navigation-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/" class="unifiednav__item    " target="" data-target-page-alias="home"> <span class="nav-item-text " data-link-text="
+         Home
+        " data-auto="page-text-style">Home<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/about" class="unifiednav__item    " target="" data-target-page-alias="about"> <span class="nav-item-text " data-link-text="About" data-auto="page-text-style">About<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/ministries" class="unifiednav__item    " target="" data-target-page-alias="ministries"> <span class="nav-item-text " data-link-text="Ministries" data-auto="page-text-style">Ministries<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/services" class="unifiednav__item    " target="" data-target-page-alias="sermon"> <span class="nav-item-text " data-link-text="Services" data-auto="page-text-style">Services<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/giving" class="unifiednav__item    " target="" data-target-page-alias="giving"> <span class="nav-item-text " data-link-text="Giving" data-auto="page-text-style">Giving<span class="icon icon-angle-down" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" aria-haspopup="true" data-sub-nav-menu="true" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="#" class="unifiednav__item    unifiednav__item_has-sub-nav" target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="MORE" data-auto="page-text-style">MORE<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+ <ul role="menu" aria-expanded="false" class="unifiednav__container unifiednav__container_sub-nav" data-depth="0" data-auto="sub-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/plan-your-visit" class="unifiednav__item    " target="" data-target-page-alias="plan-your-visit"> <span class="nav-item-text " data-link-text="Plan Your Visit" data-auto="page-text-style">Plan Your Visit<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/#Contact" class="unifiednav__item    " target="" data-target-page-alias="home#Contact"> <span class="nav-item-text " data-link-text="Contact" data-auto="page-text-style">Contact<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/faq" class="unifiednav__item    " target="" popup_target="faq" link_type="popup" data-target-page-alias="faq"> <span class="nav-item-text " data-link-text="FAQ" data-auto="page-text-style">FAQ<span class="icon icon-angle-right" data-hidden-on-mobile="" data-hidden-on-desktop="" data-hidden-on-tablet=""></span> 
+</span> 
+</a> 
+</li> 
+</ul> 
+</li> 
+</ul> 
+</nav> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="stickyHeaderSpacer" id="stickyHeaderSpacer" data-new="true"></div> 
+ <div class="dmRespRow dmRespRowStable dmRespRowNoPadding dmPageTitleRow "> <div class="dmRespColsWrapper"> <div class="large-12 dmRespCol"> <div id="innerBar" class="innerBar lineInnerBar dmDisplay_None"> <div class="titleLine display_None"><hr/></div> 
+<!-- Page title is hidden in css for new responsive sites. It is left here only so we don't break old sites. Don't copy it to new layouts --> <div id="pageTitleText"> <div class="innerPageTitle">Get In Touch</div> 
+</div> 
+ <div class="titleLine display_None"><hr/></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div dmwrapped="true" id="dmFirstContainer" class="dmBody u_dmStyle_template_get-in-touch"> <div id="allWrapper" class="allWrapper"><!-- navigation placeholders --> <div id="dm_content" class="u_dm_content  dmContent" role="main"> <div dm:templateorder="1" class="dmDefaultRespTmpl" id="1589268678"> <div class="innerPageTmplBox dmDefaultPage  dmRespRowsWrapper" id="1541480276"> <div class="u_1694205906 dmRespRow" style="text-align: center;" id="1694205906"> <div class="dmRespColsWrapper" id="1704858392"> <div class="dmRespCol small-12 medium-12 large-12" id="1594819959"> <style id="1855548355">*#dm div.dmContent #dmPopup h1 * {
+            font-size: inherit;
+        }
+        *#dm div.dmContent #dmPopup h3 * {
+            font-size: inherit;
+        }
+         *#dm div.dmContent #dmPopup h1 {
+            font-size: inherit;
+        }
+        *#dm div.dmContent #dmPopup h3 {
+            font-size: inherit;
+        }</style> 
+ <div class="u_1930901944 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1930901944" data-binding="W3siYmluZGluZ05hbWUiOiJpbWFnZSIsInZhbHVlIjoic2l0ZV9pbWFnZXMubG9nbyJ9XQ=="> <a id="1436468103" href="/" file="false"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png" id="1545513525" class="" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png" width="500" height="165" alt="Lifeway Family Worship Center logo" data-diy-image="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div data-element-type="html" class="u_1309880305 dmCustomHtml" id="1309880305"> <iframe src="https://www.cognitoforms.com/f/1Rc_aFolI0ikTPhm8sr-vQ/3450" allow="payment" style="border:0;width:100%;" height="558"></iframe> 
+ <script src="https://www.cognitoforms.com/f/iframe.js">
+
+
+          
+
+                  </script> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="sticky-widgets-container-global" id="1088277068"> <a data-display-type="block" class="u_1968442188 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient sticky-mobile-position-bottom-right sticky-desktop-position-bottom-right hide-for-small" file="false" href="/get-in-touch" data-element-type="dButtonLinkId" id="1968442188" link_type="popup" popup_target="get-in-touch"> <span class="iconBg" id="1032948038"> <span class="icon hasFontIcon icon-star" id="1014409527"></span> 
+</span> 
+ <span class="text" id="1072342477">Request Prayer</span> 
+</a> 
+</div> 
+ <div class="dmFooterContainer"> <div id="fcontainer" class="u_fcontainer f_hcontainer dmFooter p_hfcontainer"> <div dm:templateorder="250" class="dmFooterResp generalFooter" id="1943048428"> <div class="u_1573977774 dmRespRow fullBleedChanged fullBleedMode" style="text-align: center;" id="1573977774"> <div class="dmRespColsWrapper" id="1891668987"> <div class="dmRespCol small-12 u_1455111728 medium-4 large-4" id="1455111728"> <div class="u_1938420985 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1938420985"> <a href="/" id="1100762188" file="false"><img src="https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/logo01-1920w.png" alt="Lifeway Family Worship Center logo" id="1614319946" class="" width="303" height="300" data-dm-image-path="https://irp.cdn-website.com/a78c0b5c/dms3rep/multi/logo01.png" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="align-center text-align-center u_1283207372 dmSocialHub gapSpacing" id="1283207372" dmle_extension="social_hub" data-element-type="social_hub" wr="true" networks="" icon="true" surround="true" adwords=""> <div class="socialHubWrapper"> <div class="socialHubInnerDiv "> <a href="https://facebook.com/lifewayfamily.worshipcenter" target="_blank" dm_dont_rewrite_url="true" aria-label="facebook" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Facebook&apos;)"> <span class="dmSocialFacebook dm-social-icons-facebook oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="https://youtube.com/@ApostleMehranPayandeh" target="_blank" dm_dont_rewrite_url="true" aria-label="youtube" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Youtube&apos;)"> <span class="dmSocialYoutube dm-social-icons-youtube oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="mailto:connect@lifewayfwc.com" dm_dont_rewrite_url="true" aria-label="email" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Email&apos;)"> <span class="dmSocialEmail dm-social-icons-email oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+ <a href="tel:860-205-8432" target="_blank" dm_dont_rewrite_url="true" aria-label="phone" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Phone&apos;)"> <span class="dmSocialPhone icon-phone oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect="grayscale"></span> 
+</a> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1726799784 dmRespCol small-12 medium-4 large-4" id="1726799784"> <div class="u_1220099583 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1220099583" background-image":""}"="" style="transition: none; text-align: left; display: block;"> <h4 class="text-align-center size-28 m-size-22"><span style="display: initial;" class="font-size-28 m-font-size-22">Contact Info</span></h4> 
+</div> 
+ <div class="u_1605284678 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1605284678" style="transition: none; text-align: left; display: block;" data-diy-text=""><p class="text-align-center m-size-16 size-16"><strong class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial; font-weight: bold;">PHONE:</strong></p><p class="m-size-16 text-align-center size-16"><a href="tel:860-205-8432" target="_blank" type="call" class="m-font-size-16 font-size-16" m-font-size-set="true" style="display: initial;">&nbsp;860-205-8432</a></p><p class="text-align-center" style="line-height: 0.8;"><span class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial;"><br/></span></p><p class="text-align-center m-size-16 size-16"><strong class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial; font-weight: bold;">EMAIL:</strong><span class="font-size-16 m-font-size-16" m-font-size-set="true" style="color: rgb(0, 0, 0); display: initial;"><br/></span></p><p class="text-align-center"><a href="mailto:connect@lifewayfwc.com" runtime_url="mailto:connect@lifewayfwc.com" type="email" style="display: initial;">connect@lifewayfwc.com</a><span style="display: initial;"><span class="ql-cursor">﻿</span></span></p></div> 
+ <div class="graphicWidget graphicWidgetV2 graphicWidgetV3 u_1818821248" data-element-type="graphic" data-widget-type="graphic" id="1818821248"> <a href="/newsletter" id="1293431973" link_type="popup" file="false" popup_target="newsletter"> <svg width="100%" height="100%" version="1.1" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" id="1899757385" class="svg u_1899757385" data-icon-custom="true"> <path d="m15.707 90.012h68.586c4.0273 0 7.2891-3.2656 7.2891-7.293v-41.051c0.003907-2.2852-1.0664-4.4336-2.8828-5.8125l-9.5312-7.2109c-0.082031-0.0625-0.17188-0.10938-0.27344-0.13281v-12.273c0-3.4492-2.7969-6.25-6.25-6.25h-45.25c-3.4492 0-6.25 2.8008-6.25 6.25v12.23c-0.039062 0.015625-0.078125 0.035156-0.11328 0.0625l-9.7305 7.3633c-1.8047 1.3711-2.8711 3.5039-2.8828 5.7734v41.051c0 4.0273 3.2617 7.293 7.2891 7.293zm0-2.082v-0.003907c-0.74609-0.003906-1.4883-0.17188-2.1641-0.48828l33.719-24.105c1.6367-1.1758 3.8398-1.1758 5.4766 0l33.719 24.105c-0.67578 0.31641-1.418 0.48438-2.1641 0.48828zm73.793-5.207v-0.003906c-0.007812 1.2734-0.48047 2.5-1.332 3.4492-0.054688-0.082031-0.12109-0.15234-0.19922-0.21094l-30.438-21.758 31.949-22.844v0.35547zm-2.082-45.168v-0.003907c0.59766 0.45312 1.0859 1.0352 1.4375 1.6992h-0.10547l-9.918 7.082v-15.289zm-60.023-25.48h45.211c1.1055 0 2.1641 0.4375 2.9453 1.2188s1.2188 1.8398 1.2188 2.9453v31.68l-21.031 15-1.7812-1.2812c-2.3672-1.6875-5.5469-1.6875-7.9141 0l-1.832 1.3125h-0.003907c-0.058593-0.082031-0.12891-0.15625-0.20703-0.21875l-20.77-14.812v-31.68c0-2.3008 1.8633-4.1641 4.1641-4.1641zm-14.832 25.477 8.582-6.5078v15.344l-10.012-7.1562h0.003907c0.34766-0.65625 0.83594-1.2266 1.4258-1.6797zm-2.082 4.168v-0.35547l31.988 22.836-30.438 21.758c-0.078125 0.058594-0.14453 0.12891-0.19922 0.21094-0.85156-0.94922-1.3242-2.1758-1.332-3.4492zm30.469-3.8555v10.918c0 0.57422 0.46484 1.043 1.0391 1.043 0.57812 0 1.043-0.46875 1.043-1.043v-10.906h2.6562l15.375 5c0.33594 0.10938 0.6875 0.17188 1.043 0.17578 0.92969 0.019531 1.8242-0.33984 2.4883-0.99219s1.0352-1.5469 1.0312-2.4766v-17.289c0-1.1055-0.52734-2.1406-1.418-2.7891-0.89453-0.65234-2.043-0.83203-3.0938-0.49219l-15.375 5h-4.375c-3.7461 0.007812-6.8086 2.9961-6.9102 6.7422-0.097656 3.75 2.8047 6.8945 6.5469 7.1016zm20.781-16.863c0.41016-0.14453 0.86719-0.074219 1.2188 0.1875 0.36719 0.25 0.58594 0.66016 0.59375 1.1055v17.289c-0.003907 0.4375-0.21484 0.84375-0.56641 1.0977-0.35156 0.25391-0.80078 0.32812-1.2148 0.19531l-14.887-4.8008v-10.262zm-20.398 5.0938h3.4609v9.6992h-3.4609c-2.5898-0.12109-4.6289-2.2578-4.6289-4.8516s2.0391-4.7266 4.6289-4.8477zm5.8867 15.949v11.945c0 0.57812-0.46484 1.043-1.043 1.043-0.57422 0-1.0391-0.46484-1.0391-1.043v-11.945c0-0.57812 0.46484-1.043 1.0391-1.043 0.57812 0 1.043 0.46484 1.043 1.043z"></path> 
+</svg> 
+</a> 
+</div> 
+</div> 
+ <div class="dmRespCol small-12 u_1203900226 medium-4 large-4" id="1203900226"> <div class="u_1094631523 default align-center flexButton inlineMap" data-type="inlineMap" data-lat="41.90903" data-lng="-72.761168" data-address="2 Tunxis Road, Tariffville, Connecticut 06081, United States" data-height="" data-msid="" data-mapurl="" data-lang="en" data-color-scheme="" data-zoom="13" data-layout="layout1" data-popup-display="" data-popup-show="false" data-popup-title="" data-popup-title-visible="false" data-popup-description="" data-popup-description-visible="false" id="1094631523" dmle_extension="mapextension" data-element-type="mapextension" modedesktop="map" modemobile="button" addresstodisplay="2 Tunxis Road, Tariffville, Connecticut 06081, United States" geocompleteaddress="2 Tunxis Road, Tariffville, Connecticut 06081, United States" data-popup-display-desktop="" data-popup-display-mobile="" data-display-type="block" layout="layout1" dmmapsource="dm" modetablet="map" wr="true" icon="true" surround="true" description="LOCATION" adwords="" icon-name="icon-map-marker" street="" city="" country="US" country_full="United States" state="" zip="" business="Lifeway Family Worship Center" provider="mapbox" lon="-72.761168" lat="41.90903" zoom="13"> <div class="mapContainer" style="height: 100%; width: 100%; overflow: hidden; z-index: 0;"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1217856785 dmRespRow" id="1217856785"> <div class="dmRespColsWrapper" id="1240084526"> <div class="dmRespCol large-12 medium-12 small-12" id="1474444085"> <div class="u_1659072225 widget-1f5975 dmCustomWidget" data-lazy-load="" data-title="" id="1659072225" dmle_extension="custom_extension" data-element-type="custom_extension" icon="false" surround="false" data-widget-id="1f5975986930429f819d4cd2154b5c4a" data-widget-version="25" data-widget-config="eyJyZXZlcnNlRmxhZyI6bnVsbCwiY29weXJpZ2h0VGV4dCI6IjxwIGNsYXNzPVwicnRlQmxvY2tcIj5BbGwgUmlnaHRzIFJlc2VydmVkIHwgTGlmZXdheSBGYW1pbHkgV29yc2hpcCBDZW50ZXI8L3A+In0="> <div class="copyright"> <div>&copy; 2026&nbsp;</div> 
+ <div><p class="rteBlock">All Rights Reserved | Lifeway Family Worship Center</p></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div id="1236746004" dmle_extension="powered_by" data-element-type="powered_by" icon="true" surround="false"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+    </div>
+</div>
+<!--  Add full CSS and Javascript before the close tag of the body if needed -->
+<!-- ========= JS Section ========= -->
+<script>
+    var isWLR = true;
+
+    window.customWidgetsFunctions = {};
+    window.customWidgetsStrings = {};
+    window.collections = {};
+    window.currentLanguage = "ENGLISH"
+    window.isSitePreview = false;
+</script>
+<script>
+    window.customWidgetsFunctions["1f5975986930429f819d4cd2154b5c4a~25"] = function (element, data, api) {
+        null
+    };
+</script>
+<script type="text/javascript">
+
+    var d_version = "production_6300";
+    var build = "2026-03-23T13_48_19";
+    window['v' + 'ersion'] = d_version;
+
+    function buildEditorParent() {
+        window.isMultiScreen = true;
+        window.editorParent = {};
+        window.previewParent = {};
+        window.assetsCacheQueryParam = "?version=2026-03-23T13_48_19";
+        try {
+            var _p = window.parent;
+            if (_p && _p.document && _p.$ && _p.$.dmfw) {
+                window.editorParent = _p;
+            } else if (_p.isSitePreview) {
+                window.previewParent = _p;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    buildEditorParent();
+</script>
+
+<!-- Load jQuery -->
+<script type="text/javascript" id='d-js-jquery'
+        src="https://static.cdn-website.com/libs/jquery/jquery-3.7.0.min.js"></script>
+<!-- End Load jQuery -->
+<!-- Injecting site-wide before scripts -->
+<!-- End Injecting site-wide to the head -->
+
+
+<script>
+    var _jquery = window.$;
+
+    var jqueryAliases = ['$', 'jquery', 'jQuery'];
+
+    jqueryAliases.forEach((alias) => {
+        Object.defineProperty(window, alias, {
+            get() {
+                return _jquery;
+            },
+            set() {
+                console.warn("Trying to over-write the global jquery object!");
+            }
+        });
+    });
+    window.jQuery.migrateMute = true;
+</script>
+<script type="text/javascript">
+    window.popups =
+    [{"title":"FAQ","url":"/faq","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"1223.1850610351562","overlayColor":"rgba(0, 0, 0, 0.5)","height":"785.0810244140625","animation":"fadeIn"},"name":"faq"},{"title":"Get In Touch","url":"/get-in-touch","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"782.0152499999998","overlayColor":"rgba(195, 195, 195,0.5)","height":"672.906","animation":"fadeIn"},"name":"get-in-touch"},{"title":"NEWSLETTER","url":"/newsletter","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"661.60009765625","overlayColor":"rgba(0, 0, 0, 0.5)","height":"505.5185732421875","animation":"fadeIn"},"name":"newsletter"}]</script>
+<script>
+    window.cookiesNotificationMarkupPreview = 'null';
+</script>
+
+<!-- HEAD RT JS Include -->
+<script id='d-js-params'>
+    window.INSITE = window.INSITE || {};
+    window.INSITE.device = "desktop";
+
+    window.rtCommonProps = {};
+    rtCommonProps["rt.ajax.ajaxScriptsFix"] =true;
+    rtCommonProps["rt.pushnotifs.sslframe.encoded"] = 'aHR0cHM6Ly97c3ViZG9tYWlufS5wdXNoLW5vdGlmcy5jb20=';
+    rtCommonProps["runtimecollector.url"] = 'https://rtc.multiscreensite.com';
+    rtCommonProps["performance.tabletPreview.removeScroll"] = 'false';
+    rtCommonProps["inlineEditGrid.snap"] =true;
+    rtCommonProps["popup.insite.cookie.ttl"] = '0.5';
+    rtCommonProps["rt.pushnotifs.force.button"] =true;
+    rtCommonProps["common.mapbox.token"] = 'pk.eyJ1IjoiZGFubnliMTIzIiwiYSI6ImNqMGljZ256dzAwMDAycXBkdWxwbDgzeXYifQ.Ck5P-0NKPVKAZ6SH98gxxw';
+    rtCommonProps["common.mapbox.js.override"] =false;
+    rtCommonProps["common.here.appId"] = 'iYvDjIQ2quyEu0rg0hLo';
+    rtCommonProps["common.here.appCode"] = '1hcIxLJcbybmtBYTD9Z1UA';
+    rtCommonProps["isCoverage.test"] =false;
+    rtCommonProps["ecommerce.ecwid.script"] = 'https://app.multiscreenstore.com/script.js';
+    rtCommonProps["common.resources.dist.cdn"] =true;
+    rtCommonProps["common.build.dist.folder"] = 'production/6300';
+    rtCommonProps["common.resources.cdn.host"] = 'https://static.cdn-website.com';
+    rtCommonProps["common.resources.folder"] = 'https://static.cdn-website.com/mnlt/production/6300';
+    rtCommonProps["feature.flag.runtime.backgroundSlider.preload.slowly"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.jitAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.sites.google.analytics.gtag"] =true;
+    rtCommonProps["feature.flag.runOnReadyNewTask"] =true;
+    rtCommonProps["isAutomation.test"] =false;
+    rtCommonProps["booking.cal.api.domain"] = 'api.cal.com';
+
+    
+    rtCommonProps['common.mapsProvider'] = 'mapbox';
+    
+    rtCommonProps['common.mapsProvider.version'] = '0.52.0';
+    rtCommonProps['common.geocodeProvider'] = 'mapbox';
+    rtCommonProps['server.for.resources'] = '';
+    rtCommonProps['feature.flag.lazy.widgets'] = true;
+    rtCommonProps['feature.flag.single.wow'] = false;
+    rtCommonProps['feature.flag.disallowPopupsInEditor'] = true;
+    rtCommonProps['feature.flag.mark.anchors'] = true;
+    rtCommonProps['captcha.public.key'] = '6LffcBsUAAAAAMU-MYacU-6QHY4iDtUEYv_Ppwlz';
+    rtCommonProps['captcha.invisible.public.key'] = '6LeiWB8UAAAAAHYnVJM7_-7ap6bXCUNGiv7bBPME';
+    rtCommonProps["images.sizes.small"] =160;
+    rtCommonProps["images.sizes.mobile"] =640;
+    rtCommonProps["images.sizes.tablet"] =1280;
+    rtCommonProps["images.sizes.desktop"] =1920;
+    rtCommonProps["modules.resources.cdn"] =true;
+    rtCommonProps["import.images.storage.imageCDN"] = 'https://lirp.cdn-website.com/';
+    rtCommonProps["feature.flag.runtime.inp.threshold"] =150;
+    rtCommonProps["feature.flag.performance.logs"] =false;
+    rtCommonProps["site.widget.form.captcha.type"] = 'g_recaptcha';
+    rtCommonProps["friendly.captcha.site.key"] = 'FCMGSQG9GVNMFS8K';
+    rtCommonProps["cookiebot.mapbox.consent.category"] = 'marketing';
+    // feature flags that's used out of runtime module (in  legacy files)
+    rtCommonProps["platform.monolith.personalization.dateTimeCondition.popupMsgAction.moveToclient.enabled"] =true;
+
+    window.rtFlags = {};
+    rtFlags["unsuspendEcwidStoreOnRuntime.enabled"] =true;
+    rtFlags["scripts.widgetCount.enabled"] =true;
+    rtFlags["fnb.animations.tracking.enabled"] =true;
+    rtFlags["ecom.ecwidNewUrlStructure.enabled"] = false;
+    rtFlags["ecom.ecwid.accountPage.emptyBaseUrl.enabled"] = true;
+    rtFlags["ecom.ecwid.pages.links.disable.listeners"] = true;
+    rtFlags["ecom.ecwid.storefrontV3.enabled"] = false;
+    rtFlags["ecom.ecwid.old.store.fix.facebook.share"] = true;
+    rtFlags["feature.flag.photo.gallery.exact.size"] =true;
+    rtFlags["geocode.search.localize"] =false;
+    rtFlags["feature.flag.runtime.newAnimation.asyncInit.setTimeout.enabled"] =false;
+    rtFlags["twitter.heightLimit.enabled"] = true;
+    rtFlags["runtime.lottieOverflow"] =false;
+    rtFlags["runtime.monitoring.sentry.ignoreErrors"] = "";
+    rtFlags["streamline.monolith.personalization.supportMultipleConditions.enabled"] =false;
+    rtFlags["flex.animation.design.panel.layout"] =true;
+    rtFlags["runtime.cwv.report.cls.enabled"] =false;
+    rtFlags["runtime.cwv.report.lcp.enabled"] =false;
+    rtFlags["contact.form.useActiveForm"] =true;
+    rtFlags["contact.form.custom.errors.enabled"] =false;
+    rtFlags["runtime.ssr.productStore.internal.observer"] =true;
+    rtFlags["runtime.ssr.productCustomizations"] =true;
+    rtFlags["runtime.ssr.runtime.filter-sort.newFilterSortWidgetWithOptions.enabled"] =true;
+    rtFlags["runtime.ssr.ssrSlider.jumpThreshold.enabled"] =true;
+</script>
+<script src="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/scripts/d-js-one-runtime-unified-desktop.min.js"  id="d-js-core"></script>
+<!-- End of HEAD RT JS Include -->
+<script src="https://static.cdn-website.com/mnlt/production/6300/_dm/s/rt/dist/scripts/d-js-jquery-migrate.min.js" ></script>
+<script>
+    
+    $(window).bind("orientationchange", function (e) {
+        $.layoutManager.initLayout();
+        
+    });
+    $(document).resize(function () {
+        
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="d_track_campaign">
+(function() {
+    if (!window.location.search) {
+        return;
+    }
+	const cleanParams = window.location.search.substring(1); // Strip ?
+	const queryParams = cleanParams.split('&');
+
+	const expires = 'expires=' + new Date().getTime() + 24 * 60 * 60 * 1000;
+	const domain = 'domain=' + window.location.hostname;
+	const path = "path=/";
+
+	queryParams.forEach((param) => {
+		const [key, value = ''] = param.split('=');
+		if (key.startsWith('utm_')) {
+			const cookieName = "_dm_rt_" + key.substring(4);
+			const cookie = cookieName + "=" + value;
+			const joined = [cookie, expires, domain, path].join(";");
+			document.cookie = joined;
+		}
+	});
+}());
+</script>
+<script type="text/javascript" >
+  var _dm_gaq = {};
+  var _gaq = _gaq || [];
+  var _dm_insite = [];
+</script>
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="d_track_sp">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
+window.dmsnowplow  = window.snowplow;
+
+dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
+  appId: 'a78c0b5c'
+});
+
+// snowplow queries element styles so we wait until CSS calculations are done.
+requestAnimationFrame(() => {
+	dmsnowplow('trackPageView');
+	_dm_insite.forEach((rule) => {
+		// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
+		// the tracking is in popup.js
+		if (rule.actionName !== "popup") {
+			dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
+		}
+		window?.waitForDeferred?.('dmAjax', () => {
+			$.DM.events.trigger('event-ruleTriggered', {value: rule});
+		});
+	});
+});
+</script>
+   
+
+
+<div style="display:none;" id="P6iryBW0Wu"></div>
+
+<!-- photoswipe markup -->
+
+
+
+
+
+
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="fb-root"
+        data-locale="en"></div>
+<!-- Alias: a78c0b5c -->
+<div class="dmPopupMask" id="dmPopupMask"></div>
+<div id="dmPopup" class="dmPopup">
+	<div class="dmPopupCloseWrapper"> <div class="dmPopupClose dm-common-icons-close oneIcon" onclick="dmHidePopup(event);"></div> </div>
+ 	<div class="dmPopupTitle"> <span></span> Share by:</div> 
+	<div class="data"></div>
+</div><script id="d_track_personalization">
+	window?.waitForDeferred?.('dmAjax', () => {
+		// Collects client data and updates cookies used by smart sites
+		window.expireDays = 365;
+		window.visitLength = 30 * 60000;
+		$.setCookie("dm_timezone_offset", (new Date()).getTimezoneOffset(), window.expireDays);
+			setSmartSiteCookiesInternal("dm_this_page_view","dm_last_page_view","dm_total_visits","dm_last_visit");
+	});
+</script>
+<script type="text/javascript">
+    
+    Parameters.NavigationAreaParams.MoreButtonText = 'MORE';
+    
+    Parameters.NavigationAreaParams.LessButtonText = 'LESS';
+    Parameters.HomeLinkText = 'Home';
+    </script>
+<!--  End Script tags -->
+<!--  Site Wide Html Markup -->
+<div id="swh-953b001c64af48118bbe85253af94ab5"><div data-wrapper-source="appstore" > <script type="text/javascript" src="https://cdn.userway.org/widget.js?account=9xIEuuFoFw&platfAppInstalledSiteId=3956282"></script> </div></div><!--  Site Wide Html Markup -->
+
+<script>
+// Force all internal nav links to do normal browser navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Intercept all clicks on nav links
+    document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            a.addEventListener('click', function(e) {
+                e.stopImmediatePropagation();
+                window.location.href = href;
+            }, true);
+        }
+    });
+});
+// Also override pushState navigation used by the platform
+window.addEventListener('load', function() {
+    document.querySelectorAll('a[href]').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.startsWith('/') && !href.startsWith('//')) {
+            a.onclick = function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                window.location.href = href;
+                return false;
+            };
+        }
+    });
+});
+</script>
+
+</body>
+</html>
