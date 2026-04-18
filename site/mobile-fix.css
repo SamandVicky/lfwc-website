@@ -1,0 +1,108 @@
+﻿/* Global mobile/tablet stabilization for exported Duda pages */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#dmRoot.lfwc-responsive-fix,
+#dmRoot.lfwc-responsive-fix #dm,
+#dmRoot.lfwc-responsive-fix #site_content,
+#dmRoot.lfwc-responsive-fix #iscrollBody,
+#dmRoot.lfwc-responsive-fix .dmOuter,
+#dmRoot.lfwc-responsive-fix .dmInner,
+#dmRoot.lfwc-responsive-fix .dmRespRowsWrapper,
+#dmRoot.lfwc-responsive-fix .dmRespRow,
+#dmRoot.lfwc-responsive-fix .dmRespColsWrapper {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+#dmRoot.lfwc-responsive-fix .dmHeaderContainer,
+#dmRoot.lfwc-responsive-fix .p_hfcontainer,
+#dmRoot.lfwc-responsive-fix .main-navigation.unifiednav {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 1024px) {
+  html:not(.ios-preview) #dmRoot.lfwc-responsive-fix .hasStickyHeader .dmInner div.dmHeaderContainer {
+    position: relative !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmRespRow .dmRespColsWrapper {
+    display: block !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmRespRow .dmRespCol {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmBody .dmRespRow {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmBody .dmRespRow.fullBleedMode {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav {
+    justify-content: center !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    row-gap: 8px;
+    column-gap: 10px;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container > .unifiednav__item-wrap > .unifiednav__item {
+    padding: 6px 8px !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container_sub-nav {
+    position: static !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix div[class^="u_"],
+  #dmRoot.lfwc-responsive-fix div[class*=" u_"] {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #dmRoot.lfwc-responsive-fix [data-version] .size-100,
+  #dmRoot.lfwc-responsive-fix [data-version] .font-size-100 {
+    font-size: clamp(42px, 14vw, 62px) !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix [data-version] .size-70,
+  #dmRoot.lfwc-responsive-fix [data-version] .font-size-70 {
+    font-size: clamp(34px, 12vw, 50px) !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix [data-version] .size-48,
+  #dmRoot.lfwc-responsive-fix [data-version] .font-size-48 {
+    font-size: clamp(30px, 10vw, 42px) !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix [data-version] .size-36,
+  #dmRoot.lfwc-responsive-fix [data-version] .font-size-36 {
+    font-size: clamp(24px, 8vw, 34px) !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container {
+    justify-content: flex-start !important;
+  }
+}

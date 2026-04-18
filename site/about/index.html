@@ -41,7 +41,7 @@
 
 
 <script type="text/javascript">
-    window._currentDevice = 'desktop';
+    window._currentDevice = (window.matchMedia('(max-width: 767px)').matches ? 'mobile' : (window.matchMedia('(max-width: 1024px)').matches ? 'tablet' : 'desktop'));
     window.Parameters = window.Parameters || {
         HomeUrl: 'http://localhost:8080/',
 
@@ -595,6 +595,8 @@
 
 
 <!-- SYS- VVNfRElSRUNUX1BST0RVQ1RJT04= -->
+<link rel="stylesheet" href="/mobile-fix.css">
+<script src="/mobile-fix.js"></script>
 </head>
 
 
