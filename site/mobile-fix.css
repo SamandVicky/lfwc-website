@@ -121,7 +121,7 @@ body {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    justify-content: flex-end !important;
+    justify-content: flex-start !important;
   }
 
   #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container {
@@ -136,7 +136,7 @@ body {
   }
 
   #dmRoot.lfwc-responsive-fix[data-page-alias="home"] .main-navigation.unifiednav .unifiednav__container {
-    justify-content: flex-end !important;
+    justify-content: flex-start !important;
     gap: 12px !important;
     padding: 0 !important;
   }
@@ -329,10 +329,15 @@ body {
   }
 
   #dmRoot.lfwc-responsive-fix #1762351822 .u_1975202960 {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: min(92vw, 430px) !important;
+    max-width: min(92vw, 430px) !important;
+    min-width: 0 !important;
     padding: 22px 18px !important;
     margin: 0 auto !important;
+    left: auto !important;
+    right: auto !important;
+    float: none !important;
+    position: relative !important;
     background: rgba(255, 255, 255, 0.95) !important;
     border-radius: 14px !important;
   }
@@ -359,6 +364,10 @@ body {
     text-align: center !important;
   }
 
+  #dmRoot.lfwc-responsive-fix #1762351822 .u_1874526792 .text-align-left {
+    text-align: center !important;
+  }
+
   #dmRoot.lfwc-responsive-fix #1762351822 .u_1147149456 {
     display: flex !important;
     justify-content: center !important;
@@ -367,6 +376,21 @@ body {
 
   #dmRoot.lfwc-responsive-fix #1762351822 .u_1147149456 .text {
     text-align: center !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmBody .u_FAQs {
+    padding: 24px 12px !important;
+    background-position: center center !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmBody .u_FAQs .dmRespColsWrapper {
+    display: block !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .dmBody .u_FAQs .dmRespCol {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
   }
 
   /* Service cards section */
@@ -401,7 +425,7 @@ body {
   #dmRoot.lfwc-responsive-fix #Contact .u_1353924675 h4,
   #dmRoot.lfwc-responsive-fix .dmRespRow[data-page-element-id="1076593625"] .u_1353924675 h4,
   #dmRoot.lfwc-responsive-fix .dmRespRow[data-page-element-id="1076593625"] .u_1755312782 h4 {
-    max-width: min(92vw, 430px) !important;
+    max-width: min(95vw, 480px) !important;
     margin: 0 auto 14px !important;
     text-align: center !important;
   }
@@ -422,7 +446,7 @@ body {
   #dmRoot.lfwc-responsive-fix #Contact .u_1595598246,
   #dmRoot.lfwc-responsive-fix .dmRespRow[data-page-element-id="1076593625"] .u_1183866533,
   #dmRoot.lfwc-responsive-fix .dmRespRow[data-page-element-id="1076593625"] .u_1595598246 {
-    max-width: min(92vw, 430px) !important;
+    max-width: min(95vw, 480px) !important;
     margin: 0 auto 12px !important;
   }
 
@@ -435,7 +459,7 @@ body {
 
   #dmRoot.lfwc-responsive-fix #Contact .dmform,
   #dmRoot.lfwc-responsive-fix .dmRespRow[data-page-element-id="1076593625"] .dmform {
-    width: min(92vw, 430px) !important;
+    width: min(95vw, 480px) !important;
     max-width: none !important;
     margin: 0 auto !important;
   }

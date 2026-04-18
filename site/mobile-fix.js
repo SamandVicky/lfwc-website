@@ -26,18 +26,41 @@
     document.documentElement.setAttribute('data-lfwc-device', device);
   }
 
+  function resetNavStart() {
+    var navContainer = document.querySelector('.main-navigation.unifiednav .unifiednav__container');
+    if (!navContainer) return;
+    navContainer.scrollLeft = 0;
+    window.requestAnimationFrame(function () {
+      navContainer.scrollLeft = 0;
+    });
+    window.setTimeout(function () {
+      navContainer.scrollLeft = 0;
+    }, 120);
+  }
+
   var resizeTimer = null;
   function onResize() {
     window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(applyDeviceClasses, 120);
+    resizeTimer = window.setTimeout(function () {
+      applyDeviceClasses();
+      resetNavStart();
+    }, 120);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyDeviceClasses, { once: true });
+    document.addEventListener('DOMContentLoaded', function () {
+      applyDeviceClasses();
+      resetNavStart();
+    }, { once: true });
   } else {
     applyDeviceClasses();
+    resetNavStart();
   }
 
   window.addEventListener('resize', onResize);
-  window.addEventListener('orientationchange', applyDeviceClasses);
+  window.addEventListener('orientationchange', function () {
+    applyDeviceClasses();
+    resetNavStart();
+  });
+  window.addEventListener('load', resetNavStart);
 })();
