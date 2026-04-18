@@ -148,7 +148,35 @@ body {
   #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container_sub-nav {
     position: static !important;
     min-width: 0 !important;
-    width: 100% !important;
+    width: auto !important;
+    max-width: min(92vw, 420px) !important;
+    margin-top: 8px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container_sub-nav > .unifiednav__item-wrap {
+    background: transparent !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container_sub-nav > .unifiednav__item-wrap > .unifiednav__item {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 8px 8px 0 !important;
+    padding: 6px 12px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    background: rgba(0, 0, 0, 0.35) !important;
+    color: #fff !important;
+    font-size: 11px !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .main-navigation.unifiednav .unifiednav__container_sub-nav .icon-angle-right {
+    display: none !important;
   }
 
   #dmRoot.lfwc-responsive-fix .dmRespRow .dmRespColsWrapper {
@@ -512,4 +540,74 @@ body {
     border-radius: 999px !important;
     font-size: 20px !important;
   }
+}
+
+/* About page: center pastor and wife names + images on desktop and mobile */
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1135143396,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1615466542 {
+  text-align: center !important;
+}
+
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1135143396 h5,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1615466542 h5,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1135143396 h5 span,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1615466542 h5 span {
+  text-align: center !important;
+}
+
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1942198634,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1879951696 {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1942198634 img,
+#dmRoot.lfwc-responsive-fix[data-page-alias="about"] #1879951696 img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Page-wide text alignment requests */
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody .dmNewParagraph,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody .dmNewParagraph,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody .dmNewParagraph {
+  text-align: center !important;
+}
+
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h1,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h2,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h3,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h4,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h5,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody h6,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody p,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody li,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody .rteBlock,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h1,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h2,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h3,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h4,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h5,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody h6,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody p,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody li,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody .rteBlock,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h1,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h2,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h3,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h4,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h5,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody h6,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody p,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody li,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody .rteBlock,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody .text-align-left,
+#dmRoot.lfwc-responsive-fix[data-page-alias="ministries"] .dmBody .text-align-justify,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody .text-align-left,
+#dmRoot.lfwc-responsive-fix[data-page-alias="services"] .dmBody .text-align-justify,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody .text-align-left,
+#dmRoot.lfwc-responsive-fix[data-page-alias="giving"] .dmBody .text-align-justify {
+  text-align: center !important;
 }
