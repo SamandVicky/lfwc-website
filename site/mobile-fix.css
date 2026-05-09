@@ -5,7 +5,31 @@
     display: none !important;
   }
 
-  /* Show hamburger button */
+  /* Make header row the positioning context and shrink it to hug the logo */
+  #dmRoot.lfwc-responsive-fix .u_1418466502 {
+    position: relative !important;
+    padding: 10px 16px !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix #1976024890 {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix #1333869819 {
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+
+  /* Show hamburger button — positioned inside the header row */
   .lfwc-hamburger-btn {
     display: flex !important;
     align-items: center;
@@ -17,7 +41,7 @@
     width: 44px;
     height: 44px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 10000;
     background: transparent;
     border: none;
     padding: 0;
@@ -46,7 +70,7 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Mobile dropdown menu */
+  /* Full-screen overlay menu */
   .lfwc-mobile-menu {
     display: none;
     position: fixed;
@@ -55,7 +79,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.93);
-    z-index: 9998;
+    z-index: 9999;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -86,14 +110,9 @@
   .lfwc-mobile-menu a:active {
     background: rgba(255,255,255,0.08);
   }
-
-  /* Keep header positioned relatively so button can be absolute inside it */
-  #dmRoot.lfwc-responsive-fix .dmHeaderContainer {
-    position: relative !important;
-  }
 }
 
-/* Hide hamburger on desktop */
+/* Hide hamburger on desktop/tablet */
 @media (min-width: 768px) {
   .lfwc-hamburger-btn,
   .lfwc-mobile-menu {
