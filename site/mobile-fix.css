@@ -1,4 +1,109 @@
-﻿/* Global mobile/tablet stabilization for exported Duda pages */
+﻿/* ── Hamburger nav (mobile only) ── */
+@media (max-width: 767px) {
+  /* Hide the horizontal nav links on mobile */
+  #dmRoot.lfwc-responsive-fix .p_hfcontainer .u_1286967174 {
+    display: none !important;
+  }
+
+  /* Show hamburger button */
+  .lfwc-hamburger-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    z-index: 9999;
+    background: transparent;
+    border: none;
+    padding: 0;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .lfwc-hamburger-btn span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+
+  /* Animate to X when open */
+  .lfwc-hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .lfwc-hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .lfwc-hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile dropdown menu */
+  .lfwc-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.93);
+    z-index: 9998;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .lfwc-mobile-menu.open {
+    display: flex !important;
+  }
+
+  .lfwc-mobile-menu a {
+    color: #fff !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    padding: 18px 0 !important;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .lfwc-mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  .lfwc-mobile-menu a:active {
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* Keep header positioned relatively so button can be absolute inside it */
+  #dmRoot.lfwc-responsive-fix .dmHeaderContainer {
+    position: relative !important;
+  }
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 768px) {
+  .lfwc-hamburger-btn,
+  .lfwc-mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ── End hamburger nav ── */
+
+/* Global mobile/tablet stabilization for exported Duda pages */
 html,
 body {
   max-width: 100%;

@@ -5171,5 +5171,40 @@ window.addEventListener('load', function() {
 });
 </script>
 
+
+<button class="lfwc-hamburger-btn" id="lfwcHamburgerBtn" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<nav class="lfwc-mobile-menu" id="lfwcMobileMenu">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/ministries">Ministries</a>
+  <a href="/services">Services</a>
+  <a href="/giving">Giving</a>
+  <a href="/plan-your-visit">Plan Your Visit</a>
+  <a href="/events">Events</a>
+  <a href="/media">Media</a>
+  <a href="/get-in-touch">Contact</a>
+</nav>
+<script>
+(function(){
+  var btn = document.getElementById('lfwcHamburgerBtn');
+  var menu = document.getElementById('lfwcMobileMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
 </body>
 </html>
