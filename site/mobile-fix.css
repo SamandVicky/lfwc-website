@@ -8,7 +8,7 @@
   /* Make header row the positioning context and shrink it to hug the logo */
   #dmRoot.lfwc-responsive-fix .u_1418466502 {
     position: relative !important;
-    padding: 10px 16px !important;
+    padding: 8px 16px !important;
     min-height: 0 !important;
     height: auto !important;
   }
@@ -27,6 +27,18 @@
     height: auto !important;
     flex: 0 0 auto !important;
     width: auto !important;
+  }
+
+  /* Cap logo height on mobile so it doesn't create a huge header */
+  #dmRoot.lfwc-responsive-fix .u_1457549626 img {
+    height: 60px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  #dmRoot.lfwc-responsive-fix .u_1457549626 {
+    width: auto !important;
+    min-width: 0 !important;
   }
 
   /* Show hamburger button — positioned inside the header row */
