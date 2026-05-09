@@ -29,9 +29,9 @@
     width: auto !important;
   }
 
-  /* Cap logo height on mobile so it doesn't create a huge header */
+  /* Logo size on mobile */
   #dmRoot.lfwc-responsive-fix .u_1457549626 img {
-    height: 60px !important;
+    height: 80px !important;
     width: auto !important;
     max-width: none !important;
   }
@@ -345,11 +345,11 @@ body {
 
   /* Hero spacing fix: remove oversized desktop padding on mobile/tablet */
   #dmRoot.lfwc-responsive-fix #1597495448 {
-    padding: 170px 0 90px !important;
+    padding: 110px 0 60px !important;
   }
 
   #dmRoot.lfwc-responsive-fix[data-page-alias="home"] #1597495448 {
-    padding: 220px 0 110px !important;
+    padding: 120px 0 80px !important;
   }
 
   #dmRoot.lfwc-responsive-fix[data-page-alias="home"] #1597495448::before,
