@@ -1,4 +1,379 @@
-﻿/* ── Hamburger nav (mobile only) ── */
+﻿/* ── Mobile homepage redesign ── */
+.lfwc-mh { display: none; }
+
+@media (max-width: 767px) {
+  .dmRoot[data-page-alias="home"] #1716942098 {
+    display: none !important;
+  }
+
+  .lfwc-mh {
+    display: block;
+    background: #ffffff;
+    font-family: Muli, Helvetica, Arial, sans-serif;
+    color: #1c2b36;
+    overflow-x: hidden;
+  }
+
+  .lfwc-mh h1, .lfwc-mh h2, .lfwc-mh h3, .lfwc-mh h4 {
+    font-family: Muli, Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+  .lfwc-mh-section {
+    padding: 24px 20px;
+  }
+
+  .lfwc-mh-section + .lfwc-mh-section,
+  .lfwc-mh-hero + .lfwc-mh-section {
+    margin-top: 24px;
+  }
+
+  .lfwc-mh-section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0b476d;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .lfwc-mh-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3a9ec2;
+    text-align: center;
+    margin: 0 0 8px;
+  }
+
+  /* Hero */
+  .lfwc-mh-hero {
+    position: relative;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center 30%;
+    padding: 20px 24px 40px;
+    box-sizing: border-box;
+  }
+
+  .lfwc-mh-hero-logo {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    padding: 6px;
+  }
+
+  .lfwc-mh-hero-copy {
+    margin-top: auto;
+  }
+
+  .lfwc-mh-hero-copy h1 {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .lfwc-mh-hero-copy p {
+    color: rgba(255,255,255,0.92);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 24px;
+    max-width: 320px;
+  }
+
+  .lfwc-mh-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lfwc-mh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .lfwc-mh-btn-primary {
+    background: #3a9ec2;
+    color: #ffffff;
+  }
+
+  .lfwc-mh-btn-secondary {
+    background: rgba(255,255,255,0.14);
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.65);
+  }
+
+  /* Quick actions grid */
+  .lfwc-mh-quickgrid-section {
+    padding-top: 28px;
+  }
+
+  .lfwc-mh-quickgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .lfwc-mh-quickcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f4f7f9;
+    border-radius: 16px;
+    padding: 22px 10px;
+    text-decoration: none;
+    color: #0b476d;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(11,71,109,0.08);
+  }
+
+  .lfwc-mh-qicon {
+    font-size: 26px;
+  }
+
+  /* Pastor */
+  .lfwc-mh-pastor {
+    text-align: center;
+  }
+
+  .lfwc-mh-pastor-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px;
+    display: block;
+    border: 3px solid #3a9ec2;
+  }
+
+  .lfwc-mh-pastor h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0b476d;
+    margin-bottom: 10px;
+  }
+
+  .lfwc-mh-pastor p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #46586a;
+    margin-bottom: 14px;
+  }
+
+  .lfwc-mh-link-cta {
+    color: #3a9ec2;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  /* Video */
+  .lfwc-mh-video {
+    text-align: center;
+    background: #0b476d;
+    border-radius: 20px;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 24px 20px 28px;
+  }
+
+  .lfwc-mh-video .lfwc-mh-eyebrow {
+    color: #8dc63f;
+  }
+
+  .lfwc-mh-video-card {
+    position: relative;
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .lfwc-mh-video-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .lfwc-mh-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    color: #0b476d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .lfwc-mh-video h3 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 18px;
+  }
+
+  .lfwc-mh-video-btn {
+    width: 100%;
+  }
+
+  /* Offer cards */
+  .lfwc-mh-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lfwc-mh-card {
+    background: #f4f7f9;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .lfwc-mh-cicon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .lfwc-mh-card h4 {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0b476d;
+    margin-bottom: 8px;
+  }
+
+  .lfwc-mh-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #46586a;
+    margin: 0 0 12px;
+  }
+
+  .lfwc-mh-card-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Service times */
+  .lfwc-mh-times-card {
+    background: #f4f7f9;
+    border-radius: 16px;
+    padding: 22px;
+  }
+
+  .lfwc-mh-time-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(11,71,109,0.1);
+  }
+
+  .lfwc-mh-time-row:last-of-type {
+    border-bottom: none;
+  }
+
+  .lfwc-mh-time-day {
+    font-weight: 800;
+    font-size: 15px;
+    color: #0b476d;
+  }
+
+  .lfwc-mh-time-hour {
+    font-size: 14px;
+    color: #46586a;
+  }
+
+  .lfwc-mh-times-btn {
+    width: 100%;
+    margin-top: 16px;
+    background: #0b476d;
+    color: #fff;
+    border: none;
+  }
+
+  /* Testimonials */
+  .lfwc-mh-testimonials {
+    background: #f4f7f9;
+  }
+
+  .lfwc-mh-testi-track {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .lfwc-mh-testi-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(11,71,109,0.06);
+  }
+
+  .lfwc-mh-testi-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #2c3e4d;
+    margin: 0 0 8px;
+    font-style: italic;
+  }
+
+  .lfwc-mh-testi-card span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #3a9ec2;
+  }
+
+  /* Final CTA */
+  .lfwc-mh-final-cta {
+    background: #0b476d;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .lfwc-mh-final-cta h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 22px;
+    line-height: 1.3;
+  }
+
+  .lfwc-mh-final-cta .lfwc-mh-hero-ctas {
+    justify-content: center;
+  }
+}
+
+/* ── Hamburger nav (mobile only) ── */
 @media (max-width: 767px) {
   /* Hide the horizontal nav links on mobile */
   .dmRoot .p_hfcontainer .u_1286967174 {
