@@ -50,15 +50,15 @@ body.m-nav-open .m-header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-.m-header__logo img { height: 46px; width: auto; }
+.m-header__logo img { height: 50px; width: auto; }
 .m-burger {
-  width: 50px; height: 50px; border: 0; background: transparent; padding: 10px;
-  display: flex; flex-direction: column; justify-content: center; gap: 6px; cursor: pointer;
+  width: 54px; height: 54px; border: 0; background: transparent; padding: 10px;
+  display: flex; flex-direction: column; justify-content: center; gap: 7px; cursor: pointer;
 }
 .m-burger span { display: block; height: 3px; border-radius: 3px; background: var(--navy); transition: transform .25s, opacity .25s; }
-body.m-nav-open .m-burger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+body.m-nav-open .m-burger span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
 body.m-nav-open .m-burger span:nth-child(2) { opacity: 0; }
-body.m-nav-open .m-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+body.m-nav-open .m-burger span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
 /* ---------- Slide-in nav ---------- */
 .m-nav {
@@ -88,7 +88,7 @@ main { padding-top: 0; }
 /* no color overlay on the photo/video — keep the media true; a text shadow
    carries legibility for the hero copy over it */
 .m-hero.has-media .m-hero__inner { text-shadow: 0 2px 10px rgba(0, 0, 0, .7), 0 1px 3px rgba(0, 0, 0, .6); }
-.m-hero__eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 700; color: var(--teal); margin: 0 0 12px; }
+.m-hero__eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: 14px; font-weight: 700; color: var(--teal); margin: 0 0 12px; }
 .m-hero h1 { font-family: var(--font-head); font-weight: 700; font-size: 30px; line-height: 1.2; margin: 0 0 14px; }
 .m-hero p { color: rgba(255, 255, 255, .88); margin: 0 auto 22px; max-width: 34em; }
 
