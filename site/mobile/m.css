@@ -140,6 +140,15 @@ main { padding-top: 0; }
 .m-card h3 { margin-top: 0; }
 .m-card p:last-child { margin-bottom: 0; }
 .m-card__img { border-radius: 16px 16px 0 0; margin: -22px -22px 18px; width: calc(100% + 44px); max-width: none; box-shadow: none; }
+body[data-page="home"] .m-card__img,
+body[data-page="about"] .m-card__img,
+body[data-page="giving"] .m-card__img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(16, 72, 118, .12);
+}
 
 /* ---------- What We Believe ---------- */
 .m-believe-head { text-align: center; margin: 8px 0 2px; }
