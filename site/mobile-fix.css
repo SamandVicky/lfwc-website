@@ -39,17 +39,20 @@
     display: flex !important;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    /* fixed to the viewport so it never depends on the Duda header's
+       height (which is ~800px on hero pages and dropped the button
+       to mid-page when positioned at top:50%) */
+    position: fixed;
+    right: 12px;
+    top: 12px;
     width: 44px;
     height: 44px;
     cursor: pointer;
     z-index: 10000;
-    background: transparent;
+    background: rgba(12, 30, 46, 0.5);
     border: none;
-    padding: 0;
+    border-radius: 10px;
+    padding: 0 9px;
     flex-direction: column;
     gap: 5px;
   }
