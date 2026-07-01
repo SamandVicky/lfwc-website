@@ -1,0 +1,131 @@
+/* ============================================================
+   lfwc mobile stylesheet — loaded only by the /mobile/* pages that
+   phones are routed to. Fresh, self-contained mobile layer (does NOT
+   use the old mobile-fix.css). The site is a Duda ONE mirror: the
+   runtime that applies Duda's mobile classes and reflow isn't in the
+   export, so we supply it here.
+   ============================================================ */
+
+/* ---- Core stabilization: the inline Duda CSS forces .dmInner to
+   min-width:768px, which would zoom the whole page out on a phone. ---- */
+html, body { max-width: 100% !important; overflow-x: hidden !important; }
+#dm .dmInner, .dmInner,
+#dm .dmOuter, .dmOuter,
+#dm .dmLayoutWrapper { min-width: 0 !important; }
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ---- Mobile typography: implement Duda's m-size-* / m-font-size-*
+   classes (the mobile font sizes the designer set) that the missing
+   runtime never applied, so headings stop rendering desktop-sized.
+   Prefixed with #dmRoot #dm to beat Duda's !important size-* rules. ---- */
+#dmRoot #dm .m-size-13, #dmRoot #dm .m-font-size-13 { font-size: 13px !important; }
+#dmRoot #dm .m-size-14, #dmRoot #dm .m-font-size-14 { font-size: 14px !important; }
+#dmRoot #dm .m-size-16, #dmRoot #dm .m-font-size-16 { font-size: 16px !important; }
+#dmRoot #dm .m-size-20, #dmRoot #dm .m-font-size-20 { font-size: 20px !important; }
+#dmRoot #dm .m-size-22, #dmRoot #dm .m-font-size-22 { font-size: 22px !important; }
+#dmRoot #dm .m-size-24, #dmRoot #dm .m-font-size-24 { font-size: 24px !important; }
+#dmRoot #dm .m-size-29, #dmRoot #dm .m-font-size-29 { font-size: 29px !important; }
+#dmRoot #dm .m-size-36, #dmRoot #dm .m-font-size-36 { font-size: 36px !important; }
+#dmRoot #dm .m-size-48, #dmRoot #dm .m-font-size-48 { font-size: 42px !important; }
+/* keep long headings on-screen */
+#dm h1, #dm h2, #dm h3, #dm h4 { line-height: 1.18 !important; word-break: normal; overflow-wrap: break-word; }
+
+/* ---- Section rhythm: Duda bakes a huge full-height vertical padding
+   per section on desktop (the home hero is padding:368px 0), served from
+   its CDN stylesheet as #dm .dmBody div.u_<id>. Normalize every top-level
+   section to a compact mobile rhythm. Two ids (#dmRoot #dm) so it beats
+   those per-id CDN rules; nested rows are reset back so spacing doesn't
+   compound. ---- */
+#dmRoot #dm .dmContent .dmRespRow {
+  padding-top: 54px !important;
+  padding-bottom: 54px !important;
+  /* Desktop bakes huge per-id side padding (the hero is padding-left:200px)
+     via `*#dm *.dmBody div.u_<id>` rules; on a phone that squeezes the
+     content into a sliver so headings render one letter per line. Two ids
+     beat those per-id rules; the 20px gutter comes from the cols wrapper. */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+#dmRoot #dm .dmContent .dmRespRow .dmRespRow {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ---- Stack every multi-column row full-width. The mirror keeps the
+   desktop body class (dmDesktopBody) and Duda's mobile-collapse runtime
+   isn't in the export, so the cols wrapper stays `display:flex` and the
+   columns keep their desktop grid widths (large-6 = 50%). Flex means a
+   plain width:100% just makes them share/overflow the row (the second
+   column slides off-screen) instead of stacking — so we make the wrapper
+   wrap and give each column a full-width flex line. Two ids beat Duda's
+   `#dm .dmRespRow .dmRespColsWrapper` and `.large-6` rules. ---- */
+#dmRoot #dm .dmRespRow .dmRespColsWrapper {
+  display: block !important;
+}
+#dmRoot #dm .dmRespRow .dmRespCol {
+  flex: 1 1 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  clear: both !important;
+  left: 0 !important;
+  margin-bottom: 18px !important;
+}
+
+/* ---- Horizontal rhythm: give text columns breathing room and center
+   the content that Duda left hard against the left edge on mobile. ---- */
+#dm .dmRespRow .dmRespColsWrapper { padding-left: 20px !important; padding-right: 20px !important; }
+#dm .dmRespRow.fullBleedMode > .dmRespColsWrapper,
+#dm .dmRespRow.fullBleedChanged > .dmRespColsWrapper { padding-left: 20px !important; padding-right: 20px !important; }
+
+/* ---- Text blocks carry a baked desktop width like
+   `width:calc(100% - 192px)` / `max-width:816px` via their per-id
+   `*#dm *.dmBody div.u_<id>` rule; on a phone that 192px inset leaves the
+   copy in a ~200px sliver. Force content blocks full-width (two ids beat
+   the per-id rule). The column/row gutter already supplies side spacing. ---- */
+#dmRoot #dm .dmNewParagraph {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ---- Justified body copy (Duda's `text-align-justify`) opens ugly
+   rivers of whitespace in a narrow phone column; left-align it. ---- */
+#dmRoot #dm .text-align-justify,
+#dmRoot #dm p.text-align-justify { text-align: left !important; }
+
+/* images/media never overflow */
+#dm img, #dm video, #dm iframe { max-width: 100% !important; height: auto; }
+
+/* buttons: comfortable tap targets, centered */
+#dm .dmButtonLink, #dm .flexButton { display: inline-flex !important; align-items: center; justify-content: center; }
+
+/* ---- Hide the desktop horizontal nav (replaced by the hamburger) ---- */
+#dmRoot .u_1286967174,
+#dmRoot .main-navigation.unifiednav { display: none !important; }
+
+/* ============================================================
+   Hamburger button + full-screen menu (built by mobile.js)
+   ============================================================ */
+.lfwc-mnav-btn {
+  position: fixed; top: 12px; right: 12px;
+  width: 44px; height: 44px; z-index: 100000;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  background: rgba(12, 30, 46, 0.5); border: none; border-radius: 10px; padding: 0 9px; cursor: pointer;
+}
+.lfwc-mnav-btn span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
+.lfwc-mnav-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.lfwc-mnav-btn.open span:nth-child(2) { opacity: 0; }
+.lfwc-mnav-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.lfwc-mnav {
+  position: fixed; inset: 0; background: #0b1f2e; z-index: 99999;
+  display: none; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+}
+.lfwc-mnav.open { display: flex; }
+.lfwc-mnav a {
+  color: #fff; font: 700 20px/1 "Inter", Arial, sans-serif; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none; padding: 17px 0; width: 100%;
+  text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.lfwc-mnav a:last-child { border-bottom: none; }
+.lfwc-mnav a:active { background: rgba(255, 255, 255, 0.08); }
