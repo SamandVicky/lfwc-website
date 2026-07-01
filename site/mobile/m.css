@@ -39,7 +39,13 @@ a { color: var(--blue-dark); }
 .m-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   height: 64px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 16px; background: rgba(255, 255, 255, .82);
+  padding: 0 16px; background: transparent;
+  box-shadow: none;
+  transition: background-color .22s ease, box-shadow .22s ease, backdrop-filter .22s ease;
+}
+body.m-scrolled .m-header,
+body.m-nav-open .m-header {
+  background: #fff;
   box-shadow: 0 2px 12px rgba(16, 72, 118, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

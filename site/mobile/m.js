@@ -8,10 +8,15 @@
     var burger = document.querySelector('.m-burger');
     var nav = document.querySelector('.m-nav');
     if (!burger || !nav) return;
+    function setScrolled() {
+      document.body.classList.toggle('m-scrolled', window.scrollY > 12);
+    }
     function setOpen(open) {
       document.body.classList.toggle('m-nav-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+    setScrolled();
+    window.addEventListener('scroll', setScrolled, { passive: true });
     burger.addEventListener('click', function () {
       setOpen(!document.body.classList.contains('m-nav-open'));
     });
