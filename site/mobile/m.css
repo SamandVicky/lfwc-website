@@ -50,15 +50,15 @@ body.m-nav-open .m-header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-.m-header__logo img { height: 40px; width: auto; }
+.m-header__logo img { height: 46px; width: auto; }
 .m-burger {
-  width: 44px; height: 44px; border: 0; background: transparent; padding: 10px;
-  display: flex; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer;
+  width: 50px; height: 50px; border: 0; background: transparent; padding: 10px;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px; cursor: pointer;
 }
-.m-burger span { display: block; height: 2px; border-radius: 2px; background: var(--navy); transition: transform .25s, opacity .25s; }
-body.m-nav-open .m-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.m-burger span { display: block; height: 3px; border-radius: 3px; background: var(--navy); transition: transform .25s, opacity .25s; }
+body.m-nav-open .m-burger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 body.m-nav-open .m-burger span:nth-child(2) { opacity: 0; }
-body.m-nav-open .m-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+body.m-nav-open .m-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 /* ---------- Slide-in nav ---------- */
 .m-nav {
