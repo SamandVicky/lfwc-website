@@ -208,6 +208,10 @@ def esc(t):
 
 def render_card(it):
     parts = ['<div class="m-card">']
+    if it.get("video"):
+        parts.append(f'<div class="m-video"><iframe src="{it["video"]}" title="{esc(it.get("title") or "Video")}" '
+                     'loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
+                     'gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
     if it["img"]:
         parts.append(f'<img class="m-card__img" src="{it["img"]["src"]}" alt="{esc(it["img"].get("alt",""))}" loading="lazy">')
     if it["eyebrow"]:
@@ -309,10 +313,11 @@ CDN = "https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/"
 def curated_home():
     """The home page is a dense mosaic of tiny Duda overlays that the generic
     extractor fragments; author it explicitly for a clean, intentional flow."""
-    def item(title=None, eyebrow=None, paras=None, img=None, alt="", buttons=None):
+    def item(title=None, eyebrow=None, paras=None, img=None, alt="", buttons=None, video=None):
         return {"eyebrow": eyebrow, "title": title, "level": 3,
                 "paras": paras or [], "img": {"src": CDN + img, "alt": alt} if img else None,
-                "buttons": buttons or []}
+                "buttons": buttons or [], "video": video}
+    yt_channel = "https://youtube.com/@ApostleMehranPayandeh"
     items = [
         item(title="Discover a Vibrant Church Community", eyebrow="Join Us Every Week",
              img="IMG_6947-d3b7298b-1920w.jpeg", alt="Pastor preaching",
@@ -320,7 +325,26 @@ def curated_home():
                     "God's love, support one another, and fulfill His calling for our lives. "
                     "Together, we strengthen our bonds, share in the joy of fellowship, and "
                     "empower each other to live out our faith with passion and conviction."]),
-        item(title="Watch Our Latest Message", eyebrow="Discover a Message",
+        item(title="Watch Our Latest Service", eyebrow="Sunday Gatherings",
+             video="https://www.youtube.com/embed/RjgmTwFLPcU",
+             paras=["Catch our most recent service and be encouraged by the Word — anytime, "
+                    "anywhere."],
+             buttons=[("Visit Our YouTube Channel", yt_channel)]),
+        item(title="Welcome — We're Glad to Have You", eyebrow="Who We Are",
+             img="fellowship-1920w.jpg", alt="Church fellowship",
+             paras=["New here? Get to know our church family, our heart, and what we believe."],
+             buttons=[("Who We Are", "/mobile/about")]),
+        item(title="Support the Community", eyebrow="Give",
+             img="R1-1920w.jpg", alt="Giving",
+             paras=["Your generosity helps us meet the needs of others in our community and "
+                    "beyond."],
+             buttons=[("Give Now", "/mobile/giving")]),
+        item(title="Upcoming Events", eyebrow="Get Connected",
+             img="68-1920w.png", alt="Events",
+             paras=["Stay in the loop on gatherings and special services, and find your place "
+                    "to connect."],
+             buttons=[("See Events", "/mobile/events")]),
+        item(title="A Word to Encourage You", eyebrow="Discover a Message",
              paras=["“But when he, the Spirit of truth, comes, he will guide you into all "
                     "the truth. He will not speak on his own; he will speak only what he hears, "
                     "and he will tell you what is yet to come.”",
@@ -361,6 +385,111 @@ def curated_home():
     return items, [("Get Started", "/mobile/get-in-touch")]
 
 
+def hero_media(page):
+    """Recover the desktop hero's background media (video for home, else the
+    per-id background photo on the hasBackgroundOverlay row) so the mobile
+    hero shows the real picture instead of a flat gradient."""
+    f = os.path.join(SITE, page, "index.html") if page else os.path.join(SITE, "index.html")
+    html = open(f, encoding="utf-8").read()
+    if page == "":  # home hero is a background video
+        vm = re.search(r"<video[^>]+>", html)
+        if vm:
+            src = re.search(r'src="([^"]+vid\.cdn[^"]+)"', vm.group(0))
+            pos = re.search(r'poster="([^"]+)"', vm.group(0))
+            if src:
+                poster = f' poster="{pos.group(1)}"' if pos else ""
+                return ('<video class="m-hero__media" autoplay muted loop playsinline'
+                        f'{poster}><source src="{src.group(1)}" type="video/mp4"></video>')
+    m = (re.search(r'class="[^"]*dmRespRow[^"]*hasBackgroundOverlay[^"]*"[^>]*id="(\d+)"', html)
+         or re.search(r'id="(\d+)"[^>]*class="[^"]*dmRespRow[^"]*hasBackgroundOverlay', html))
+    if m:
+        urls = []
+        for mm in re.finditer(r"[^{}]*u_" + m.group(1) + r"\b[^{}]*\{([^}]*)\}", html):
+            urls += re.findall(r'background-image:\s*url\(["\']?([^)"\']+)', mm.group(1))
+        best = next((u for u in urls if "-2880w" in u or "-1920w" in u), urls[0] if urls else None)
+        if best:
+            return f'<img class="m-hero__media" src="{best}" alt="" loading="eager">'
+    return ""
+
+
+BELIEF_SCRIPTURES = [
+    ("Herein is our love made perfect, that we may have boldness in the day of judgment: "
+     "because as he is, so are we in this world.", "1 John 4:17"),
+    ("I am come that they might have life, and that they might have it more abundantly.", "John 10:10"),
+    ("For whatsoever is born of God overcometh the world: and this is the victory that "
+     "overcometh the world, even our faith.", "1 John 5:4"),
+]
+BELIEF_CARDS = [
+    ("Know Your Identity", "Progressively become aware of your true identity, which is our true "
+     "spiritual life, by becoming conscious of the Life of Christ."),
+    ("Know Your Purpose", "You're here for a reason. Find out who God created you to be and learn "
+     "how to live life on purpose."),
+    ("Commune with the Holy Spirit", "Communion with the Holy Spirit is the launching pad for a "
+     "life of supernatural power and consistency."),
+    ("Reign With Christ", "Become awakened to your true predestinated destiny as you move forward "
+     "with a greater consciousness of the Belief of the Son. He desires to operate in and through "
+     "us in Kingly Prayer."),
+]
+STATEMENT_OF_FAITH = [
+    ("We believe that the Holy Scripture of the Old and New Testaments is the inspired Word of God. "
+     "The Scriptures are without error, infallible, and the final authority for faith and life. The "
+     "sixty-six books of the Holy Bible are the complete and divine revelation of God to humanity.",
+     "2 Timothy 3:16,17; 2 Peter 1:20,21"),
+    ("We believe in One God – the Eternal Spirit, who created all things for His pleasure. He is "
+     "absolute in power, infinite in wisdom, holy in His nature, attributes, and purpose – "
+     "possessing total deity. He concerns Himself mercifully in the affairs of humanity. He hears "
+     "and answers prayer, and saves from sin and death all who believe according to His Word.",
+     "Genesis 1; Deuteronomy 6:4,5, 39,40; Revelations 4:11"),
+    ("God has revealed Himself as FATHER (in giving life – creation), as SON (in reconciliation of "
+     "humanity), and as HOLY SPIRIT (in regeneration of lives).",
+     "John 14:16-18; 1 Corinthians 8:6; Colossians 1:16,17; 1 Timothy 3:16"),
+    ("We believe in JESUS CHRIST, who is both God and man. He is God incarnate [in flesh]; the image "
+     "of the invisible God; God manifested in the flesh – God's only begotten “son.” We "
+     "believe that, as a son, He was born of a virgin, lived a sinless life, performed miracles, and "
+     "taught with authority. He died for the sins of all humanity, had a bodily resurrection, "
+     "ascended into heaven, and will return again.",
+     "John 1:1-3, 14; John 3:16; Colossians 2:8,9"),
+    ("We believe that salvation is a gift of God given to humanity by grace and received by faith in "
+     "the Lord Jesus Christ. Faith is more than mental agreement, intellectual acceptance, or verbal "
+     "profession. It includes trust, reliance, and commitment. We cannot separate saving faith from "
+     "obedience. People are saved by repenting of their sins, being baptized in the Name of Jesus for "
+     "the remission [removal] of their sins, and receiving the gift of the Holy Ghost [the infilling "
+     "of the Spirit of God].",
+     "Acts 2:38,39; 1 Corinthians 2:12,13; James 2:17,18; 1 Peter 3:21"),
+    ("We believe that all people are sinners by nature and are alienated from God until reconciled "
+     "with Him. People are totally sinful and unable to remedy their lost condition. They are "
+     "reconciled to God only by God's grace [God's unmerited favor], which is received through faith "
+     "in Jesus Christ as Lord and Savior.",
+     "Romans 5:12; Romans 3:23–25; Ephesians 2:8"),
+    ("We believe the Church is the living, spiritual body of believers of which the Lord Jesus Christ "
+     "is the Head. The church functions as Christ would function in the earth, seeking to find lost "
+     "souls for the purpose of bringing them to salvation. Signs and wonders, including divine "
+     "healing, are part of the Church's ministry, as they were part of the ministry of Jesus on Earth.",
+     "Mark 16:17; 1 Corinthians 12:12-14; Colossians 1:18,19"),
+    ("We believe there is eternal life in a place God has prepared for those who accept His grace and "
+     "receive His gift of salvation. There is also eternal destruction of those who reject His grace "
+     "and refuse His gift.",
+     "John 3:5,6; John 14:2,3; Romans 6:23"),
+]
+
+
+def about_belief_html():
+    """Curated 'What We Believe' section for About — matches the desktop content
+    (3 scriptures, 4 numbered belief cards, 8-point statement of faith), styled
+    for mobile."""
+    p = ['<div class="m-believe-head"><p class="m-eyebrow">Our Foundation</p><h2>What We Believe</h2></div>']
+    for text, ref in BELIEF_SCRIPTURES:
+        p.append(f'<p class="m-scripture">“{esc(text)}”<cite>{esc(ref)}</cite></p>')
+    for n, (title, body) in enumerate(BELIEF_CARDS, 1):
+        p.append(f'<div class="m-belief"><div class="m-belief__n">{n}</div>'
+                 f'<div><h3>{esc(title)}</h3><p>{esc(body)}</p></div></div>')
+    p.append('<div class="m-believe-head"><h3>Our Statement of Faith</h3></div>')
+    for text, ref in STATEMENT_OF_FAITH:
+        p.append(f'<div class="m-creed"><p>{esc(text)}</p>'
+                 f'<p class="m-refs">Bible References: {esc(ref)}</p></div>')
+    return "\n".join(p)
+
+
 def render_page(page, blocks):
     key = page or "home"
     title, eyebrow, subtitle = META[key]
@@ -371,6 +500,19 @@ def render_page(page, blocks):
         items, hero_btns = group_items(blocks)
         items = polish_items(items, title, eyebrow)
 
+    # About: replace the generic-extractor's mangled "What We Believe" (and the
+    # duplicated home tiles after it) with a curated, faithful section.
+    extra_html = ""
+    if key == "about":
+        cut = next((n for n, it in enumerate(items)
+                    if _norm(it.get("title")) == "whatwebelieve"
+                    or (it.get("eyebrow") and "knowyour" in _norm(it["eyebrow"]))
+                    or (it.get("title") and it["title"].strip() in {"1", "New Here?", "Content & Classes"})),
+                   len(items))
+        items = items[:cut]
+        extra_html = about_belief_html()
+
+    hero_html = hero_media(page)
     hero_cta = ""
     if hero_btns:
         hero_cta = '<div class="m-btn-row">' + "".join(
@@ -379,12 +521,12 @@ def render_page(page, blocks):
 
     # sparse pages (mostly JS form widgets that can't be mirrored) get a
     # useful fallback so they never render an empty grey band.
-    if len(items) < 2:
+    if len(items) < 2 and not extra_html:
         items.append({"eyebrow": None, "title": None, "level": 3, "paras": [], "img": None, "buttons": []})
         cards_html = "\n".join(render_card(it) for it in items if it["title"] or it["paras"] or it["img"] or it["buttons"])
         cards_html += contact_card()
     else:
-        cards_html = "\n".join(render_card(it) for it in items)
+        cards_html = "\n".join(render_card(it) for it in items) + extra_html
     cards = cards_html
     doc = f'''<!doctype html>
 <html lang="en">
@@ -405,7 +547,8 @@ def render_page(page, blocks):
 </header>
 {render_nav(current)}
 <main>
-  <section class="m-hero">
+  <section class="m-hero{' has-media' if hero_html else ''}">
+    {hero_html}
     <div class="m-hero__inner">
       <p class="m-hero__eyebrow">{esc(eyebrow)}</p>
       <h1>{esc(title)}</h1>
