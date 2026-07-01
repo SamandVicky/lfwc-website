@@ -212,6 +212,9 @@ def render_card(it):
         parts.append(f'<div class="m-video"><iframe src="{it["video"]}" title="{esc(it.get("title") or "Video")}" '
                      'loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
                      'gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+    if it.get("imgs"):
+        parts.append('<div class="m-appshots">' + "".join(
+            f'<img src="{s}" alt="App screenshot" loading="lazy">' for s in it["imgs"]) + '</div>')
     if it["img"]:
         parts.append(f'<img class="m-card__img" src="{it["img"]["src"]}" alt="{esc(it["img"].get("alt",""))}" loading="lazy">')
     if it["eyebrow"]:
@@ -313,11 +316,17 @@ CDN = "https://lirp.cdn-website.com/a78c0b5c/dms3rep/multi/opt/"
 def curated_home():
     """The home page is a dense mosaic of tiny Duda overlays that the generic
     extractor fragments; author it explicitly for a clean, intentional flow."""
-    def item(title=None, eyebrow=None, paras=None, img=None, alt="", buttons=None, video=None):
+    def item(title=None, eyebrow=None, paras=None, img=None, alt="", buttons=None, video=None, imgs=None):
         return {"eyebrow": eyebrow, "title": title, "level": 3,
                 "paras": paras or [], "img": {"src": CDN + img, "alt": alt} if img else None,
-                "buttons": buttons or [], "video": video}
+                "buttons": buttons or [], "video": video, "imgs": imgs}
     yt_channel = "https://youtube.com/@ApostleMehranPayandeh"
+    ESA_SHOTS = ["/img/esa-app-1.png", "/img/esa-app-2.png"]
+    L365_SHOTS = ["/img/lifeway365-app-1.png", "/img/lifeway365-app-2.png"]
+    ESA_BTNS = [("App Store", "https://apps.apple.com/us/app/eternal-sonship-academy/id6760855311"),
+                ("Google Play", "https://play.google.com/store/apps/details?id=com.sgctech.eternalsonshipacademy&hl=en_US")]
+    L365_BTNS = [("App Store", "https://apps.apple.com/us/app/lifeway-365/id6757131560"),
+                 ("Google Play", "https://play.google.com/store/apps/details?id=com.lifewaygh.lifeway365&hl=en_US")]
     items = [
         item(title="Discover a Vibrant Church Community", eyebrow="Join Us Every Week",
              img="IMG_6947-d3b7298b-1920w.jpeg", alt="Pastor preaching",
@@ -351,15 +360,16 @@ def curated_home():
                     "— John 16:13 (NIV)"],
              buttons=[("Watch Services", "/mobile/services")]),
         item(title="Eternal Sonship Academy", eyebrow="Download Our Mobile App",
-             img="eternal-sonship-academy-1920w.png", alt="Eternal Sonship Academy app",
+             imgs=ESA_SHOTS,
              paras=["We offer courses, workshops, and resources based on biblical truth to "
                     "deepen spiritual understanding, strengthen faith, and build leadership skills."],
-             buttons=[("Apple Store", "https://apps.apple.com/us/app/eternal-sonship-academy/id6746934635"),
-                      ("Google Play", "https://play.google.com/store/search?q=Eternal%20Sonship%20Academy&c=apps")]),
-        item(title="Lifeway 365",
+             buttons=ESA_BTNS),
+        item(title="Lifeway 365", eyebrow="Download Our Mobile App",
+             imgs=L365_SHOTS,
              paras=["Lifeway 365 is a structured daily scripture-reading framework designed to "
                     "guide you toward deeper spiritual understanding and enlightenment throughout "
-                    "the year."]),
+                    "the year."],
+             buttons=L365_BTNS),
         item(title="Guiding Faithful Leaders", eyebrow="Mentorship",
              paras=["Our mentorship program builds personalized relationships that emphasize "
                     "guidance, accountability, and spiritual development tailored for leaders at "
