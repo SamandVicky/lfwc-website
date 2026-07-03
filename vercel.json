@@ -1,5 +1,14 @@
 {
   "routes": [
+    { "src": "^/home/?$", "status": 301, "headers": { "Location": "/" } },
+    { "src": "^/what-we-believe/?$", "status": 301, "headers": { "Location": "/about" } },
+    { "src": "^/new-here/?$", "status": 301, "headers": { "Location": "/plan-your-visit" } },
+    { "src": "^/mission-and-vision-2/?$", "status": 301, "headers": { "Location": "/about" } },
+    { "src": "^/live-stream-registration/?$", "status": 301, "headers": { "Location": "/plan-your-visit" } },
+    { "src": "^/lifeway-on-demand/?$", "status": 301, "headers": { "Location": "/media" } },
+    { "src": "^/connect/?$", "status": 301, "headers": { "Location": "/get-connected" } },
+    { "src": "^/donor-dashboard/give-2/?$", "status": 301, "headers": { "Location": "/giving" } },
+    { "src": "^/contact-us/?$", "status": 301, "headers": { "Location": "/get-in-touch" } },
     {
       "src": "^/$",
       "dest": "/site/index.html"
