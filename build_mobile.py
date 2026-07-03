@@ -10,6 +10,11 @@ PAGES = ["", "about", "ministries", "services", "giving", "plan-your-visit",
          "media", "faq", "events", "get-connected", "get-in-touch",
          "newsletter", "tuesday-services"]
 
+CANONICAL_BASE = "https://www.lifewayfwc.com"
+# Duda popup-modal targets: real content lives on the popup's parent page,
+# so these standalone URLs must stay out of the index.
+NOINDEX_PAGES = {"faq", "get-connected", "get-in-touch", "newsletter", "tuesday-services"}
+
 HEADINGS = {"h1", "h2", "h3", "h4", "h5", "h6"}
 NAV_TEXT = {"home", "about", "ministries", "services", "giving", "more",
             "plan your visit", "contact", "faq", "menu"}
@@ -538,6 +543,10 @@ def render_page(page, blocks):
     else:
         cards_html = "\n".join(render_card(it) for it in items) + extra_html
     cards = cards_html
+    canonical_url = CANONICAL_BASE + ("/" if key == "home" else f"/{page}")
+    head_tags = f'<link rel="canonical" href="{canonical_url}">'
+    if page in NOINDEX_PAGES:
+        head_tags += '\n<meta name="robots" content="noindex">'
     doc = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -545,6 +554,7 @@ def render_page(page, blocks):
 <script src="/device-redirect.js?v=20260701m2"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)} — LifeWay Family Worship Center</title>
+{head_tags}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">

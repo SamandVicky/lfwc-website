@@ -13,11 +13,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path.rstrip("/") or "/"
 
-        # Try exact file first
+        # Try exact file first, then a directory's index.html — no fallback
+        # to the homepage, so unmatched paths correctly 404 (matches the
+        # production Vercel routing, which has no catch-all fallback either).
         candidates = [
             os.path.join(SITE_DIR, path.lstrip("/")),
             os.path.join(SITE_DIR, path.lstrip("/"), "index.html"),
-            os.path.join(SITE_DIR, "index.html"),  # fallback to home
         ]
 
         for candidate in candidates:

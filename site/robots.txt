@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /*?u=
+Disallow: /*?shops*
+
+Sitemap: https://www.lifewayfwc.com/sitemap.xml
