@@ -43,6 +43,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
             ".svg": "image/svg+xml",
             ".woff": "font/woff",
             ".woff2": "font/woff2",
+            ".ttf": "font/ttf",
+            ".gif": "image/gif",
+            ".webp": "image/webp",
+            ".mp4": "video/mp4",
         }.get(ext, "application/octet-stream")
 
         with open(fpath, "rb") as f:
@@ -57,6 +61,6 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     os.chdir(SITE_DIR)
-    httpd = http.server.HTTPServer(("", PORT), Handler)
+    httpd = http.server.ThreadingHTTPServer(("", PORT), Handler)
     print(f"Serving {SITE_DIR} at http://localhost:{PORT}")
     httpd.serve_forever()
